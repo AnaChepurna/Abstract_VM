@@ -13,8 +13,6 @@ VirtualMachine.h
 /Users/achepurn/Abstract_VM/VirtualMachine.h
 iostream
 -
-
-/Users/achepurn/Abstract_VM/main.cpp
-VirtualMachine.h
-/Users/achepurn/Abstract_VM/VirtualMachine.h
+fstream
+-
 

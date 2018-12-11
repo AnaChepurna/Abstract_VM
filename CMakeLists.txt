@@ -3,4 +3,4 @@ project(Abstract_VM)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Abstract_VM main.cpp VirtualMachine.cpp VirtualMachine.h)
+add_executable(Abstract_VM main.cpp VirtualMachine.cpp VirtualMachine.h Parser.cpp Parser.h Lexer.cpp Lexer.h)

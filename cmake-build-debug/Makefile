@@ -123,6 +123,60 @@ Abstract_VM/fast:
 	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/build
 .PHONY : Abstract_VM/fast
 
+Lexer.o: Lexer.cpp.o
+
+.PHONY : Lexer.o
+
+# target to build an object file
+Lexer.cpp.o:
+	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/Lexer.cpp.o
+.PHONY : Lexer.cpp.o
+
+Lexer.i: Lexer.cpp.i
+
+.PHONY : Lexer.i
+
+# target to preprocess a source file
+Lexer.cpp.i:
+	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/Lexer.cpp.i
+.PHONY : Lexer.cpp.i
+
+Lexer.s: Lexer.cpp.s
+
+.PHONY : Lexer.s
+
+# target to generate assembly for a file
+Lexer.cpp.s:
+	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/Lexer.cpp.s
+.PHONY : Lexer.cpp.s
+
+Parser.o: Parser.cpp.o
+
+.PHONY : Parser.o
+
+# target to build an object file
+Parser.cpp.o:
+	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/Parser.cpp.o
+.PHONY : Parser.cpp.o
+
+Parser.i: Parser.cpp.i
+
+.PHONY : Parser.i
+
+# target to preprocess a source file
+Parser.cpp.i:
+	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/Parser.cpp.i
+.PHONY : Parser.cpp.i
+
+Parser.s: Parser.cpp.s
+
+.PHONY : Parser.s
+
+# target to generate assembly for a file
+Parser.cpp.s:
+	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/Parser.cpp.s
+.PHONY : Parser.cpp.s
+
 VirtualMachine.o: VirtualMachine.cpp.o
 
 .PHONY : VirtualMachine.o
@@ -186,6 +240,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Abstract_VM"
+	@echo "... Lexer.o"
+	@echo "... Lexer.i"
+	@echo "... Lexer.s"
+	@echo "... Parser.o"
+	@echo "... Parser.i"
+	@echo "... Parser.s"
 	@echo "... VirtualMachine.o"
 	@echo "... VirtualMachine.i"
 	@echo "... VirtualMachine.s"

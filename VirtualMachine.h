@@ -10,8 +10,10 @@
 
 class VirtualMachine {
 private:
-    std::ifstream _ifstream;
-    void read();
+    std::string _filename;
+    void _read();
+    void _readFromFile();
+    void _readFromConsole();
 
 public :
     VirtualMachine();

@@ -82,6 +82,18 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/achepurn/Abstract_VM/Lexer.cpp">
+			<Option target="Abstract_VM"/>
+		</Unit>
+		<Unit filename="/Users/achepurn/Abstract_VM/Lexer.h">
+			<Option target="Abstract_VM"/>
+		</Unit>
+		<Unit filename="/Users/achepurn/Abstract_VM/Parser.cpp">
+			<Option target="Abstract_VM"/>
+		</Unit>
+		<Unit filename="/Users/achepurn/Abstract_VM/Parser.h">
+			<Option target="Abstract_VM"/>
+		</Unit>
 		<Unit filename="/Users/achepurn/Abstract_VM/VirtualMachine.cpp">
 			<Option target="Abstract_VM"/>
 		</Unit>

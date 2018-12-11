@@ -4,12 +4,11 @@
 
 #include "VirtualMachine.h"
 
-VirtualMachine::VirtualMachine() {
-    _ifstream.copyfmt(std::cin);
+VirtualMachine::VirtualMachine(): _filename("") {
 }
 
 VirtualMachine::VirtualMachine(std::string filename) {
-    _ifstream.open(filename);
+    _filename = filename;
 }
 
 VirtualMachine::VirtualMachine(VirtualMachine const &src) {
@@ -17,28 +16,47 @@ VirtualMachine::VirtualMachine(VirtualMachine const &src) {
 }
 
 VirtualMachine &VirtualMachine::operator=(VirtualMachine const &src) {
-    _ifstream.copyfmt(src._ifstream);
+    _filename = src._filename;
     return *this;
 }
 
-VirtualMachine::~VirtualMachine() {
-}
+VirtualMachine::~VirtualMachine() = default;
 
 void VirtualMachine::run() {
-    read();
+    _read();
 }
 
-void VirtualMachine::read() {
+void VirtualMachine::_readFromFile() {
     std::string str;
-    if (_ifstream.is_open())
+    std::ifstream ifs(_filename);
+
+    if (!ifs.is_open())
+        return ;
+    while (42)
     {
-        while(42)
-        {
-            getline(_ifstream, str);
-            if (str == "" || )
-        }
-        _ifstream.close();
+        getline(ifs, str);
+        std::cout << str << std::endl;
+        if (ifs.eof())
+            return;
     }
+}
+
+void VirtualMachine::_readFromConsole() {
+    std::string str;
+
+    while (42)
+    {
+        getline(std::cin, str);
+        std::cout << str << std::endl;
+    }
+}
+
+void VirtualMachine::_read() {
+
+    if (_filename.empty())
+        _readFromConsole();
+    else
+        _readFromFile();
 }
 
 
