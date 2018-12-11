@@ -1,3 +1,0 @@
-/Users/achepurn/Abstract_VM/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/achepurn/Abstract_VM/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/achepurn/Abstract_VM/cmake-build-debug/CMakeFiles/Abstract_VM.dir
