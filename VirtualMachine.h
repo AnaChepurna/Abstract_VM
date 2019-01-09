@@ -7,21 +7,20 @@
 
 #include <iostream>
 #include <fstream>
+#include <list>
+#include "IOperand.h"
 
 class VirtualMachine {
 private:
-    std::string _filename;
-    void _read();
-    void _readFromFile();
-    void _readFromConsole();
+    std::list<IOperand const>values;
+    std::list<std::string>code;
+
 
 public :
     VirtualMachine();
-    explicit VirtualMachine(std::string filename);
     VirtualMachine(VirtualMachine const& src);
     VirtualMachine &operator=(VirtualMachine const &src);
     ~VirtualMachine();
-    void run();
 };
 
 
