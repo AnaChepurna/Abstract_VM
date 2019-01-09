@@ -11,14 +11,16 @@ enum eOperandType {Int8, Int16, Int32, Float, Double};
 
 class IOperand {
 public:
-    int getPrecision(void) const;
-    eOperandType getType(void) const;
-    IOperand const * operator+( IOperand const &rhs ) const;
-    IOperand const * operator-( IOperand const &rhs ) const;
-    IOperand const * operator*( IOperand const &rhs ) const;
-    IOperand const * operator/( IOperand const &rhs ) const;
-    IOperand const * operator%( IOperand const &rhs ) const;
-    std::string const & toString( void ) const;
+    virtual int getPrecision(void) const = 0;
+    virtual eOperandType getType(void) const = 0;
+    virtual IOperand const * operator+( IOperand const &rhs ) const = 0;
+    virtual IOperand const * operator-( IOperand const &rhs ) const = 0;
+    virtual IOperand const * operator*( IOperand const &rhs ) const = 0;
+    virtual IOperand const * operator/( IOperand const &rhs ) const = 0;
+    virtual IOperand const * operator%( IOperand const &rhs ) const = 0;
+    virtual std::string const & toString( void ) const = 0;
+    virtual ~IOperand( void ) {}
+//    virtual IOperand const * createOperand( eOperandType type, std::string const & value ) const = 0;
 };
 
 #endif //ABSTRACT_VM_IOPERAND_H

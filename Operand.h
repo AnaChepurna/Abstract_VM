@@ -13,10 +13,17 @@ class Operand: public IOperand {
 private:
     eOperandType    _operandType;
     T               _value;
+    std::string     _string;
 
     Operand<T>() {}
 
 public:
+    Operand<T>(eOperandType type, std::string const & value) {
+        _operandType = type;
+        _value = static_cast<T>(value);
+        _string = value;
+    }
+
     ~Operand<T>() {}
 
     Operand<T>	&operator=(Operand const & rhs) {
@@ -36,15 +43,29 @@ public:
         return _value;
     }
 
-//    IOperand const * operator+( IOperand const &rhs ) {
-//
-//    }
+    IOperand const * operator+( IOperand const &rhs ) const {
+        return Operand();
+    }
 
-//    virtual IOperand const * operator-( IOperand const &rhs ) const = 0;
-//    virtual IOperand const * operator*( IOperand const &rhs ) const = 0;
-//    virtual IOperand const * operator/( IOperand const &rhs ) const = 0;
-//    virtual IOperand const * operator%( IOperand const &rhs ) const = 0;
-//    virtual std::string const & toString( void ) const = 0;
+    virtual IOperand const * operator-( IOperand const &rhs ) const {
+        return Operand();
+    }
+
+    virtual IOperand const * operator*( IOperand const &rhs ) const {
+        return Operand();
+    }
+
+    virtual IOperand const * operator/( IOperand const &rhs ) const {
+        return Operand();
+    }
+
+    virtual IOperand const * operator%( IOperand const &rhs ) const {
+        return Operand();
+    }
+
+    virtual std::string const & toString( void ) const {
+        return _string;
+    }
 };
 
 

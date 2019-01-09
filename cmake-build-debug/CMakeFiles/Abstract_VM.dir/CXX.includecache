@@ -10,6 +10,12 @@
 iostream
 -
 
+/Users/achepurn/Abstract_VM/Operand.h
+VirtualMachine.h
+/Users/achepurn/Abstract_VM/VirtualMachine.h
+IOperand.h
+/Users/achepurn/Abstract_VM/IOperand.h
+
 /Users/achepurn/Abstract_VM/VirtualMachine.cpp
 VirtualMachine.h
 /Users/achepurn/Abstract_VM/VirtualMachine.h
@@ -23,6 +29,8 @@ list
 -
 IOperand.h
 /Users/achepurn/Abstract_VM/IOperand.h
+Operand.h
+/Users/achepurn/Abstract_VM/Operand.h
 
 /Users/achepurn/Abstract_VM/main.cpp
 VirtualMachine.h
