@@ -5,11 +5,12 @@
 #include "VirtualMachine.h"
 
 VirtualMachine::VirtualMachine() {
+    values.push_front(new Operand<double>(Double, "1.1"));
     values.push_front(new Operand<double>(Double, "2.2"));
-    values.push_front(new Operand<double>(Double, "2.2"));
-    values.push_front(new Operand<double>(Double, "2.2"));
-    values.push_front(new Operand<double>(Double, "2.2"));
-    values.push_front(new Operand<double>(Double, "2.2"));
+    values.push_front(new Operand<double>(Double, "3.3"));
+    values.push_front(new Operand<double>(Double, "4.4"));
+    values.push_front(new Operand<double>(Double, "5.5"));
+    add();
     dump();
 }
 

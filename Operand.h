@@ -22,7 +22,7 @@ public:
 
     Operand<T>(eOperandType type, std::string const & value) {
         _operandType = type;
-        _value = 10; //static_cast<T>(value);
+        _value = static_cast<T>(stod(value, 0));
         _string = value;
         _precision = type;
     }
