@@ -13,4 +13,5 @@ add_executable(Abstract_VM
         Parser.cpp
         Parser.h
         VirtualMachine.cpp
-        VirtualMachine.h)
+        VirtualMachine.h
+        Operand.h)

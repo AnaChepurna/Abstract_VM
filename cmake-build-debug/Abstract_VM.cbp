@@ -93,6 +93,9 @@
 		<Unit filename="/Users/achepurn/Abstract_VM/Lexer.h">
 			<Option target="Abstract_VM"/>
 		</Unit>
+		<Unit filename="/Users/achepurn/Abstract_VM/Operand.h">
+			<Option target="Abstract_VM"/>
+		</Unit>
 		<Unit filename="/Users/achepurn/Abstract_VM/Parser.cpp">
 			<Option target="Abstract_VM"/>
 		</Unit>

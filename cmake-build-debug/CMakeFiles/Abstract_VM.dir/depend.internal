@@ -8,8 +8,10 @@ CMakeFiles/Abstract_VM.dir/Parser.cpp.o
  /Users/achepurn/Abstract_VM/Parser.cpp
  /Users/achepurn/Abstract_VM/Parser.h
 CMakeFiles/Abstract_VM.dir/VirtualMachine.cpp.o
+ /Users/achepurn/Abstract_VM/IOperand.h
  /Users/achepurn/Abstract_VM/VirtualMachine.cpp
  /Users/achepurn/Abstract_VM/VirtualMachine.h
 CMakeFiles/Abstract_VM.dir/main.cpp.o
+ /Users/achepurn/Abstract_VM/IOperand.h
  /Users/achepurn/Abstract_VM/VirtualMachine.h
  /Users/achepurn/Abstract_VM/main.cpp
