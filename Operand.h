@@ -14,14 +14,17 @@ private:
     eOperandType    _operandType;
     T               _value;
     std::string     _string;
+    int             _precision;
 
     Operand<T>() {}
 
 public:
+
     Operand<T>(eOperandType type, std::string const & value) {
         _operandType = type;
-        _value = static_cast<T>(value);
+        _value = 10; //static_cast<T>(value);
         _string = value;
+        _precision = type;
     }
 
     ~Operand<T>() {}
@@ -35,35 +38,39 @@ public:
         *this = copy;
     }
 
-    eOperandType getType() {
+    eOperandType getType(void) const {
         return _operandType;
     }
 
-    T getValue() {
+    T getValue(void) const {
         return _value;
     }
 
+    int getPrecision(void) const {
+        return _precision;
+    }
+
     IOperand const * operator+( IOperand const &rhs ) const {
-        return Operand();
+        return new Operand();
     }
 
-    virtual IOperand const * operator-( IOperand const &rhs ) const {
-        return Operand();
+    IOperand const * operator-( IOperand const &rhs ) const {
+        return new Operand();
     }
 
-    virtual IOperand const * operator*( IOperand const &rhs ) const {
-        return Operand();
+    IOperand const * operator*( IOperand const &rhs ) const {
+        return new Operand();
     }
 
-    virtual IOperand const * operator/( IOperand const &rhs ) const {
-        return Operand();
+    IOperand const * operator/( IOperand const &rhs ) const {
+        return new Operand();
     }
 
-    virtual IOperand const * operator%( IOperand const &rhs ) const {
-        return Operand();
+    IOperand const * operator%( IOperand const &rhs ) const {
+        return new Operand();
     }
 
-    virtual std::string const & toString( void ) const {
+    std::string const & toString( void ) const {
         return _string;
     }
 };
