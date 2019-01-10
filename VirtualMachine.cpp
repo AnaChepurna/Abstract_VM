@@ -5,6 +5,7 @@
 #include "VirtualMachine.h"
 
 VirtualMachine::VirtualMachine() {
+    std::cout << "create\n";
     values.push_front(new Operand<double>(Double, "1.1"));
     values.push_front(new Operand<int8_t>(Int8, "2"));
     values.push_front(new Operand<double>(Double, "3.3"));
@@ -12,7 +13,7 @@ VirtualMachine::VirtualMachine() {
     values.push_front(new Operand<double>(Double, "5.5"));
     values.push_front(new Operand<int8_t>(Int8, "3"));
     values.push_front(new Operand<int8_t>(Int8, "2"));
-//    dump();
+    dump();
     div();
     dump();
 }
@@ -30,13 +31,17 @@ void VirtualMachine::push(IOperand const* value) {
 }
 
 void VirtualMachine::pop() {
+//    IOperand const *own = values.front();
     values.pop_front();
+//    delete own;
 }
 
 void VirtualMachine::dump() {
+    std::cout << "dump >>>>>" << std::endl;
     std::for_each(values.begin(), values.end(), [](IOperand const* o){
         std::cout << o->toString() << std::endl;
     });
+    std::cout << "<<<<<<<<<<" << std::endl;
 }
 
 void VirtualMachine::assert(IOperand const *value) {

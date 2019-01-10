@@ -10,6 +10,8 @@
 iostream
 -
 
+/Users/achepurn/Abstract_VM/Lexer.h
+
 /Users/achepurn/Abstract_VM/Operand.h
 VirtualMachine.h
 /Users/achepurn/Abstract_VM/VirtualMachine.h
@@ -22,9 +24,15 @@ sstream
 cmath
 -
 
-/Users/achepurn/Abstract_VM/VirtualMachine.cpp
+/Users/achepurn/Abstract_VM/Parser.cpp
+Parser.h
+/Users/achepurn/Abstract_VM/Parser.h
+
+/Users/achepurn/Abstract_VM/Parser.h
 VirtualMachine.h
 /Users/achepurn/Abstract_VM/VirtualMachine.h
+Lexer.h
+/Users/achepurn/Abstract_VM/Lexer.h
 
 /Users/achepurn/Abstract_VM/VirtualMachine.h
 iostream
@@ -37,8 +45,4 @@ IOperand.h
 /Users/achepurn/Abstract_VM/IOperand.h
 Operand.h
 /Users/achepurn/Abstract_VM/Operand.h
-
-/Users/achepurn/Abstract_VM/main.cpp
-VirtualMachine.h
-/Users/achepurn/Abstract_VM/VirtualMachine.h
 

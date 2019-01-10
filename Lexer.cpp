@@ -3,3 +3,19 @@
 //
 
 #include "Lexer.h"
+
+Lexer::Lexer() {
+
+}
+
+Lexer::~Lexer() {
+
+}
+
+Lexer::Lexer(Lexer const &src) {
+
+}
+
+Lexer &Lexer::operator=(Lexer const &src) {
+    return *this;
+}

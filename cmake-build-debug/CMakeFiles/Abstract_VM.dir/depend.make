@@ -4,8 +4,12 @@
 CMakeFiles/Abstract_VM.dir/Lexer.cpp.o: ../Lexer.cpp
 CMakeFiles/Abstract_VM.dir/Lexer.cpp.o: ../Lexer.h
 
+CMakeFiles/Abstract_VM.dir/Parser.cpp.o: ../IOperand.h
+CMakeFiles/Abstract_VM.dir/Parser.cpp.o: ../Lexer.h
+CMakeFiles/Abstract_VM.dir/Parser.cpp.o: ../Operand.h
 CMakeFiles/Abstract_VM.dir/Parser.cpp.o: ../Parser.cpp
 CMakeFiles/Abstract_VM.dir/Parser.cpp.o: ../Parser.h
+CMakeFiles/Abstract_VM.dir/Parser.cpp.o: ../VirtualMachine.h
 
 CMakeFiles/Abstract_VM.dir/VirtualMachine.cpp.o: ../IOperand.h
 CMakeFiles/Abstract_VM.dir/VirtualMachine.cpp.o: ../Operand.h

@@ -5,8 +5,12 @@ CMakeFiles/Abstract_VM.dir/Lexer.cpp.o
  /Users/achepurn/Abstract_VM/Lexer.cpp
  /Users/achepurn/Abstract_VM/Lexer.h
 CMakeFiles/Abstract_VM.dir/Parser.cpp.o
+ /Users/achepurn/Abstract_VM/IOperand.h
+ /Users/achepurn/Abstract_VM/Lexer.h
+ /Users/achepurn/Abstract_VM/Operand.h
  /Users/achepurn/Abstract_VM/Parser.cpp
  /Users/achepurn/Abstract_VM/Parser.h
+ /Users/achepurn/Abstract_VM/VirtualMachine.h
 CMakeFiles/Abstract_VM.dir/VirtualMachine.cpp.o
  /Users/achepurn/Abstract_VM/IOperand.h
  /Users/achepurn/Abstract_VM/Operand.h

@@ -17,7 +17,6 @@ private:
     eOperandType    _operandType;
     T               _value;
     std::string     _string;
-    int             _precision;
 
     Operand<T>() {}
 
@@ -27,7 +26,6 @@ public:
         _operandType = type;
         _value = static_cast<T>(stod(value, 0));
         _string = value;
-        _precision = type;
     }
 
     ~Operand<T>() {}
@@ -50,14 +48,14 @@ public:
     }
 
     int getPrecision(void) const {
-        return _precision;
+        return (int)_operandType;
     }
 
     IOperand const * operator+( IOperand const &rhs ) const {
         double rhsValue = static_cast<double>(stod(rhs.toString(), 0));
         std::stringstream stringStream;
         stringStream << this->_value + rhsValue;
-        int resPrecision = this->_precision >= rhs.getPrecision() ? this->_precision : rhs.getPrecision();
+        int resPrecision = this->getPrecision() >= rhs.getPrecision() ? this->getPrecision() : rhs.getPrecision();
         eOperandType resType = static_cast<eOperandType>(resPrecision);
         return new Operand(resType, stringStream.str());
     }
@@ -66,7 +64,7 @@ public:
         double rhsValue = static_cast<double>(stod(rhs.toString(), 0));
         std::stringstream stringStream;
         stringStream << this->_value - rhsValue;
-        int resPrecision = this->_precision >= rhs.getPrecision() ? this->_precision : rhs.getPrecision();
+        int resPrecision = this->getPrecision() >= rhs.getPrecision() ? this->getPrecision() : rhs.getPrecision();
         eOperandType resType = static_cast<eOperandType>(resPrecision);
         return new Operand(resType, stringStream.str());
     }
@@ -75,7 +73,7 @@ public:
         double rhsValue = static_cast<double>(stod(rhs.toString(), 0));
         std::stringstream stringStream;
         stringStream << this->_value * rhsValue;
-        int resPrecision = this->_precision >= rhs.getPrecision() ? this->_precision : rhs.getPrecision();
+        int resPrecision = this->getPrecision() >= rhs.getPrecision() ? this->getPrecision() : rhs.getPrecision();
         eOperandType resType = static_cast<eOperandType>(resPrecision);
         return new Operand(resType, stringStream.str());
     }
@@ -90,7 +88,7 @@ public:
             int32_t rhsValue = static_cast<int32_t >(stod(rhs.toString(), 0));
             stringStream << this->_value / rhsValue;
         }
-        int resPrecision = this->_precision >= rhs.getPrecision() ? this->_precision : rhs.getPrecision();
+        int resPrecision = this->getPrecision() >= rhs.getPrecision() ? this->getPrecision() : rhs.getPrecision();
         eOperandType resType = static_cast<eOperandType>(resPrecision);
         return new Operand(resType, stringStream.str());
     }
@@ -99,7 +97,7 @@ public:
         double rhsValue = static_cast<double>(stod(rhs.toString(), 0));
         std::stringstream stringStream;
         stringStream << std::fmod(this->_value, rhsValue);
-        int resPrecision = this->_precision >= rhs.getPrecision() ? this->_precision : rhs.getPrecision();
+        int resPrecision = this->getPrecision() >= rhs.getPrecision() ? this->getPrecision() : rhs.getPrecision();
         eOperandType resType = static_cast<eOperandType>(resPrecision);
         return new Operand(resType, stringStream.str());
     }
