@@ -15,6 +15,12 @@ VirtualMachine.h
 /Users/achepurn/Abstract_VM/VirtualMachine.h
 IOperand.h
 /Users/achepurn/Abstract_VM/IOperand.h
+string
+-
+sstream
+-
+cmath
+-
 
 /Users/achepurn/Abstract_VM/VirtualMachine.cpp
 VirtualMachine.h
@@ -31,4 +37,8 @@ IOperand.h
 /Users/achepurn/Abstract_VM/IOperand.h
 Operand.h
 /Users/achepurn/Abstract_VM/Operand.h
+
+/Users/achepurn/Abstract_VM/main.cpp
+VirtualMachine.h
+/Users/achepurn/Abstract_VM/VirtualMachine.h
 

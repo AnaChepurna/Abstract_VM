@@ -6,11 +6,14 @@
 
 VirtualMachine::VirtualMachine() {
     values.push_front(new Operand<double>(Double, "1.1"));
-    values.push_front(new Operand<double>(Double, "2.2"));
+    values.push_front(new Operand<int8_t>(Int8, "2"));
     values.push_front(new Operand<double>(Double, "3.3"));
     values.push_front(new Operand<double>(Double, "4.4"));
     values.push_front(new Operand<double>(Double, "5.5"));
-    add();
+    values.push_front(new Operand<int8_t>(Int8, "3"));
+    values.push_front(new Operand<int8_t>(Int8, "2"));
+//    dump();
+    div();
     dump();
 }
 
@@ -54,7 +57,7 @@ void VirtualMachine::sub() {
     pop();
     IOperand const *second = values.front();
     pop();
-    values.push_front(*first - *second);
+    values.push_front(*second - *first);
 }
 
 void VirtualMachine::mul() {
@@ -70,7 +73,7 @@ void VirtualMachine::div() {
     pop();
     IOperand const *second = values.front();
     pop();
-    values.push_front(*first / *second);
+    values.push_front(*second / *first);
 }
 
 void VirtualMachine::mod() {
@@ -78,7 +81,7 @@ void VirtualMachine::mod() {
     pop();
     IOperand const *second = values.front();
     pop();
-    values.push_front(*first % *second);
+    values.push_front(*second % *first);
 }
 
 void VirtualMachine::print() {

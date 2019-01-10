@@ -7,6 +7,9 @@
 
 #include "VirtualMachine.h"
 #include "IOperand.h"
+#include <string>
+#include <sstream>
+#include <cmath>
 
 template <typename T>
 class Operand: public IOperand {
@@ -51,23 +54,54 @@ public:
     }
 
     IOperand const * operator+( IOperand const &rhs ) const {
-        return new Operand();
+        double rhsValue = static_cast<double>(stod(rhs.toString(), 0));
+        std::stringstream stringStream;
+        stringStream << this->_value + rhsValue;
+        int resPrecision = this->_precision >= rhs.getPrecision() ? this->_precision : rhs.getPrecision();
+        eOperandType resType = static_cast<eOperandType>(resPrecision);
+        return new Operand(resType, stringStream.str());
     }
 
     IOperand const * operator-( IOperand const &rhs ) const {
-        return new Operand();
+        double rhsValue = static_cast<double>(stod(rhs.toString(), 0));
+        std::stringstream stringStream;
+        stringStream << this->_value - rhsValue;
+        int resPrecision = this->_precision >= rhs.getPrecision() ? this->_precision : rhs.getPrecision();
+        eOperandType resType = static_cast<eOperandType>(resPrecision);
+        return new Operand(resType, stringStream.str());
     }
 
     IOperand const * operator*( IOperand const &rhs ) const {
-        return new Operand();
+        double rhsValue = static_cast<double>(stod(rhs.toString(), 0));
+        std::stringstream stringStream;
+        stringStream << this->_value * rhsValue;
+        int resPrecision = this->_precision >= rhs.getPrecision() ? this->_precision : rhs.getPrecision();
+        eOperandType resType = static_cast<eOperandType>(resPrecision);
+        return new Operand(resType, stringStream.str());
     }
 
     IOperand const * operator/( IOperand const &rhs ) const {
-        return new Operand();
+        std::stringstream stringStream;
+        if (rhs.getType() == eOperandType::Double || rhs.getType() == eOperandType::Float) {
+            double rhsValue = static_cast<double>(stod(rhs.toString(), 0));
+            stringStream << this->_value / rhsValue;
+        }
+        else {
+            int32_t rhsValue = static_cast<int32_t >(stod(rhs.toString(), 0));
+            stringStream << this->_value / rhsValue;
+        }
+        int resPrecision = this->_precision >= rhs.getPrecision() ? this->_precision : rhs.getPrecision();
+        eOperandType resType = static_cast<eOperandType>(resPrecision);
+        return new Operand(resType, stringStream.str());
     }
 
     IOperand const * operator%( IOperand const &rhs ) const {
-        return new Operand();
+        double rhsValue = static_cast<double>(stod(rhs.toString(), 0));
+        std::stringstream stringStream;
+        stringStream << std::fmod(this->_value, rhsValue);
+        int resPrecision = this->_precision >= rhs.getPrecision() ? this->_precision : rhs.getPrecision();
+        eOperandType resType = static_cast<eOperandType>(resPrecision);
+        return new Operand(resType, stringStream.str());
     }
 
     std::string const & toString( void ) const {
