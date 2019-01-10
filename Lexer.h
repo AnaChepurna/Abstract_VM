@@ -5,6 +5,7 @@
 #ifndef ABSTRACT_VM_LEXER_H
 #define ABSTRACT_VM_LEXER_H
 
+#include <string>
 
 class Lexer {
 public:
@@ -12,6 +13,8 @@ public:
     ~Lexer();
     Lexer(Lexer const& src);
     Lexer &operator=(Lexer const &src);
+
+    bool isEnd(std::string str) const;
 };
 
 

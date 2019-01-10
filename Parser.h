@@ -14,9 +14,11 @@ private:
     VirtualMachine const*_vm;
     Lexer const* _lexer;
     std::string _filename;
+    std::list<std::string>src;
 
 
     Parser();
+    void readSrc();
 
 public:
     explicit Parser(VirtualMachine const *vm);
@@ -24,6 +26,7 @@ public:
     Parser(Parser const& src);
     Parser &operator=(Parser const &src);
 
+    void getCode();
 };
 
 
