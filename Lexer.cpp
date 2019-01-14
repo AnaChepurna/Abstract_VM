@@ -32,43 +32,65 @@ bool Lexer::isEnd(std::string str) {
 
 Lexem *Lexer::getLexem(std::string str) {
     strStartTrim(str);
-    for (int i = 0; i++; i < 11)
+    Lexem *lexem = nullptr;
+    for (int i = 0; i < 11; i++)
     {
-        if (str.compare(0, pattern[i].size(), pattern[i]))
+        if (str.compare(0, pattern[i].size(), pattern[i]) == 0)
         {
             str = str.substr(pattern[i].size());
             switch (i) {
                 case 0 :
-                    return new Lexem(Lexem::PUSH);
+                    lexem = new Lexem(Lexem::PUSH);
+                    break;
                 case 1 :
-                    return new Lexem(Lexem::POP);
+                    lexem = new Lexem(Lexem::POP);
+                    break;
                 case 2 :
-                    return new Lexem(Lexem::DUMP);
+                    lexem = new Lexem(Lexem::DUMP);
+                    break;
                 case 3 :
-                    return new Lexem(Lexem::ASSERT);
+                    lexem = new Lexem(Lexem::ASSERT);
+                    break;
                 case 4 :
-                    return new Lexem(Lexem::ADD);
+                    lexem = new Lexem(Lexem::ADD);
+                    break;
                 case 5 :
-                    return new Lexem(Lexem::SUB);
+                    lexem = new Lexem(Lexem::SUB);
+                    break;
                 case 6 :
-                    return new Lexem(Lexem::MUL);
+                    lexem = new Lexem(Lexem::MUL);
+                    break;
                 case 7 :
-                    return new Lexem(Lexem::DIV);
+                    lexem = new Lexem(Lexem::DIV);
+                    break;
                 case 8 :
-                    return new Lexem(Lexem::MOD);
+                    lexem = new Lexem(Lexem::MOD);
+                    break;
                 case 9 :
-                    return new Lexem(Lexem::PRINT);
+                    lexem = new Lexem(Lexem::PRINT);
+                    break;
                 case 10 :
-                    return new Lexem(Lexem::EXIT);
+                    lexem =  new Lexem(Lexem::EXIT);
+                    break;
             }
+            break;
         }
+        if (isComment(str))
+            std::cout << "find comment\n";
     }
-    return new Lexem(Lexem::eLexemType::ADD);
+    return lexem;
 }
 
 void Lexer::strStartTrim(std::string &str) {
         str.erase(str.begin(), std::find_if(str.begin(), str.end(), [](int ch) {
             return !std::isspace(ch);
         }));
+}
+
+bool Lexer::isComment(std::string str) {
+    strStartTrim(str);
+    if (str.compare(0, 1, ";") == 0)
+        return true;
+    return false;
 }
 

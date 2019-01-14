@@ -21,6 +21,8 @@ public:
 private:
     static std::string const patterns[11];
     void strStartTrim(std::string &str);
+
+    bool isComment(std::string basic_string);
 };
 
 
