@@ -10,11 +10,12 @@
 #include <list>
 #include "IOperand.h"
 #include "Operand.h"
+#include "Lexem.h"
 
 class VirtualMachine {
 private:
     std::list<IOperand const *>values;
-    std::list<std::string>code;
+    std::list<Lexem const*>code;
 
 
 public :

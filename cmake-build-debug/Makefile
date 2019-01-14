@@ -123,6 +123,33 @@ Abstract_VM/fast:
 	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/build
 .PHONY : Abstract_VM/fast
 
+Lexem.o: Lexem.cpp.o
+
+.PHONY : Lexem.o
+
+# target to build an object file
+Lexem.cpp.o:
+	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/Lexem.cpp.o
+.PHONY : Lexem.cpp.o
+
+Lexem.i: Lexem.cpp.i
+
+.PHONY : Lexem.i
+
+# target to preprocess a source file
+Lexem.cpp.i:
+	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/Lexem.cpp.i
+.PHONY : Lexem.cpp.i
+
+Lexem.s: Lexem.cpp.s
+
+.PHONY : Lexem.s
+
+# target to generate assembly for a file
+Lexem.cpp.s:
+	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/Lexem.cpp.s
+.PHONY : Lexem.cpp.s
+
 Lexer.o: Lexer.cpp.o
 
 .PHONY : Lexer.o
@@ -240,6 +267,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Abstract_VM"
+	@echo "... Lexem.o"
+	@echo "... Lexem.i"
+	@echo "... Lexem.s"
 	@echo "... Lexer.o"
 	@echo "... Lexer.i"
 	@echo "... Lexer.s"

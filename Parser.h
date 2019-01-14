@@ -11,22 +11,20 @@
 
 class Parser {
 private:
-    VirtualMachine const*_vm;
     Lexer const* _lexer;
     std::string _filename;
-    std::list<std::string>src;
+    std::list<Lexem const *>_code;
 
 
-    Parser();
     void readSrc();
 
 public:
-    explicit Parser(VirtualMachine const *vm);
+    Parser();
     ~Parser();
     Parser(Parser const& src);
     Parser &operator=(Parser const &src);
 
-    void getCode();
+    std::list<Lexem const *> getCode();
 };
 
 

@@ -10,7 +10,15 @@
 iostream
 -
 
+/Users/achepurn/Abstract_VM/Lexem.h
+IOperand.h
+/Users/achepurn/Abstract_VM/IOperand.h
+
 /Users/achepurn/Abstract_VM/Lexer.h
+string
+-
+Lexem.h
+/Users/achepurn/Abstract_VM/Lexem.h
 
 /Users/achepurn/Abstract_VM/Operand.h
 VirtualMachine.h
@@ -45,4 +53,6 @@ IOperand.h
 /Users/achepurn/Abstract_VM/IOperand.h
 Operand.h
 /Users/achepurn/Abstract_VM/Operand.h
+Lexem.h
+/Users/achepurn/Abstract_VM/Lexem.h
 

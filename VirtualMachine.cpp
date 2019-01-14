@@ -6,16 +6,17 @@
 
 VirtualMachine::VirtualMachine() {
     std::cout << "create\n";
-    values.push_front(new Operand<double>(Double, "1.1"));
-    values.push_front(new Operand<int8_t>(Int8, "2"));
-    values.push_front(new Operand<double>(Double, "3.3"));
-    values.push_front(new Operand<double>(Double, "4.4"));
-    values.push_front(new Operand<double>(Double, "5.5"));
-    values.push_front(new Operand<int8_t>(Int8, "3"));
-    values.push_front(new Operand<int8_t>(Int8, "2"));
-    dump();
-    div();
-    dump();
+    
+//    values.push_front(new Operand<double>(Double, "1.1"));
+//    values.push_front(new Operand<int8_t>(Int8, "2"));
+//    values.push_front(new Operand<double>(Double, "3.3"));
+//    values.push_front(new Operand<double>(Double, "4.4"));
+//    values.push_front(new Operand<double>(Double, "5.5"));
+//    values.push_front(new Operand<int8_t>(Int8, "3"));
+//    values.push_front(new Operand<int8_t>(Int8, "2"));
+//    dump();
+//    div();
+//    dump();
 }
 
 VirtualMachine::VirtualMachine(VirtualMachine const &src) {

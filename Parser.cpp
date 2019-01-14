@@ -7,7 +7,6 @@
 Parser::Parser() {
 }
 
-Parser::Parser(VirtualMachine const *vm) : _vm(vm), _lexer(new Lexer()), _filename(""), src(src) {}
 
 Parser::~Parser() {
     delete(_lexer);
@@ -20,24 +19,36 @@ Parser::Parser(Parser const &src) {
 Parser &Parser::operator=(Parser const &src) {
     this->_filename = src._filename;
     this->_lexer = src._lexer;
-    this->_vm = src._vm;
     return *this;
 }
 
-void Parser::getCode() {
+std::list<Lexem const *> Parser::getCode() {
     readSrc();
+    return (_code);
 }
 
 void Parser::readSrc() {
     std::string str;
-    if (_filename == "")
-    {
-        while (std::getline(std::cin, str))
-        {
-            std::
+    if (_filename == "") {
+        while (std::getline(std::cin, str)) {
             if (_lexer->isEnd(str))
                 break;
+            Lexem *lexem = _lexer->getLexem(str);
+            if (lexem != nullptr)
+                _code.insert(_code.end(), lexem);
         }
+    }
+    else {
+        std::fstream i;
+        i.open(_filename);
+        while (std::getline(i, str)) {
+            if (_lexer->isEnd(str))
+                break;
+            Lexem *lexem = _lexer->getLexem(str);
+            if (lexem != nullptr)
+                _code.insert(_code.end(), lexem);
+        }
+        i.close();
     }
 }
 

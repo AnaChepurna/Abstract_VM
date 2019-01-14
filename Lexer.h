@@ -6,6 +6,7 @@
 #define ABSTRACT_VM_LEXER_H
 
 #include <string>
+#include "Lexem.h"
 
 class Lexer {
 public:
@@ -15,6 +16,7 @@ public:
     Lexer &operator=(Lexer const &src);
 
     bool isEnd(std::string str) const;
+    Lexem * getLexem(std::string str) const;
 };
 
 

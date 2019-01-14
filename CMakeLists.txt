@@ -14,4 +14,6 @@ add_executable(Abstract_VM
         Parser.h
         VirtualMachine.cpp
         VirtualMachine.h
-        Operand.h)
+        Operand.h
+        Lexem.h
+        Lexem.cpp)

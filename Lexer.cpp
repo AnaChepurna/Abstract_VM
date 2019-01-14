@@ -25,3 +25,7 @@ bool Lexer::isEnd(std::string str) const{
         return true;
     return false;
 }
+
+Lexem *Lexer::getLexem(std::string str) const {
+    return new Lexem(Lexem::eLexemType::ADD);
+}
