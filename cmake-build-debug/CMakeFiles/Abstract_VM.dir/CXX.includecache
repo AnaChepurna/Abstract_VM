@@ -14,6 +14,10 @@ iostream
 IOperand.h
 /Users/achepurn/Abstract_VM/IOperand.h
 
+/Users/achepurn/Abstract_VM/Lexer.cpp
+Lexer.h
+/Users/achepurn/Abstract_VM/Lexer.h
+
 /Users/achepurn/Abstract_VM/Lexer.h
 string
 -
@@ -37,10 +41,18 @@ Parser.h
 /Users/achepurn/Abstract_VM/Parser.h
 
 /Users/achepurn/Abstract_VM/Parser.h
-VirtualMachine.h
-/Users/achepurn/Abstract_VM/VirtualMachine.h
+string
+-
+list
+-
+fstream
+-
 Lexer.h
 /Users/achepurn/Abstract_VM/Lexer.h
+
+/Users/achepurn/Abstract_VM/VirtualMachine.cpp
+VirtualMachine.h
+/Users/achepurn/Abstract_VM/VirtualMachine.h
 
 /Users/achepurn/Abstract_VM/VirtualMachine.h
 iostream
@@ -55,4 +67,10 @@ Operand.h
 /Users/achepurn/Abstract_VM/Operand.h
 Lexem.h
 /Users/achepurn/Abstract_VM/Lexem.h
+Parser.h
+/Users/achepurn/Abstract_VM/Parser.h
+
+/Users/achepurn/Abstract_VM/main.cpp
+VirtualMachine.h
+/Users/achepurn/Abstract_VM/VirtualMachine.h
 

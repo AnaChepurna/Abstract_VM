@@ -5,13 +5,14 @@
 #ifndef ABSTRACT_VM_PARSER_H
 #define ABSTRACT_VM_PARSER_H
 
-
-#include "VirtualMachine.h"
+#include <string>
+#include <list>
+#include <fstream>
 #include "Lexer.h"
 
 class Parser {
 private:
-    Lexer const* _lexer;
+    Lexer _lexer;
     std::string _filename;
     std::list<Lexem const *>_code;
 

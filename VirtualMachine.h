@@ -11,18 +11,21 @@
 #include "IOperand.h"
 #include "Operand.h"
 #include "Lexem.h"
+#include "Parser.h"
+
 
 class VirtualMachine {
 private:
     std::list<IOperand const *>values;
     std::list<Lexem const*>code;
-
+    Parser parser;
 
 public :
     VirtualMachine();
     VirtualMachine(VirtualMachine const& src);
     VirtualMachine &operator=(VirtualMachine const &src);
     ~VirtualMachine();
+    void run();
 
 private:
     void push(IOperand const *value);

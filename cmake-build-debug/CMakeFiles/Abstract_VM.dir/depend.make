@@ -13,20 +13,22 @@ CMakeFiles/Abstract_VM.dir/Lexer.cpp.o: ../Lexer.h
 CMakeFiles/Abstract_VM.dir/Parser.cpp.o: ../IOperand.h
 CMakeFiles/Abstract_VM.dir/Parser.cpp.o: ../Lexem.h
 CMakeFiles/Abstract_VM.dir/Parser.cpp.o: ../Lexer.h
-CMakeFiles/Abstract_VM.dir/Parser.cpp.o: ../Operand.h
 CMakeFiles/Abstract_VM.dir/Parser.cpp.o: ../Parser.cpp
 CMakeFiles/Abstract_VM.dir/Parser.cpp.o: ../Parser.h
-CMakeFiles/Abstract_VM.dir/Parser.cpp.o: ../VirtualMachine.h
 
 CMakeFiles/Abstract_VM.dir/VirtualMachine.cpp.o: ../IOperand.h
 CMakeFiles/Abstract_VM.dir/VirtualMachine.cpp.o: ../Lexem.h
+CMakeFiles/Abstract_VM.dir/VirtualMachine.cpp.o: ../Lexer.h
 CMakeFiles/Abstract_VM.dir/VirtualMachine.cpp.o: ../Operand.h
+CMakeFiles/Abstract_VM.dir/VirtualMachine.cpp.o: ../Parser.h
 CMakeFiles/Abstract_VM.dir/VirtualMachine.cpp.o: ../VirtualMachine.cpp
 CMakeFiles/Abstract_VM.dir/VirtualMachine.cpp.o: ../VirtualMachine.h
 
 CMakeFiles/Abstract_VM.dir/main.cpp.o: ../IOperand.h
 CMakeFiles/Abstract_VM.dir/main.cpp.o: ../Lexem.h
+CMakeFiles/Abstract_VM.dir/main.cpp.o: ../Lexer.h
 CMakeFiles/Abstract_VM.dir/main.cpp.o: ../Operand.h
+CMakeFiles/Abstract_VM.dir/main.cpp.o: ../Parser.h
 CMakeFiles/Abstract_VM.dir/main.cpp.o: ../VirtualMachine.h
 CMakeFiles/Abstract_VM.dir/main.cpp.o: ../main.cpp
 

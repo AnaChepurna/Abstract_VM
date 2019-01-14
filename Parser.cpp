@@ -5,11 +5,11 @@
 #include "Parser.h"
 
 Parser::Parser() {
+    _lexer = Lexer();
 }
 
 
 Parser::~Parser() {
-    delete(_lexer);
 }
 
 Parser::Parser(Parser const &src) {
@@ -30,10 +30,11 @@ std::list<Lexem const *> Parser::getCode() {
 void Parser::readSrc() {
     std::string str;
     if (_filename == "") {
-        while (std::getline(std::cin, str)) {
-            if (_lexer->isEnd(str))
+        while (std::cin.good()) {
+            std::getline(std::cin, str);
+            if (_lexer.isEnd(str))
                 break;
-            Lexem *lexem = _lexer->getLexem(str);
+            Lexem *lexem = _lexer.getLexem(str);
             if (lexem != nullptr)
                 _code.insert(_code.end(), lexem);
         }
@@ -42,9 +43,9 @@ void Parser::readSrc() {
         std::fstream i;
         i.open(_filename);
         while (std::getline(i, str)) {
-            if (_lexer->isEnd(str))
+            if (_lexer.isEnd(str))
                 break;
-            Lexem *lexem = _lexer->getLexem(str);
+            Lexem *lexem = _lexer.getLexem(str);
             if (lexem != nullptr)
                 _code.insert(_code.end(), lexem);
         }

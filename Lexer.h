@@ -15,8 +15,12 @@ public:
     Lexer(Lexer const& src);
     Lexer &operator=(Lexer const &src);
 
-    bool isEnd(std::string str) const;
-    Lexem * getLexem(std::string str) const;
+    bool isEnd(std::string str);
+    Lexem * getLexem(std::string str);
+
+private:
+    static std::string const patterns[11];
+    void strStartTrim(std::string &str);
 };
 
 

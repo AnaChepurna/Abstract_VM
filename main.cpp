@@ -2,9 +2,7 @@
 
 int main(int argc, char **argv)
 {
-    std::cout << "start\n";
 	VirtualMachine virtualMachine;
-
-	std::cout << "ready\n";
+	virtualMachine.run();
 	return (0);
 }
