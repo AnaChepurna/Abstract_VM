@@ -87,12 +87,6 @@
 		<Unit filename="/Users/achepurn/Abstract_VM/IOperand.h">
 			<Option target="Abstract_VM"/>
 		</Unit>
-		<Unit filename="/Users/achepurn/Abstract_VM/Lexem.cpp">
-			<Option target="Abstract_VM"/>
-		</Unit>
-		<Unit filename="/Users/achepurn/Abstract_VM/Lexem.h">
-			<Option target="Abstract_VM"/>
-		</Unit>
 		<Unit filename="/Users/achepurn/Abstract_VM/Lexer.cpp">
 			<Option target="Abstract_VM"/>
 		</Unit>
@@ -106,6 +100,12 @@
 			<Option target="Abstract_VM"/>
 		</Unit>
 		<Unit filename="/Users/achepurn/Abstract_VM/Parser.h">
+			<Option target="Abstract_VM"/>
+		</Unit>
+		<Unit filename="/Users/achepurn/Abstract_VM/Token.cpp">
+			<Option target="Abstract_VM"/>
+		</Unit>
+		<Unit filename="/Users/achepurn/Abstract_VM/Token.h">
 			<Option target="Abstract_VM"/>
 		</Unit>
 		<Unit filename="/Users/achepurn/Abstract_VM/VirtualMachine.cpp">

@@ -8,16 +8,17 @@
 #include <string>
 #include <list>
 #include <fstream>
+#include <vector>
 #include "Lexer.h"
 
 class Parser {
 private:
     Lexer _lexer;
     std::string _filename;
-    std::list<Lexem const *>_code;
+    std::vector<Token const *>_code = {};
+    bool error = false;
 
-
-    void readSrc();
+    bool parseCode(std::string code);
 
 public:
     Parser();
@@ -25,7 +26,7 @@ public:
     Parser(Parser const& src);
     Parser &operator=(Parser const &src);
 
-    std::list<Lexem const *> getCode();
+    std::vector<Token const *> getCode();
 };
 
 

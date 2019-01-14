@@ -15,5 +15,5 @@ add_executable(Abstract_VM
         VirtualMachine.cpp
         VirtualMachine.h
         Operand.h
-        Lexem.h
-        Lexem.cpp)
+        Token.h
+        Token.cpp)

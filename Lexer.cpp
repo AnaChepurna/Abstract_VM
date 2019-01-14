@@ -30,55 +30,45 @@ bool Lexer::isEnd(std::string str) {
     return false;
 }
 
-Lexem *Lexer::getLexem(std::string str) {
-    strStartTrim(str);
-    Lexem *lexem = nullptr;
+Token *Lexer::getLexem(std::string str) {
+//    strStartTrim(str);
     for (int i = 0; i < 11; i++)
     {
         if (str.compare(0, pattern[i].size(), pattern[i]) == 0)
         {
             str = str.substr(pattern[i].size());
+            if (str != "")
+                std::cout << "no whitespace after " << pattern[i] << "\n";
             switch (i) {
                 case 0 :
-                    lexem = new Lexem(Lexem::PUSH);
-                    break;
+                    return new Token(Token::PUSH);
                 case 1 :
-                    lexem = new Lexem(Lexem::POP);
-                    break;
+                    return new Token(Token::POP);
                 case 2 :
-                    lexem = new Lexem(Lexem::DUMP);
-                    break;
+                    return new Token(Token::DUMP);
                 case 3 :
-                    lexem = new Lexem(Lexem::ASSERT);
-                    break;
+                    return new Token(Token::ASSERT);
                 case 4 :
-                    lexem = new Lexem(Lexem::ADD);
-                    break;
+                    return new Token(Token::ADD);
                 case 5 :
-                    lexem = new Lexem(Lexem::SUB);
-                    break;
+                    return new Token(Token::SUB);
                 case 6 :
-                    lexem = new Lexem(Lexem::MUL);
-                    break;
+                    return new Token(Token::MUL);
                 case 7 :
-                    lexem = new Lexem(Lexem::DIV);
-                    break;
+                    return new Token(Token::DIV);
                 case 8 :
-                    lexem = new Lexem(Lexem::MOD);
-                    break;
+                    return new Token(Token::MOD);
                 case 9 :
-                    lexem = new Lexem(Lexem::PRINT);
-                    break;
+                    return new Token(Token::PRINT);
                 case 10 :
-                    lexem =  new Lexem(Lexem::EXIT);
-                    break;
+                    return new Token(Token::EXIT);
             }
             break;
         }
         if (isComment(str))
-            std::cout << "find comment\n";
+            return nullptr;
     }
-    return lexem;
+    return nullptr;
 }
 
 void Lexer::strStartTrim(std::string &str) {

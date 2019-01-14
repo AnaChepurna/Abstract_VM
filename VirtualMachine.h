@@ -10,14 +10,14 @@
 #include <list>
 #include "IOperand.h"
 #include "Operand.h"
-#include "Lexem.h"
+#include "Token.h"
 #include "Parser.h"
 
 
 class VirtualMachine {
 private:
     std::list<IOperand const *>values;
-    std::list<Lexem const*>code;
+    std::vector<Token const*>code;
     Parser parser;
 
 public :

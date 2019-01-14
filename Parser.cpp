@@ -2,6 +2,7 @@
 // Created by Anastasia CHEPURNA on 12/11/18.
 //
 
+#include <sstream>
 #include "Parser.h"
 
 Parser::Parser() {
@@ -22,34 +23,58 @@ Parser &Parser::operator=(Parser const &src) {
     return *this;
 }
 
-std::list<Lexem const *> Parser::getCode() {
-    readSrc();
-    return (_code);
-}
-
-void Parser::readSrc() {
+std::vector<Token const *> Parser::getCode() {
     std::string str;
     if (_filename == "") {
         while (std::cin.good()) {
             std::getline(std::cin, str);
-            if (_lexer.isEnd(str))
+            if (!parseCode(str))
                 break;
-            Lexem *lexem = _lexer.getLexem(str);
-            if (lexem != nullptr)
-                _code.insert(_code.end(), lexem);
         }
     }
     else {
         std::fstream i;
         i.open(_filename);
         while (std::getline(i, str)) {
-            if (_lexer.isEnd(str))
+            if (!parseCode(str))
                 break;
-            Lexem *lexem = _lexer.getLexem(str);
-            if (lexem != nullptr)
-                _code.insert(_code.end(), lexem);
         }
         i.close();
     }
+    return (_code);
 }
+
+bool Parser::parseCode(std::string str) {
+    if (_lexer.isEnd(str))
+        return false;
+    std::stringstream stream(str);
+    std::string substr;
+    Token *token = nullptr;
+
+    while (stream.good()) {
+        std::getline(stream, substr, ' ');
+        if (token == nullptr) {
+            token = _lexer.getLexem(substr);
+            if (token == nullptr)
+                break;
+        }
+        else if (token->getValue() == nullptr) {
+//            token->setOperand(new Operand<double>(Double, 22));
+            std::cout << "needs operand!\n";
+            if (token->getValue() == nullptr)
+                break;
+        }
+        else {
+//            if (!_lexer.isComment(substr))
+//                error = true;
+            break;
+        }
+    }
+    if (token != nullptr)
+        _code.insert(_code.end(), token);
+    else
+        delete(token);
+    return true;
+}
+
 

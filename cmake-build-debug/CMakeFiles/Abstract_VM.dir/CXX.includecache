@@ -10,10 +10,6 @@
 iostream
 -
 
-/Users/achepurn/Abstract_VM/Lexem.h
-IOperand.h
-/Users/achepurn/Abstract_VM/IOperand.h
-
 /Users/achepurn/Abstract_VM/Lexer.cpp
 Lexer.h
 /Users/achepurn/Abstract_VM/Lexer.h
@@ -21,6 +17,10 @@ Lexer.h
 /Users/achepurn/Abstract_VM/Lexer.h
 string
 -
-Lexem.h
-/Users/achepurn/Abstract_VM/Lexem.h
+Token.h
+/Users/achepurn/Abstract_VM/Token.h
+
+/Users/achepurn/Abstract_VM/Token.h
+IOperand.h
+/Users/achepurn/Abstract_VM/IOperand.h
 
