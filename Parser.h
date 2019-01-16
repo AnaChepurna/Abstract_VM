@@ -16,7 +16,6 @@ private:
     Lexer _lexer;
     std::string _filename;
     std::vector<Token const *>_code = {};
-    bool error = false;
 
     bool parseCode(std::string code);
 
@@ -27,6 +26,15 @@ public:
     Parser &operator=(Parser const &src);
 
     std::vector<Token const *> getCode();
+
+private:
+class UnexpectedTokenException: public std::exception {};
+class MissedWhitespaceException : public std::exception {};
+class NoExitException : public std::exception {};
+class TokenAfterExitException : public std::exception {};
+class ExpectedValueAfterException : public std::exception {};
+
+    std::vector<std::exception const*>_errors = {};
 };
 
 
