@@ -6,6 +6,7 @@
 
 std::string const pattern[11] = {"push", "pop", "dump", "assert", "add",
                                 "sub", "mul", "div", "mod", "print", "exit"};
+std::string const pattern_operands[5] = {"int8", "int16", "int32", "float", "double"};
 
 Lexer::Lexer() {
 
@@ -24,14 +25,12 @@ Lexer &Lexer::operator=(Lexer const &src) {
 }
 
 bool Lexer::isEnd(std::string str) {
-    strStartTrim(str);
-    if (str.compare(0, 2, ";;") == 0)
+    if (str == ";;")
         return true;
     return false;
 }
 
 Token *Lexer::getToken(std::string str) {
-//    strStartTrim(str);
     if (isComment(str))
         return nullptr;
     for (int i = 0; i < 11; i++)
@@ -71,16 +70,20 @@ Token *Lexer::getToken(std::string str) {
     throw UnexpectedLexemException();
 }
 
-void Lexer::strStartTrim(std::string &str) {
-        str.erase(str.begin(), std::find_if(str.begin(), str.end(), [](int ch) {
-            return !std::isspace(ch);
-        }));
-}
-
 bool Lexer::isComment(std::string str) {
-    strStartTrim(str);
     if (str.compare(0, 1, ";") == 0)
         return true;
     return false;
+}
+
+eOperandType Lexer::getOperandType(std::string &str) {
+    for(int i = 0; i < 5; i++) {
+        if (str.compare(0, pattern_operands[i].size(), pattern_operands[i]) == 0)
+        {
+            str = str.substr(pattern_operands[i].size());
+            return static_cast<eOperandType>(i);
+        }
+    }
+    throw Lexer::UnexpectedLexemException();
 }
 

@@ -150,6 +150,33 @@ Lexer.cpp.s:
 	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/Lexer.cpp.s
 .PHONY : Lexer.cpp.s
 
+OperandFactory.o: OperandFactory.cpp.o
+
+.PHONY : OperandFactory.o
+
+# target to build an object file
+OperandFactory.cpp.o:
+	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/OperandFactory.cpp.o
+.PHONY : OperandFactory.cpp.o
+
+OperandFactory.i: OperandFactory.cpp.i
+
+.PHONY : OperandFactory.i
+
+# target to preprocess a source file
+OperandFactory.cpp.i:
+	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/OperandFactory.cpp.i
+.PHONY : OperandFactory.cpp.i
+
+OperandFactory.s: OperandFactory.cpp.s
+
+.PHONY : OperandFactory.s
+
+# target to generate assembly for a file
+OperandFactory.cpp.s:
+	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/OperandFactory.cpp.s
+.PHONY : OperandFactory.cpp.s
+
 Parser.o: Parser.cpp.o
 
 .PHONY : Parser.o
@@ -270,6 +297,9 @@ help:
 	@echo "... Lexer.o"
 	@echo "... Lexer.i"
 	@echo "... Lexer.s"
+	@echo "... OperandFactory.o"
+	@echo "... OperandFactory.i"
+	@echo "... OperandFactory.s"
 	@echo "... Parser.o"
 	@echo "... Parser.i"
 	@echo "... Parser.s"

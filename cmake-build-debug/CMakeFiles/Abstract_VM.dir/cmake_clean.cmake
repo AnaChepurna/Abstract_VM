@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Abstract_VM.dir/Parser.cpp.o"
   "CMakeFiles/Abstract_VM.dir/VirtualMachine.cpp.o"
   "CMakeFiles/Abstract_VM.dir/Token.cpp.o"
+  "CMakeFiles/Abstract_VM.dir/OperandFactory.cpp.o"
   "Abstract_VM.pdb"
   "Abstract_VM"
 )

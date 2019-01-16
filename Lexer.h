@@ -19,13 +19,15 @@ public:
     bool isEnd(std::string str);
     Token * getToken(std::string str);
     bool isComment(std::string basic_string);
+    eOperandType getOperandType(std::string &str);
 
 class UnexpectedLexemException: public std::exception {};
 class MissedWhitespaceException : public std::exception {};
+class UnknownOperandTypeException : public std::exception {};
 
 private:
     static std::string const patterns[11];
-    void strStartTrim(std::string &str);
+    static std::string const patterns_operands[5];
 };
 
 

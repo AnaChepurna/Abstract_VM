@@ -6,9 +6,16 @@ CMakeFiles/Abstract_VM.dir/Lexer.cpp.o
  /Users/achepurn/Abstract_VM/Lexer.cpp
  /Users/achepurn/Abstract_VM/Lexer.h
  /Users/achepurn/Abstract_VM/Token.h
+CMakeFiles/Abstract_VM.dir/OperandFactory.cpp.o
+ /Users/achepurn/Abstract_VM/IOperand.h
+ /Users/achepurn/Abstract_VM/Operand.h
+ /Users/achepurn/Abstract_VM/OperandFactory.cpp
+ /Users/achepurn/Abstract_VM/OperandFactory.h
 CMakeFiles/Abstract_VM.dir/Parser.cpp.o
  /Users/achepurn/Abstract_VM/IOperand.h
  /Users/achepurn/Abstract_VM/Lexer.h
+ /Users/achepurn/Abstract_VM/Operand.h
+ /Users/achepurn/Abstract_VM/OperandFactory.h
  /Users/achepurn/Abstract_VM/Parser.cpp
  /Users/achepurn/Abstract_VM/Parser.h
  /Users/achepurn/Abstract_VM/Token.h
@@ -20,6 +27,7 @@ CMakeFiles/Abstract_VM.dir/VirtualMachine.cpp.o
  /Users/achepurn/Abstract_VM/IOperand.h
  /Users/achepurn/Abstract_VM/Lexer.h
  /Users/achepurn/Abstract_VM/Operand.h
+ /Users/achepurn/Abstract_VM/OperandFactory.h
  /Users/achepurn/Abstract_VM/Parser.h
  /Users/achepurn/Abstract_VM/Token.h
  /Users/achepurn/Abstract_VM/VirtualMachine.cpp
@@ -28,6 +36,7 @@ CMakeFiles/Abstract_VM.dir/main.cpp.o
  /Users/achepurn/Abstract_VM/IOperand.h
  /Users/achepurn/Abstract_VM/Lexer.h
  /Users/achepurn/Abstract_VM/Operand.h
+ /Users/achepurn/Abstract_VM/OperandFactory.h
  /Users/achepurn/Abstract_VM/Parser.h
  /Users/achepurn/Abstract_VM/Token.h
  /Users/achepurn/Abstract_VM/VirtualMachine.h

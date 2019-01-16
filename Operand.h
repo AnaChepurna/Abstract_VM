@@ -5,7 +5,6 @@
 #ifndef ABSTRACT_VM_OPERAND_H
 #define ABSTRACT_VM_OPERAND_H
 
-#include "VirtualMachine.h"
 #include "IOperand.h"
 #include <string>
 #include <sstream>
@@ -24,7 +23,7 @@ public:
 
     Operand<T>(eOperandType type, std::string const & value) {
         _operandType = type;
-        _value = static_cast<T>(stod(value, 0));
+        _value = static_cast<T>(stod(value, nullptr));
         _string = value;
     }
 
@@ -33,76 +32,77 @@ public:
     Operand<T>	&operator=(Operand const & rhs) {
         this->_value = rhs._value;
         this->_operandType = rhs._operandType;
+        this->_string = rhs._string;
     }
 
     Operand<T>( Operand const & copy ) {
         *this = copy;
     }
 
-    eOperandType getType(void) const {
+    eOperandType getType() const override {
         return _operandType;
     }
 
-    T getValue(void) const {
+    T getValue() const {
         return _value;
     }
 
-    int getPrecision(void) const {
+    int getPrecision() const override {
         return (int)_operandType;
     }
 
-    IOperand const * operator+( IOperand const &rhs ) const {
-        double rhsValue = static_cast<double>(stod(rhs.toString(), 0));
+    IOperand const * operator+( IOperand const &rhs ) const override {
+        auto rhsValue = static_cast<double>(stod(rhs.toString(), nullptr));
         std::stringstream stringStream;
         stringStream << this->_value + rhsValue;
         int resPrecision = this->getPrecision() >= rhs.getPrecision() ? this->getPrecision() : rhs.getPrecision();
-        eOperandType resType = static_cast<eOperandType>(resPrecision);
+        auto resType = static_cast<eOperandType>(resPrecision);
         return new Operand(resType, stringStream.str());
     }
 
-    IOperand const * operator-( IOperand const &rhs ) const {
-        double rhsValue = static_cast<double>(stod(rhs.toString(), 0));
+    IOperand const * operator-( IOperand const &rhs ) const override {
+        auto rhsValue = static_cast<double>(stod(rhs.toString(), nullptr));
         std::stringstream stringStream;
         stringStream << this->_value - rhsValue;
         int resPrecision = this->getPrecision() >= rhs.getPrecision() ? this->getPrecision() : rhs.getPrecision();
-        eOperandType resType = static_cast<eOperandType>(resPrecision);
+        auto resType = static_cast<eOperandType>(resPrecision);
         return new Operand(resType, stringStream.str());
     }
 
-    IOperand const * operator*( IOperand const &rhs ) const {
-        double rhsValue = static_cast<double>(stod(rhs.toString(), 0));
+    IOperand const * operator*( IOperand const &rhs ) const override {
+        auto rhsValue = static_cast<double>(stod(rhs.toString(), nullptr));
         std::stringstream stringStream;
         stringStream << this->_value * rhsValue;
         int resPrecision = this->getPrecision() >= rhs.getPrecision() ? this->getPrecision() : rhs.getPrecision();
-        eOperandType resType = static_cast<eOperandType>(resPrecision);
+        auto resType = static_cast<eOperandType>(resPrecision);
         return new Operand(resType, stringStream.str());
     }
 
-    IOperand const * operator/( IOperand const &rhs ) const {
+    IOperand const * operator/( IOperand const &rhs ) const override {
         std::stringstream stringStream;
         if (rhs.getType() == eOperandType::Double || rhs.getType() == eOperandType::Float) {
-            double rhsValue = static_cast<double>(stod(rhs.toString(), 0));
+            auto rhsValue = static_cast<double>(stod(rhs.toString(), nullptr));
             stringStream << this->_value / rhsValue;
         }
         else {
-            int32_t rhsValue = static_cast<int32_t >(stod(rhs.toString(), 0));
+            auto rhsValue = static_cast<int32_t >(stod(rhs.toString(), nullptr));
             stringStream << this->_value / rhsValue;
         }
         int resPrecision = this->getPrecision() >= rhs.getPrecision() ? this->getPrecision() : rhs.getPrecision();
-        eOperandType resType = static_cast<eOperandType>(resPrecision);
+        auto resType = static_cast<eOperandType>(resPrecision);
         return new Operand(resType, stringStream.str());
     }
 
-    IOperand const * operator%( IOperand const &rhs ) const {
-        double rhsValue = static_cast<double>(stod(rhs.toString(), 0));
+    IOperand const * operator%( IOperand const &rhs ) const override {
+        auto rhsValue = static_cast<double>(stod(rhs.toString(), nullptr));
         std::stringstream stringStream;
         stringStream << std::fmod(this->_value, rhsValue);
         int resPrecision = this->getPrecision() >= rhs.getPrecision() ? this->getPrecision() : rhs.getPrecision();
-        eOperandType resType = static_cast<eOperandType>(resPrecision);
+        auto resType = static_cast<eOperandType>(resPrecision);
         return new Operand(resType, stringStream.str());
     }
 
-    std::string const & toString( void ) const {
+    std::string const & toString() const override {
         return _string;
     }
 };

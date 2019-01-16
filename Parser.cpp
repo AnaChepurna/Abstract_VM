@@ -6,6 +6,7 @@
 
 Parser::Parser() {
     _lexer = Lexer();
+    _factory = OperandFactory();
 }
 
 
@@ -19,13 +20,14 @@ Parser::Parser(Parser const &src) {
 Parser &Parser::operator=(Parser const &src) {
     this->_filename = src._filename;
     this->_lexer = src._lexer;
+    this->_factory = src._factory;
     return *this;
 }
 
 std::vector<Token const *> Parser::getCode() {
     std::string str;
     int num = 0;
-    if (_filename == "") {
+    if (_filename.empty()) {
         while (std::cin.good()) {
             num++;
             std::getline(std::cin, str);
@@ -50,13 +52,16 @@ std::vector<Token const *> Parser::getCode() {
 }
 
 bool Parser::parseCode(std::string str, int i) {
-    if (_lexer.isEnd(str))
-        return true;
-    std::stringstream stream(str);
-    std::string substr;
-    Token *token = nullptr;
-
+    formatWhitespaces(str);
     try {
+        if (_lexer.isEnd(str)) {
+            if (!_code.empty() && _code.back()->getType() != Token::EXIT)
+                throw Parser::NoExitException();
+            return true;
+        }
+        std::stringstream stream(str);
+        std::string substr;
+        Token *token = nullptr;
         while (stream.good()) {
             std::getline(stream, substr, ' ');
             if (createToken(substr, &token))
@@ -82,17 +87,25 @@ bool Parser::parseCode(std::string str, int i) {
     catch (Parser::ExpectedValueAfterException& e) {
         addErrorMessage(i, e.what());
     }
+    catch (Parser::NoExitException& e) {
+        addErrorMessage(i, e.what());
+        return true;
+    }
     return false;
 }
 
-bool Parser::createToken(std::string substr, Token **token) {
+bool Parser::createToken(std::string const substr, Token **const token) {
+    if (substr.empty())
+        return false;
+    if (!_code.empty() && _code.back()->getType() == Token::EXIT)
+        throw Parser::TokenAfterExitException();
     if (*token == nullptr) {
         *token = _lexer.getToken(substr);
         if (*token == nullptr)
             return true;
     }
     else if ((*token)->getValue() == nullptr) {
-//            token->setOperand(new Operand<double>(Double, 22));
+        (*token)->setOperand(createOperand(substr));
         std::cout << "needs operand!\n";
         if ((*token)->getValue() == nullptr)
             return true;
@@ -109,8 +122,6 @@ void Parser::addErrorMessage(int i, std::string message) {
 }
 
 void Parser::checkToken(Token const *token) {
-    if (!_code.empty() && _code.back()->getType() == Token::EXIT)
-        throw Parser::TokenAfterExitException();
     if (token->getType() == Token::PUSH || token->getType() == Token::ASSERT) {
         if (token->getValue() == nullptr)
             throw Parser::ExpectedValueAfterException();
@@ -118,5 +129,24 @@ void Parser::checkToken(Token const *token) {
     else
         if (token->getValue() != nullptr)
             throw Parser::UnexpectedTokenException();
+}
+
+void Parser::formatWhitespaces(std::string &str) {
+    str.erase(str.begin(), std::find_if(str.begin(), str.end(), [](int ch) {
+        return !std::isspace(ch);
+    }));
+    str.erase(std::find_if(str.rbegin(), str.rend(), [](int ch) {
+        return !std::isspace(ch);
+    }).base(), str.end());
+    std::replace(str.begin(), str.end(), '\t', ' ');
+    std::replace(str.begin(), str.end(), '\v', ' ');
+    std::replace(str.begin(), str.end(), '\r', ' ');
+}
+
+IOperand const* Parser::createOperand(std::string str) {
+    if (_lexer.isComment(str))
+        return nullptr;
+    eOperandType type = _lexer.getOperandType(str);
+    return _factory.createOperand(type, "2");
 }
 

@@ -10,13 +10,16 @@
 #include <fstream>
 #include <vector>
 #include <sstream>
+#include <algorithm>
 #include "Lexer.h"
+#include "OperandFactory.h"
 
 
 class Parser {
 private:
-    Lexer _lexer;
-    std::string _filename;
+    Lexer  _lexer;
+    OperandFactory _factory;
+    std::string  _filename;
     std::vector<Token const *>_code = {};
     std::vector<std::string>_errors = {};
 
@@ -24,6 +27,8 @@ private:
     bool createToken(std::string, Token **);
     void checkToken(Token const *);
     void addErrorMessage(int i, std::string message);
+    void formatWhitespaces(std::string &);
+    IOperand const * createOperand(std::string string);
 
 public:
     Parser();

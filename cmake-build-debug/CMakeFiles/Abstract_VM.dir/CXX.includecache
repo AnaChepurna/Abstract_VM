@@ -10,29 +10,15 @@
 iostream
 -
 
+/Users/achepurn/Abstract_VM/Lexer.cpp
+Lexer.h
+/Users/achepurn/Abstract_VM/Lexer.h
+
 /Users/achepurn/Abstract_VM/Lexer.h
 string
 -
 Token.h
 /Users/achepurn/Abstract_VM/Token.h
-
-/Users/achepurn/Abstract_VM/Parser.cpp
-Parser.h
-/Users/achepurn/Abstract_VM/Parser.h
-
-/Users/achepurn/Abstract_VM/Parser.h
-string
--
-list
--
-fstream
--
-vector
--
-sstream
--
-Lexer.h
-/Users/achepurn/Abstract_VM/Lexer.h
 
 /Users/achepurn/Abstract_VM/Token.h
 IOperand.h

@@ -16,4 +16,6 @@ add_executable(Abstract_VM
         VirtualMachine.h
         Operand.h
         Token.h
-        Token.cpp)
+        Token.cpp
+        OperandFactory.cpp
+        OperandFactory.h)

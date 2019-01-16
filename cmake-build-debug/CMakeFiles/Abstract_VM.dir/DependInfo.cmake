@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/achepurn/Abstract_VM/Lexer.cpp" "/Users/achepurn/Abstract_VM/cmake-build-debug/CMakeFiles/Abstract_VM.dir/Lexer.cpp.o"
+  "/Users/achepurn/Abstract_VM/OperandFactory.cpp" "/Users/achepurn/Abstract_VM/cmake-build-debug/CMakeFiles/Abstract_VM.dir/OperandFactory.cpp.o"
   "/Users/achepurn/Abstract_VM/Parser.cpp" "/Users/achepurn/Abstract_VM/cmake-build-debug/CMakeFiles/Abstract_VM.dir/Parser.cpp.o"
   "/Users/achepurn/Abstract_VM/Token.cpp" "/Users/achepurn/Abstract_VM/cmake-build-debug/CMakeFiles/Abstract_VM.dir/Token.cpp.o"
   "/Users/achepurn/Abstract_VM/VirtualMachine.cpp" "/Users/achepurn/Abstract_VM/cmake-build-debug/CMakeFiles/Abstract_VM.dir/VirtualMachine.cpp.o"
