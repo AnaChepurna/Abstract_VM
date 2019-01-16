@@ -13,7 +13,6 @@ CMakeFiles/Abstract_VM.dir/OperandFactory.cpp.o: ../OperandFactory.h
 
 CMakeFiles/Abstract_VM.dir/Parser.cpp.o: ../IOperand.h
 CMakeFiles/Abstract_VM.dir/Parser.cpp.o: ../Lexer.h
-CMakeFiles/Abstract_VM.dir/Parser.cpp.o: ../Operand.h
 CMakeFiles/Abstract_VM.dir/Parser.cpp.o: ../OperandFactory.h
 CMakeFiles/Abstract_VM.dir/Parser.cpp.o: ../Parser.cpp
 CMakeFiles/Abstract_VM.dir/Parser.cpp.o: ../Parser.h

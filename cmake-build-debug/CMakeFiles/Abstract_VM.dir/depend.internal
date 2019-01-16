@@ -14,7 +14,6 @@ CMakeFiles/Abstract_VM.dir/OperandFactory.cpp.o
 CMakeFiles/Abstract_VM.dir/Parser.cpp.o
  /Users/achepurn/Abstract_VM/IOperand.h
  /Users/achepurn/Abstract_VM/Lexer.h
- /Users/achepurn/Abstract_VM/Operand.h
  /Users/achepurn/Abstract_VM/OperandFactory.h
  /Users/achepurn/Abstract_VM/Parser.cpp
  /Users/achepurn/Abstract_VM/Parser.h

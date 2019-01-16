@@ -5,8 +5,10 @@
 #ifndef ABSTRACT_VM_OPERANDFACTORY_H
 #define ABSTRACT_VM_OPERANDFACTORY_H
 
-#include "Operand.h"
+#include "IOperand.h"
 #include <vector>
+#include <limits>
+#include "float.h"
 
 class OperandFactory {
 public:
@@ -30,6 +32,9 @@ private:
             &OperandFactory::createDouble
     };
 
+public :
+class LimitOverflowException: public std::exception {};
+class LimitUnderflowException: public std::exception {};
 };
 
 
