@@ -20,21 +20,14 @@ Token &Token::operator=(Token const &src) {
     return *this;
 }
 
-Token::eTokenType Token::getType() {
+Token::eTokenType Token::getType() const{
     return _tokenType;
 }
 
-IOperand const *Token::getValue() {
+IOperand const *Token::getValue() const{
     return _value;
 }
 
 void Token::setOperand(IOperand const *o) {
     _value = o;
-}
-
-bool Token::isGood() {
-    if (_tokenType == PUSH || _tokenType == ASSERT)
-        return (_value != nullptr);
-    else
-        return (_value == nullptr);
 }

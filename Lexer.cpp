@@ -30,15 +30,17 @@ bool Lexer::isEnd(std::string str) {
     return false;
 }
 
-Token *Lexer::getLexem(std::string str) {
+Token *Lexer::getToken(std::string str) {
 //    strStartTrim(str);
+    if (isComment(str))
+        return nullptr;
     for (int i = 0; i < 11; i++)
     {
         if (str.compare(0, pattern[i].size(), pattern[i]) == 0)
         {
             str = str.substr(pattern[i].size());
             if (str != "")
-                std::cout << "no whitespace after " << pattern[i] << "\n";
+                throw MissedWhitespaceException();
             switch (i) {
                 case 0 :
                     return new Token(Token::PUSH);
@@ -65,10 +67,8 @@ Token *Lexer::getLexem(std::string str) {
             }
             break;
         }
-        if (isComment(str))
-            return nullptr;
     }
-    return nullptr;
+    throw UnexpectedLexemException();
 }
 
 void Lexer::strStartTrim(std::string &str) {

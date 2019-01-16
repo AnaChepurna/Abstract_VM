@@ -8,6 +8,7 @@
 #include <string>
 #include "Token.h"
 
+
 class Lexer {
 public:
     Lexer();
@@ -16,8 +17,11 @@ public:
     Lexer &operator=(Lexer const &src);
 
     bool isEnd(std::string str);
-    Token * getLexem(std::string str);
+    Token * getToken(std::string str);
     bool isComment(std::string basic_string);
+
+class UnexpectedLexemException: public std::exception {};
+class MissedWhitespaceException : public std::exception {};
 
 private:
     static std::string const patterns[11];

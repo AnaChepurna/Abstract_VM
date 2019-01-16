@@ -2,8 +2,8 @@
 // Created by Anastasia CHEPURNA on 2019-01-14.
 //
 
-#ifndef ABSTRACT_VM_LEXEMAV_H
-#define ABSTRACT_VM_LEXEMAV_H
+#ifndef ABSTRACT_VM_TOKEN_H
+#define ABSTRACT_VM_TOKEN_H
 
 #include "IOperand.h"
 
@@ -23,11 +23,10 @@ public:
     ~Token();
     Token(Token const &src);
     Token &operator=(Token const &src);
-    eTokenType getType();
-    IOperand const* getValue();
+    eTokenType getType() const;
+    IOperand const* getValue() const;
     void setOperand(IOperand const *o);
-    bool isGood();
 };
 
 
-#endif //ABSTRACT_VM_LEXEMAV_H
+#endif //ABSTRACT_VM_TOKEN_H
