@@ -83,7 +83,7 @@ public:
 
     IOperand const * operator/( IOperand const &rhs ) const override {
         std::stringstream stringStream;
-        if (rhs.getType() > Float) {
+        if (rhs.getType() >= Float) {
             auto rhsValue = static_cast<long double>(stod(rhs.toString(), nullptr));
             stringStream << this->_value / rhsValue;
         }

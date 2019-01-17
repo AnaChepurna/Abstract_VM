@@ -4,10 +4,6 @@
 
 #include "Lexer.h"
 
-std::string const pattern[11] = {"push", "pop", "dump", "assert", "add",
-                                "sub", "mul", "div", "mod", "print", "exit"};
-std::string const pattern_operands[5] = {"int8", "int16", "int32", "float", "double"};
-
 Lexer::Lexer() {
 
 }
@@ -20,49 +16,48 @@ Lexer::Lexer(Lexer const &src) {
 
 }
 
-Lexer &Lexer::operator=(Lexer const &src) {
-    return *this;
-}
+Lexer &Lexer::operator=(Lexer const &src) = default;
 
 bool Lexer::isEnd(std::string str) {
-    if (str == ";;")
-        return true;
-    return false;
+    return  (str == ";;");
 }
 
 Token *Lexer::getToken(std::string str) {
     if (isComment(str))
         return nullptr;
-    for (int i = 0; i < 11; i++)
+    for (int i = 0; i < pattern.size(); i++)
     {
-        if (str.compare(0, pattern[i].size(), pattern[i]) == 0)
+        if (str == pattern[i])
+//        if (str.compare(0, pattern[i].size(), pattern[i]) == 0)
         {
-            str = str.substr(pattern[i].size());
-            if (str != "")
-                throw MissedWhitespaceException();
+//            str = str.substr(pattern[i].size());
+//            if (str != "")
+//                throw MissedWhitespaceException();
             switch (i) {
-                case 0 :
+                case Token::PUSH :
                     return new Token(Token::PUSH);
-                case 1 :
+                case Token::POP :
                     return new Token(Token::POP);
-                case 2 :
+                case Token::DUMP :
                     return new Token(Token::DUMP);
-                case 3 :
+                case Token::ASSERT :
                     return new Token(Token::ASSERT);
-                case 4 :
+                case Token::ADD :
                     return new Token(Token::ADD);
-                case 5 :
+                case Token::SUB :
                     return new Token(Token::SUB);
-                case 6 :
+                case Token::MUL :
                     return new Token(Token::MUL);
-                case 7 :
+                case Token::DIV :
                     return new Token(Token::DIV);
-                case 8 :
+                case Token::MOD :
                     return new Token(Token::MOD);
-                case 9 :
+                case Token::PRINT :
                     return new Token(Token::PRINT);
-                case 10 :
+                case Token::EXIT :
                     return new Token(Token::EXIT);
+                case Token::DUMP_TYPE :
+                    return new Token(Token::DUMP_TYPE);
             }
             break;
         }
@@ -71,19 +66,32 @@ Token *Lexer::getToken(std::string str) {
 }
 
 bool Lexer::isComment(std::string str) {
-    if (str.compare(0, 1, ";") == 0)
-        return true;
-    return false;
+    return  (str.compare(0, 1, ";") == 0);
 }
 
 eOperandType Lexer::getOperandType(std::string &str) {
-    for(int i = 0; i < 5; i++) {
+    for(int i = 0; i < pattern_operands.size(); i++) {
         if (str.compare(0, pattern_operands[i].size(), pattern_operands[i]) == 0)
         {
             str = str.substr(pattern_operands[i].size());
             return static_cast<eOperandType>(i);
         }
     }
-    throw Lexer::UnexpectedLexemException();
+    throw Lexer::UnknownOperandTypeException();
+}
+
+bool Lexer::isInt(std::string &str) {
+    if (std::regex_match(str, std::regex(R"(^(\([-]?[0-9]+\))$)"))) {
+        str = str.substr(1, str.size() - 2);
+        return true;
+    }
+    return false;
+}
+
+bool Lexer::isFloat(std::string &str) {
+    if (std::regex_match(str, std::regex(R"(^(\([-]?[0-9]+\.?[0-9]+\))$)"))) {
+        str = str.substr(1, str.size() - 2);
+        return true;
+    } else return false;
 }
 

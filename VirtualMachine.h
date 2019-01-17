@@ -28,17 +28,33 @@ public :
     void run();
 
 private:
-    void push(IOperand const *value);
-    void pop();
-    void dump();
-    void assert(IOperand const *value);
-    void add();
-    void sub();
-    void mul();
-    void div();
-    void mod();
-    void print();
-    void exit();
+    void push(Token const *);
+    void pop(Token const *);
+    void dump(Token const *);
+    void assert(Token const *);
+    void add(Token const *);
+    void sub(Token const *);
+    void mul(Token const *);
+    void div(Token const *);
+    void mod(Token const *);
+    void print(Token const *);
+    void exit(Token const *);
+    void dump_type(Token const *);
+
+    std::vector<void (VirtualMachine::*)(Token const *)> _functions = {
+            &VirtualMachine::push,
+            &VirtualMachine::pop,
+            &VirtualMachine::dump,
+            &VirtualMachine::assert,
+            &VirtualMachine::add,
+            &VirtualMachine::sub,
+            &VirtualMachine::mul,
+            &VirtualMachine::div,
+            &VirtualMachine::mod,
+            &VirtualMachine::print,
+            &VirtualMachine::exit,
+            &VirtualMachine::dump_type
+    };
 };
 
 

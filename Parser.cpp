@@ -45,9 +45,12 @@ std::vector<Token const *> Parser::getCode() {
         }
         i.close();
     }
-    std::for_each(_errors.begin(), _errors.end(), [] (std::string str) {
-        std::cout << str << "\n";
-    });
+    if (!_errors.empty()) {
+        std::for_each(_errors.begin(), _errors.end(), [](std::string str) {
+            std::cout << str << "\n";
+        });
+        exit(0);
+    }
     return (_code);
 }
 
@@ -91,6 +94,18 @@ bool Parser::parseCode(std::string str, int i) {
         addErrorMessage(i, e.what());
         return true;
     }
+    catch (Lexer::UnknownOperandTypeException& e) {
+        addErrorMessage(i, e.what());
+    }
+    catch  (Lexer::UnexpectedNumericalValueSybolException& e) {
+        addErrorMessage(i, e.what());
+    }
+    catch (OperandFactory::LimitOverflowException& e) {
+        addErrorMessage(i, e.what());
+    }
+    catch (OperandFactory::LimitUnderflowException& e) {
+        addErrorMessage(i, e.what());
+    }
     return false;
 }
 
@@ -106,7 +121,7 @@ bool Parser::createToken(std::string const substr, Token **const token) {
     }
     else if ((*token)->getValue() == nullptr) {
         (*token)->setOperand(createOperand(substr));
-        std::cout << "needs operand!\n";
+
         if ((*token)->getValue() == nullptr)
             return true;
     }
@@ -147,6 +162,10 @@ IOperand const* Parser::createOperand(std::string str) {
     if (_lexer.isComment(str))
         return nullptr;
     eOperandType type = _lexer.getOperandType(str);
-    return _factory.createOperand(type, "2");
+    if ((type >= Float && _lexer.isFloat(str)) ||
+            (type < Float && _lexer.isInt(str)))
+        return _factory.createOperand(type, str);
+    else
+        throw Lexer::UnexpectedNumericalValueSybolException();
 }
 
