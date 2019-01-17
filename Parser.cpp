@@ -75,63 +75,46 @@ bool Parser::parseCode(std::string str, int i) {
             _code.insert(_code.end(), token);
         }
     }
-    catch (Lexer::MissedWhitespaceException& e) {
-        addErrorMessage(i, e.what());
-    }
-    catch (Lexer::UnexpectedLexemException& e) {
-        addErrorMessage(i, e.what());
-    }
-    catch (Parser::UnexpectedTokenException& e){
-        addErrorMessage(i, e.what());
-    }
-    catch (Parser::TokenAfterExitException& e) {
-        addErrorMessage(i, e.what());
-    }
-    catch (Parser::ExpectedValueAfterException& e) {
-        addErrorMessage(i, e.what());
-    }
     catch (Parser::NoExitException& e) {
         addErrorMessage(i, e.what());
         return true;
     }
-    catch (Lexer::UnknownOperandTypeException& e) {
-        addErrorMessage(i, e.what());
-    }
-    catch  (Lexer::UnexpectedNumericalValueSybolException& e) {
-        addErrorMessage(i, e.what());
-    }
-    catch (OperandFactory::LimitOverflowException& e) {
-        addErrorMessage(i, e.what());
-    }
-    catch (OperandFactory::LimitUnderflowException& e) {
+    catch (std::exception& e) {
         addErrorMessage(i, e.what());
     }
     return false;
 }
 
-bool Parser::createToken(std::string const substr, Token **const token) {
+bool Parser::createToken(std::string substr, Token **const token) {
     if (substr.empty())
         return false;
     if (!_code.empty() && _code.back()->getType() == Token::EXIT)
         throw Parser::TokenAfterExitException();
+    unsigned long com = substr.find(';');
+//    std::cout << com << std::endl;
+    if (com < UINT64_MAX)
+        substr = substr.substr(0, com);
+//    std::cout << substr << std::endl;
     if (*token == nullptr) {
+//        std::cout << "token\n";
         *token = _lexer.getToken(substr);
         if (*token == nullptr)
             return true;
     }
     else if ((*token)->getValue() == nullptr) {
+//        std::cout << "operand\n";
         (*token)->setOperand(createOperand(substr));
         if ((*token)->getValue() == nullptr)
             return true;
     }
-    else
+    else if (!_lexer.isComment(substr))
         throw Parser::UnexpectedTokenException();
-    return false;
+    return com < UINT64_MAX;
 }
 
 void Parser::addErrorMessage(int i, std::string message) {
     std::stringstream stream;
-    stream << "In line " << i << ": " << message;
+    stream << "Line " << i << " : Error : " << message;
     _errors.insert(_errors.end(), stream.str());
 }
 
@@ -161,6 +144,7 @@ IOperand const* Parser::createOperand(std::string str) {
     if (_lexer.isComment(str))
         return nullptr;
     eOperandType type = _lexer.getOperandType(str);
+    _lexer.hasBrackets(str);
     if ((type >= Float && _lexer.isFloat(str)) ||
             (type < Float && _lexer.isInt(str)))
         return _factory.createOperand(type, str);
@@ -168,3 +152,18 @@ IOperand const* Parser::createOperand(std::string str) {
         throw Lexer::UnexpectedNumericalValueSybolException();
 }
 
+const char *Parser::NoExitException::what() const throw() {
+    return "No exit instruction in the end of program";
+}
+
+const char *Parser::TokenAfterExitException::what() const throw() {
+    return "Token after exit instruction";
+}
+
+const char *Parser::ExpectedValueAfterException::what() const throw() {
+    return "Expecting operand after instruction";
+}
+
+const char *Parser::UnexpectedTokenException::what() const throw() {
+    return "Unexpected token after instruction";
+}

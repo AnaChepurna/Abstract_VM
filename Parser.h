@@ -38,11 +38,22 @@ public:
 
     std::vector<Token const *> getCode();
 
-class NoExitException : public std::exception {};
-class TokenAfterExitException : public std::exception {};
-class ExpectedValueAfterException : public std::exception {};
-class UnexpectedTokenException : public std::exception {};
-
+class NoExitException : public std::exception {
+public:
+    const char *what() const throw();
+};
+class TokenAfterExitException : public std::exception {
+public:
+    const char *what() const throw();
+};
+class ExpectedValueAfterException : public std::exception {
+public:
+    const char *what() const throw();
+};
+class UnexpectedTokenException : public std::exception {
+public:
+    const char *what() const throw();
+};
 };
 
 

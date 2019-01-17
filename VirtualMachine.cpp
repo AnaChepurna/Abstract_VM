@@ -85,7 +85,6 @@ void VirtualMachine::print(Token const *) {
 }
 
 void VirtualMachine::exit(Token const *) {
-    std::cout << "exit\n";
 }
 
 

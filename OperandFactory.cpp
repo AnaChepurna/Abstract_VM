@@ -66,3 +66,11 @@ OperandFactory::OperandFactory(OperandFactory const &rhs) {
 OperandFactory &OperandFactory::operator=(OperandFactory const &rhs) {
     return *this;
 }
+
+const char *OperandFactory::LimitOverflowException::what() const noexcept {
+    return "Limit overflow";
+}
+
+const char *OperandFactory::LimitUnderflowException::what() const noexcept {
+    return "Limit underflow";
+}

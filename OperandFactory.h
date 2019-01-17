@@ -33,8 +33,14 @@ private:
     };
 
 public :
-class LimitOverflowException: public std::exception {};
-class LimitUnderflowException: public std::exception {};
+class LimitOverflowException: public std::exception {
+public:
+    const char *what() const noexcept;
+};
+class LimitUnderflowException: public std::exception {
+public:
+    const char *what() const noexcept;
+};
 };
 
 

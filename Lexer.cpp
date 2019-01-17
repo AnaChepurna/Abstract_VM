@@ -23,7 +23,7 @@ bool Lexer::isEnd(std::string str) {
 }
 
 Token *Lexer::getToken(std::string str) {
-    if (isComment(str))
+    if (str.empty() || isComment(str))
         return nullptr;
     for (int i = 0; i < pattern.size(); i++)
     {
@@ -57,12 +57,13 @@ Token *Lexer::getToken(std::string str) {
             }
             break;
         }
+    }
+    for (int i = 0; i < pattern.size(); i++)
         if (str.compare(0, pattern[i].size(), pattern[i]) == 0) {
             str = str.substr(pattern[i].size());
             if (!str.empty())
                 throw MissedWhitespaceException();
         }
-    }
     throw UnexpectedLexemException();
 }
 
@@ -82,19 +83,39 @@ eOperandType Lexer::getOperandType(std::string &str) {
 }
 
 bool Lexer::isInt(std::string &str) {
-    if (std::regex_match(str, std::regex(R"(^(\([-]?[0-9]+\))$)"))) {
-        str = str.substr(1, str.size() - 2);
-        return true;
-    }
-    return false;
+    return (std::regex_match(str, std::regex(R"(^[-]?[0-9]+$)")));
 }
 
 bool Lexer::isFloat(std::string &str) {
     if (isInt(str))
         return true;
-    if (std::regex_match(str, std::regex(R"(^(\([-]?[0-9]+\.[0-9]+\))$)"))) {
-        str = str.substr(1, str.size() - 2);
-        return true;
-    } else return false;
+    return (std::regex_match(str, std::regex(R"(^[-]?[0-9]+\.[0-9]+$)")));
 }
 
+bool Lexer::hasBrackets(std::string &str) {
+    if (std::regex_match(str, std::regex(R"(^\(.+\)$)"))) {
+        str = str.substr(1, str.size() - 2);
+        return true;
+    }
+    throw Lexer::MissedBracketsException();
+}
+
+const char *Lexer::UnexpectedLexemException::what() const throw() {
+    return "Unknown instruction";
+}
+
+const char *Lexer::MissedWhitespaceException::what() const throw() {
+    return "Missed whitespace after instruction";
+}
+
+const char *Lexer::UnknownOperandTypeException::what() const throw() {
+    return "Unknown operand type";
+}
+
+const char *Lexer::UnexpectedNumericalValueSybolException::what() const throw() {
+    return "Unexpected symbol in numerical value";
+}
+
+const char *Lexer::MissedBracketsException::what() const noexcept {
+    return "Missed brackets in operand declaration";
+}

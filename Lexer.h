@@ -21,13 +21,31 @@ public:
     Token * getToken(std::string str);
     bool isComment(std::string basic_string);
     eOperandType getOperandType(std::string &str);
+    bool hasBrackets(std::string &str);
     bool isInt(std::string& str);
     bool isFloat(std::string& str);
 
-class UnexpectedLexemException: public std::exception {};
-class MissedWhitespaceException : public std::exception {};
-class UnknownOperandTypeException : public std::exception {};
-class UnexpectedNumericalValueSybolException : public  std::exception {};
+class UnexpectedLexemException: public std::exception {
+public:
+    const char *what() const throw();
+};
+class MissedWhitespaceException : public std::exception {
+public:
+    const char *what() const throw();
+};
+class UnknownOperandTypeException : public std::exception {
+public:
+    const char *what() const throw();
+};
+class UnexpectedNumericalValueSybolException : public  std::exception {
+public:
+    const char *what() const throw();
+};
+
+class MissedBracketsException: public std::exception {
+public:
+    const char *what() const noexcept;
+};
 
 private:
     std::vector<std::string> pattern = {"push", "pop", "dump", "assert", "add",

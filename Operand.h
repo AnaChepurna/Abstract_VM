@@ -66,6 +66,7 @@ public:
     IOperand const * operator-( IOperand const &rhs ) const override {
         auto rhsValue = static_cast<long double>(stod(rhs.toString(), nullptr));
         std::stringstream stringStream;
+        std::cout << this->_value << " - " << rhsValue << std::endl;
         stringStream << this->_value - rhsValue;
         int resPrecision = this->getPrecision() >= rhs.getPrecision() ? this->getPrecision() : rhs.getPrecision();
         auto resType = static_cast<eOperandType>(resPrecision);
