@@ -6,7 +6,6 @@
 #include "Operand.h"
 
 IOperand const *OperandFactory::createOperand(eOperandType type, std::string const &value) const {
-    std::cout << value << std::endl;
     return (this->*_functions.at(type))(value);
 }
 
@@ -15,7 +14,6 @@ OperandFactory::OperandFactory() {
 
 IOperand const *OperandFactory::createInt8(std::string const &value) const {
     int64_t val = std::stoll(value);
-    std::cout << val << std::endl;
     if (val > INT8_MAX)
         throw OperandFactory::LimitOverflowException();
     else if (val < INT8_MIN)

@@ -121,7 +121,6 @@ bool Parser::createToken(std::string const substr, Token **const token) {
     }
     else if ((*token)->getValue() == nullptr) {
         (*token)->setOperand(createOperand(substr));
-
         if ((*token)->getValue() == nullptr)
             return true;
     }

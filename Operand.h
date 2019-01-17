@@ -25,9 +25,13 @@ public:
     Operand<T>(eOperandType type, T value) {
         _operandType = type;
         _value = value;
-        std::stringstream str;
-        str << value;
-        _string = str.str();
+        if (type < Float)
+            _string = std::to_string(value);
+        else {
+            std::stringstream str;
+            str << value;
+            _string = str.str();
+        }
     }
 
     ~Operand<T>() {}
@@ -44,10 +48,6 @@ public:
 
     eOperandType getType() const override {
         return _operandType;
-    }
-
-    T getValue() const {
-        return _value;
     }
 
     int getPrecision() const override {
@@ -88,7 +88,7 @@ public:
             stringStream << this->_value / rhsValue;
         }
         else {
-            auto rhsValue = static_cast<int64_t >(stod(rhs.toString(), nullptr));
+            auto rhsValue = static_cast<int64_t >(stoll(rhs.toString(), nullptr));
             stringStream << this->_value / rhsValue;
         }
         int resPrecision = this->getPrecision() >= rhs.getPrecision() ? this->getPrecision() : rhs.getPrecision();

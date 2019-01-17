@@ -28,11 +28,7 @@ Token *Lexer::getToken(std::string str) {
     for (int i = 0; i < pattern.size(); i++)
     {
         if (str == pattern[i])
-//        if (str.compare(0, pattern[i].size(), pattern[i]) == 0)
         {
-//            str = str.substr(pattern[i].size());
-//            if (str != "")
-//                throw MissedWhitespaceException();
             switch (i) {
                 case Token::PUSH :
                     return new Token(Token::PUSH);
@@ -60,6 +56,11 @@ Token *Lexer::getToken(std::string str) {
                     return new Token(Token::DUMP_TYPE);
             }
             break;
+        }
+        if (str.compare(0, pattern[i].size(), pattern[i]) == 0) {
+            str = str.substr(pattern[i].size());
+            if (!str.empty())
+                throw MissedWhitespaceException();
         }
     }
     throw UnexpectedLexemException();
@@ -89,7 +90,9 @@ bool Lexer::isInt(std::string &str) {
 }
 
 bool Lexer::isFloat(std::string &str) {
-    if (std::regex_match(str, std::regex(R"(^(\([-]?[0-9]+\.?[0-9]+\))$)"))) {
+    if (isInt(str))
+        return true;
+    if (std::regex_match(str, std::regex(R"(^(\([-]?[0-9]+\.[0-9]+\))$)"))) {
         str = str.substr(1, str.size() - 2);
         return true;
     } else return false;
