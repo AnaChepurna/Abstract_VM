@@ -20,6 +20,20 @@ Token.h
 OperandFactory.h
 /Users/achepurn/Abstract_VM/OperandFactory.h
 
+/Users/achepurn/Abstract_VM/Operand.h
+OperandFactory.h
+/Users/achepurn/Abstract_VM/OperandFactory.h
+string
+-
+sstream
+-
+cmath
+-
+vector
+-
+iomanip
+-
+
 /Users/achepurn/Abstract_VM/OperandFactory.h
 IOperand.h
 /Users/achepurn/Abstract_VM/IOperand.h
@@ -59,4 +73,24 @@ IOperand.h
 /Users/achepurn/Abstract_VM/IOperand.h
 vector
 -
+
+/Users/achepurn/Abstract_VM/VirtualMachine.cpp
+VirtualMachine.h
+/Users/achepurn/Abstract_VM/VirtualMachine.h
+
+/Users/achepurn/Abstract_VM/VirtualMachine.h
+iostream
+-
+fstream
+-
+list
+-
+IOperand.h
+/Users/achepurn/Abstract_VM/IOperand.h
+Operand.h
+/Users/achepurn/Abstract_VM/Operand.h
+Token.h
+/Users/achepurn/Abstract_VM/Token.h
+Parser.h
+/Users/achepurn/Abstract_VM/Parser.h
 

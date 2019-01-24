@@ -47,7 +47,6 @@ std::vector<std::pair<int, Token const *>> Parser::getCode() {
         std::for_each(_errors.begin(), _errors.end(), [](std::pair<int, std::string> pair) {
             std::cout << "Error : line " << pair.first << " : " << pair.second << std::endl;
         });
-        while(42) {}
         exit(0);
     }
     return (_code);

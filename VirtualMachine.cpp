@@ -136,7 +136,6 @@ void VirtualMachine::run() {
                 *error = true;
             }
         });
-        while(42) {}
 }
 
 void VirtualMachine::dump_type(Token const *) {
