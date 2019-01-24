@@ -21,6 +21,8 @@ void VirtualMachine::push(Token const *token) {
 }
 
 void VirtualMachine::pop(Token const *) {
+    if (values.empty())
+        throw OperationOnEmptyStackException();
     values.pop_front();
 }
 
@@ -33,14 +35,20 @@ void VirtualMachine::dump(Token const *) {
 }
 
 void VirtualMachine::assert(Token const *token)  {
+    if (values.empty())
+        throw OperationOnEmptyStackException();
     IOperand const*own = values.front();
     if (token->getValue()->getType() != own->getType())
-        std::cout << "not equal types\n";
+        throw NotAssertTypeException();
     else if (stod(token->getValue()->toString()) != stod(own->toString()))
-        std::cout << "not equal values\n";
+        throw NotAssertValueException();
 }
 
 void VirtualMachine::add(Token const *){
+    if (values.empty())
+        throw OperationOnEmptyStackException();
+    else if (values.size() < 2)
+        throw LessThanTwoValuesInStackException();
     IOperand const *first = values.front();
     values.pop_front();
     IOperand const *second = values.front();
@@ -49,6 +57,10 @@ void VirtualMachine::add(Token const *){
 }
 
 void VirtualMachine::sub(Token const *) {
+    if (values.empty())
+        throw OperationOnEmptyStackException();
+    else if (values.size() < 2)
+        throw LessThanTwoValuesInStackException();
     IOperand const *first = values.front();
     values.pop_front();
     IOperand const *second = values.front();
@@ -57,6 +69,10 @@ void VirtualMachine::sub(Token const *) {
 }
 
 void VirtualMachine::mul(Token const *) {
+    if (values.empty())
+        throw OperationOnEmptyStackException();
+    else if (values.size() < 2)
+        throw LessThanTwoValuesInStackException();
     IOperand const *first = values.front();
     values.pop_front();
     IOperand const *second = values.front();
@@ -65,7 +81,13 @@ void VirtualMachine::mul(Token const *) {
 }
 
 void VirtualMachine::div(Token const *) {
+    if (values.empty())
+        throw OperationOnEmptyStackException();
+    else if (values.size() < 2)
+        throw LessThanTwoValuesInStackException();
     IOperand const *first = values.front();
+    if (stod(first->toString()) == 0)
+        throw DevisionByZeroException();
     values.pop_front();
     IOperand const *second = values.front();
     values.pop_front();
@@ -73,7 +95,13 @@ void VirtualMachine::div(Token const *) {
 }
 
 void VirtualMachine::mod(Token const *) {
+    if (values.empty())
+        throw OperationOnEmptyStackException();
+    else if (values.size() < 2)
+        throw LessThanTwoValuesInStackException();
     IOperand const *first = values.front();
+    if (stod(first->toString()) == 0)
+        throw DevisionByZeroException();
     values.pop_front();
     IOperand const *second = values.front();
     values.pop_front();
@@ -81,7 +109,13 @@ void VirtualMachine::mod(Token const *) {
 }
 
 void VirtualMachine::print(Token const *) {
-    std::cout << "Print\n";
+    if (values.empty())
+        throw OperationOnEmptyStackException();
+    IOperand const *operand = values.front();
+    if (operand->getType() != Int8)
+        throw NotAssertTypeException();
+    auto c = static_cast<char>(std::stoi(operand->toString()));
+    std::cout << c << std::endl;
 }
 
 void VirtualMachine::exit(Token const *) {
@@ -91,10 +125,17 @@ void VirtualMachine::exit(Token const *) {
 VirtualMachine::~VirtualMachine() {}
 
 void VirtualMachine::run() {
-    code = parser.getCode();
-    std::for_each(code.begin(), code.end(), [this](Token const *token) {
-        (this->*_functions.at(token->getType()))(token);
-    });
+        code = parser.getCode();
+        bool *error = new bool(false);
+        std::for_each(code.begin(), code.end(), [this, error](std::pair<int , Token const *> pair) {
+            try {
+                if (!*error && pair.second != nullptr)
+                    (this->*_functions.at(pair.second->getType()))(pair.second);
+            } catch (std::exception &e) {
+                std::cout << "Error : line " << pair.first << " : \"" << pair.second->getTypeString() << "\" : " << e.what() << std::endl;
+                *error = true;
+            }
+        });
 }
 
 void VirtualMachine::dump_type(Token const *) {
@@ -123,7 +164,22 @@ void VirtualMachine::dump_type(Token const *) {
 }
 
 
+const char *VirtualMachine::NotAssertTypeException::what() const noexcept {
+    return "Operand in stack has wrong type";
+}
 
+const char *VirtualMachine::NotAssertValueException::what() const noexcept {
+    return "Operand in stack has different value";
+}
 
+const char *VirtualMachine::DevisionByZeroException::what() const noexcept {
+    return "Division/modulo by zero";
+}
 
+const char *VirtualMachine::OperationOnEmptyStackException::what() const noexcept {
+    return "Operation on empty stack";
+}
 
+const char *VirtualMachine::LessThanTwoValuesInStackException::what() const noexcept {
+    return "Arithmetic instruction needs at least two operands in stack";
+}

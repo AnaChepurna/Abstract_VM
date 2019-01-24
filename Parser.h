@@ -11,32 +11,31 @@
 #include <vector>
 #include <sstream>
 #include <algorithm>
+#include <utility>
 #include "Lexer.h"
 #include "OperandFactory.h"
 
 
 class Parser {
 private:
-    Lexer  _lexer;
-    OperandFactory _factory;
+    Lexer _lexer;
     std::string  _filename;
-    std::vector<Token const *>_code = {};
-    std::vector<std::string>_errors = {};
+    std::vector<std::pair<int, Token const *>>_code = {};
+    std::vector<std::pair<int, std::string>>_errors = {};
 
     bool parseCode(std::string code, int i);
     bool createToken(std::string, Token **);
     void checkToken(Token const *);
-    void addErrorMessage(int i, std::string message);
     void formatWhitespaces(std::string &);
     IOperand const * createOperand(std::string string);
+    bool hasExit();
 
 public:
     Parser();
     ~Parser();
     Parser(Parser const& src);
     Parser &operator=(Parser const &src);
-
-    std::vector<Token const *> getCode();
+    std::vector<std::pair<int, Token const *>> getCode();
 
 class NoExitException : public std::exception {
 public:

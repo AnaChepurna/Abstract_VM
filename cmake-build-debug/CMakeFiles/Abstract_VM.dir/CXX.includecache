@@ -17,6 +17,8 @@ regex
 -
 Token.h
 /Users/achepurn/Abstract_VM/Token.h
+OperandFactory.h
+/Users/achepurn/Abstract_VM/OperandFactory.h
 
 /Users/achepurn/Abstract_VM/Operand.h
 OperandFactory.h
@@ -26,6 +28,10 @@ string
 sstream
 -
 cmath
+-
+vector
+-
+iomanip
 -
 
 /Users/achepurn/Abstract_VM/OperandFactory.cpp
@@ -57,6 +63,8 @@ sstream
 -
 algorithm
 -
+utility
+-
 Lexer.h
 /Users/achepurn/Abstract_VM/Lexer.h
 OperandFactory.h
@@ -65,6 +73,8 @@ OperandFactory.h
 /Users/achepurn/Abstract_VM/Token.h
 IOperand.h
 /Users/achepurn/Abstract_VM/IOperand.h
+vector
+-
 
 /Users/achepurn/Abstract_VM/VirtualMachine.cpp
 VirtualMachine.h

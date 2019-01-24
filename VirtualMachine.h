@@ -17,7 +17,7 @@
 class VirtualMachine {
 private:
     std::list<IOperand const *>values;
-    std::vector<Token const*>code;
+    std::vector<std::pair<int, Token const*>>code;
     Parser parser;
 
 public :
@@ -26,6 +26,27 @@ public :
     VirtualMachine &operator=(VirtualMachine const &src);
     ~VirtualMachine();
     void run();
+
+class NotAssertTypeException: public std::exception {
+public:
+    const char *what() const noexcept;
+};
+class NotAssertValueException: public std::exception {
+public:
+    const char *what() const noexcept;
+};
+class DevisionByZeroException: public std::exception {
+public:
+    const char *what() const noexcept;
+};
+class OperationOnEmptyStackException: public std::exception {
+public:
+    const char *what() const noexcept;
+};
+class LessThanTwoValuesInStackException: public std::exception {
+public:
+    const char *what() const noexcept;
+};
 
 private:
     void push(Token const *);

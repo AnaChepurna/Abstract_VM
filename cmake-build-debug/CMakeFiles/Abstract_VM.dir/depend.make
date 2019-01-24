@@ -4,6 +4,7 @@
 CMakeFiles/Abstract_VM.dir/Lexer.cpp.o: ../IOperand.h
 CMakeFiles/Abstract_VM.dir/Lexer.cpp.o: ../Lexer.cpp
 CMakeFiles/Abstract_VM.dir/Lexer.cpp.o: ../Lexer.h
+CMakeFiles/Abstract_VM.dir/Lexer.cpp.o: ../OperandFactory.h
 CMakeFiles/Abstract_VM.dir/Lexer.cpp.o: ../Token.h
 
 CMakeFiles/Abstract_VM.dir/OperandFactory.cpp.o: ../IOperand.h

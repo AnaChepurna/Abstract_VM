@@ -20,7 +20,6 @@ public:
     virtual IOperand const * operator%( IOperand const &rhs ) const = 0;
     virtual std::string const & toString( void ) const = 0;
     virtual ~IOperand( void ) {}
-//    virtual IOperand const * createOperand( eOperandType type, std::string const & value ) const = 0;
 };
 
 #endif //ABSTRACT_VM_IOPERAND_H

@@ -13,21 +13,23 @@ Lexer::~Lexer() {
 }
 
 Lexer::Lexer(Lexer const &src) {
-
+    *this = src;
 }
 
-Lexer &Lexer::operator=(Lexer const &src) = default;
+Lexer &Lexer::operator=(Lexer const &src){
+    return *this;
+}
 
-bool Lexer::isEnd(std::string str) {
+bool Lexer::isEnd(std::string str) const {
     return  (str == ";;");
 }
 
-Token *Lexer::getToken(std::string str) {
+Token *Lexer::getToken(std::string str) const {
     if (str.empty() || isComment(str))
         return nullptr;
-    for (int i = 0; i < pattern.size(); i++)
+    for (int i = 0; i < Token::pattern.size(); i++)
     {
-        if (str == pattern[i])
+        if (str == Token::pattern[i])
         {
             switch (i) {
                 case Token::PUSH :
@@ -58,41 +60,41 @@ Token *Lexer::getToken(std::string str) {
             break;
         }
     }
-    for (int i = 0; i < pattern.size(); i++)
-        if (str.compare(0, pattern[i].size(), pattern[i]) == 0) {
-            str = str.substr(pattern[i].size());
+    for (int i = 0; i < Token::pattern.size(); i++)
+        if (str.compare(0, Token::pattern[i].size(), Token::pattern[i]) == 0) {
+            str = str.substr(Token::pattern[i].size());
             if (!str.empty())
                 throw MissedWhitespaceException();
         }
     throw UnexpectedLexemException();
 }
 
-bool Lexer::isComment(std::string str) {
+bool Lexer::isComment(std::string str) const {
     return  (str.compare(0, 1, ";") == 0);
 }
 
-eOperandType Lexer::getOperandType(std::string &str) {
-    for(int i = 0; i < pattern_operands.size(); i++) {
-        if (str.compare(0, pattern_operands[i].size(), pattern_operands[i]) == 0)
+eOperandType Lexer::getOperandType(std::string &str) const {
+    for(int i = 0; i < OperandFactory::pattern.size(); i++) {
+        if (str.compare(0, OperandFactory::pattern[i].size(), OperandFactory::pattern[i]) == 0)
         {
-            str = str.substr(pattern_operands[i].size());
+            str = str.substr(OperandFactory::pattern[i].size());
             return static_cast<eOperandType>(i);
         }
     }
     throw Lexer::UnknownOperandTypeException();
 }
 
-bool Lexer::isInt(std::string &str) {
+bool Lexer::isInt(std::string &str) const {
     return (std::regex_match(str, std::regex(R"(^[-]?[0-9]+$)")));
 }
 
-bool Lexer::isFloat(std::string &str) {
+bool Lexer::isFloat(std::string &str) const {
     if (isInt(str))
         return true;
     return (std::regex_match(str, std::regex(R"(^[-]?[0-9]+\.[0-9]+$)")));
 }
 
-bool Lexer::hasBrackets(std::string &str) {
+bool Lexer::hasBrackets(std::string &str) const {
     if (std::regex_match(str, std::regex(R"(^\(.+\)$)"))) {
         str = str.substr(1, str.size() - 2);
         return true;

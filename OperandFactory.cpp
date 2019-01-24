@@ -5,6 +5,11 @@
 #include "OperandFactory.h"
 #include "Operand.h"
 
+std::vector<std::string> const OperandFactory::pattern = {"int8", "int16", "int32", "float", "double"};
+
+
+OperandFactory * OperandFactory::_factory = nullptr;
+
 IOperand const *OperandFactory::createOperand(eOperandType type, std::string const &value) const {
     return (this->*_functions.at(type))(value);
 }
@@ -65,6 +70,12 @@ OperandFactory::OperandFactory(OperandFactory const &rhs) {
 
 OperandFactory &OperandFactory::operator=(OperandFactory const &rhs) {
     return *this;
+}
+
+OperandFactory *OperandFactory::getFactory() {
+    if (_factory == nullptr)
+        _factory = new OperandFactory();
+    return _factory;
 }
 
 const char *OperandFactory::LimitOverflowException::what() const noexcept {

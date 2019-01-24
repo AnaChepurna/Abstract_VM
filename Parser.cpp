@@ -6,7 +6,6 @@
 
 Parser::Parser() {
     _lexer = Lexer();
-    _factory = OperandFactory();
 }
 
 
@@ -18,13 +17,12 @@ Parser::Parser(Parser const &src) {
 }
 
 Parser &Parser::operator=(Parser const &src) {
-    this->_filename = src._filename;
     this->_lexer = src._lexer;
-    this->_factory = src._factory;
+    this->_filename = src._filename;
     return *this;
 }
 
-std::vector<Token const *> Parser::getCode() {
+std::vector<std::pair<int, Token const *>> Parser::getCode() {
     std::string str;
     int num = 0;
     if (_filename.empty()) {
@@ -46,8 +44,8 @@ std::vector<Token const *> Parser::getCode() {
         i.close();
     }
     if (!_errors.empty()) {
-        std::for_each(_errors.begin(), _errors.end(), [](std::string str) {
-            std::cout << str << "\n";
+        std::for_each(_errors.begin(), _errors.end(), [](std::pair<int, std::string> pair) {
+            std::cout << "Error : line " << pair.first << " : " << pair.second << std::endl;
         });
         exit(0);
     }
@@ -58,7 +56,7 @@ bool Parser::parseCode(std::string str, int i) {
     formatWhitespaces(str);
     try {
         if (_lexer.isEnd(str)) {
-            if (!_code.empty() && _code.back()->getType() != Token::EXIT)
+            if (!hasExit())
                 throw Parser::NoExitException();
             return true;
         }
@@ -70,17 +68,16 @@ bool Parser::parseCode(std::string str, int i) {
             if (createToken(substr, &token))
                 break;
         }
-        if (token != nullptr) {
+        if (token != nullptr)
             checkToken(token);
-            _code.insert(_code.end(), token);
-        }
+        _code.insert(_code.end(), std::make_pair(i, token));
     }
     catch (Parser::NoExitException& e) {
-        addErrorMessage(i, e.what());
+        _errors.insert(_errors.end(), std::make_pair(i, e.what()));
         return true;
     }
     catch (std::exception& e) {
-        addErrorMessage(i, e.what());
+        _errors.insert(_errors.end(), std::make_pair(i, "\"" + str + "\" : " + e.what()));
     }
     return false;
 }
@@ -88,21 +85,17 @@ bool Parser::parseCode(std::string str, int i) {
 bool Parser::createToken(std::string substr, Token **const token) {
     if (substr.empty())
         return false;
-    if (!_code.empty() && _code.back()->getType() == Token::EXIT)
+    if (hasExit())
         throw Parser::TokenAfterExitException();
     unsigned long com = substr.find(';');
-//    std::cout << com << std::endl;
     if (com < UINT64_MAX)
         substr = substr.substr(0, com);
-//    std::cout << substr << std::endl;
     if (*token == nullptr) {
-//        std::cout << "token\n";
         *token = _lexer.getToken(substr);
         if (*token == nullptr)
             return true;
     }
     else if ((*token)->getValue() == nullptr) {
-//        std::cout << "operand\n";
         (*token)->setOperand(createOperand(substr));
         if ((*token)->getValue() == nullptr)
             return true;
@@ -110,12 +103,6 @@ bool Parser::createToken(std::string substr, Token **const token) {
     else if (!_lexer.isComment(substr))
         throw Parser::UnexpectedTokenException();
     return com < UINT64_MAX;
-}
-
-void Parser::addErrorMessage(int i, std::string message) {
-    std::stringstream stream;
-    stream << "Line " << i << " : Error : " << message;
-    _errors.insert(_errors.end(), stream.str());
 }
 
 void Parser::checkToken(Token const *token) {
@@ -147,23 +134,31 @@ IOperand const* Parser::createOperand(std::string str) {
     _lexer.hasBrackets(str);
     if ((type >= Float && _lexer.isFloat(str)) ||
             (type < Float && _lexer.isInt(str)))
-        return _factory.createOperand(type, str);
+        return OperandFactory::getFactory()->createOperand(type, str);
     else
         throw Lexer::UnexpectedNumericalValueSybolException();
 }
 
-const char *Parser::NoExitException::what() const throw() {
+bool Parser::hasExit() {
+    for (int i = 0; i < _code.size(); i++) {
+        if (_code.at(i).second != nullptr && _code.at(i).second->getType() == Token::EXIT)
+            return true;
+    }
+    return false;
+}
+
+const char *Parser::NoExitException::what() const noexcept {
     return "No exit instruction in the end of program";
 }
 
-const char *Parser::TokenAfterExitException::what() const throw() {
+const char *Parser::TokenAfterExitException::what() const noexcept {
     return "Token after exit instruction";
 }
 
-const char *Parser::ExpectedValueAfterException::what() const throw() {
+const char *Parser::ExpectedValueAfterException::what() const noexcept {
     return "Expecting operand after instruction";
 }
 
-const char *Parser::UnexpectedTokenException::what() const throw() {
+const char *Parser::UnexpectedTokenException::what() const noexcept {
     return "Unexpected token after instruction";
 }

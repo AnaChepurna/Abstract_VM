@@ -6,6 +6,7 @@
 #define ABSTRACT_VM_TOKEN_H
 
 #include "IOperand.h"
+#include <vector>
 
 class Token {
 public:
@@ -16,7 +17,6 @@ public:
 private:
     eTokenType _tokenType;
     IOperand const* _value = nullptr;
-    Token();
 
 public:
     explicit Token(eTokenType type);
@@ -26,6 +26,8 @@ public:
     eTokenType getType() const;
     IOperand const* getValue() const;
     void setOperand(IOperand const *o);
+    std::string getTypeString() const;
+    static std::vector<std::string> const pattern;
 };
 
 

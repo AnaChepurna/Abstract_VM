@@ -12,12 +12,13 @@
 
 class OperandFactory {
 public:
-    OperandFactory();
+    static OperandFactory *getFactory();
     ~OperandFactory();
-    OperandFactory(OperandFactory const&rhs);
     OperandFactory &operator=(OperandFactory const&rhs);
     IOperand const *createOperand(eOperandType type, std::string const &value) const;
 private:
+    OperandFactory(OperandFactory const&rhs);
+    OperandFactory();
     IOperand const *createInt8(std::string const &value) const;
     IOperand const *createInt16(std::string const &value) const;
     IOperand const *createInt32(std::string const &value) const;
@@ -31,6 +32,10 @@ private:
             &OperandFactory::createFloat,
             &OperandFactory::createDouble
     };
+
+    static OperandFactory *_factory;
+public:
+    static std::vector<std::string> const pattern;
 
 public :
 class LimitOverflowException: public std::exception {

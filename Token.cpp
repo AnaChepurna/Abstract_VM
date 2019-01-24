@@ -4,7 +4,8 @@
 
 #include "Token.h"
 
-Token::Token() {}
+std::vector<std::string> const Token::pattern = {"push", "pop", "dump", "assert", "add",
+                                                 "sub", "mul", "div", "mod", "print", "exit", "dump_type"};
 
 Token::Token(Token::eTokenType type): _tokenType(type) {}
 
@@ -30,4 +31,8 @@ IOperand const *Token::getValue() const{
 
 void Token::setOperand(IOperand const *o) {
     _value = o;
+}
+
+std::string Token::getTypeString() const {
+    return pattern.at(_tokenType);
 }
