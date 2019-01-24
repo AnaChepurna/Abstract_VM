@@ -47,6 +47,7 @@ std::vector<std::pair<int, Token const *>> Parser::getCode() {
         std::for_each(_errors.begin(), _errors.end(), [](std::pair<int, std::string> pair) {
             std::cout << "Error : line " << pair.first << " : " << pair.second << std::endl;
         });
+        while(42) {}
         exit(0);
     }
     return (_code);
@@ -54,6 +55,7 @@ std::vector<std::pair<int, Token const *>> Parser::getCode() {
 
 bool Parser::parseCode(std::string str, int i) {
     formatWhitespaces(str);
+    Token *token = nullptr;
     try {
         if (_lexer.isEnd(str)) {
             if (!hasExit())
@@ -62,7 +64,6 @@ bool Parser::parseCode(std::string str, int i) {
         }
         std::stringstream stream(str);
         std::string substr;
-        Token *token = nullptr;
         while (stream.good()) {
             std::getline(stream, substr, ' ');
             if (createToken(substr, &token))
@@ -74,10 +75,14 @@ bool Parser::parseCode(std::string str, int i) {
     }
     catch (Parser::NoExitException& e) {
         _errors.insert(_errors.end(), std::make_pair(i, e.what()));
+        if (token != nullptr)
+            delete(token);
         return true;
     }
     catch (std::exception& e) {
         _errors.insert(_errors.end(), std::make_pair(i, "\"" + str + "\" : " + e.what()));
+        if (token != nullptr)
+            delete(token);
     }
     return false;
 }
@@ -107,12 +112,14 @@ bool Parser::createToken(std::string substr, Token **const token) {
 
 void Parser::checkToken(Token const *token) {
     if (token->getType() == Token::PUSH || token->getType() == Token::ASSERT) {
-        if (token->getValue() == nullptr)
+        if (token->getValue() == nullptr) {
             throw Parser::ExpectedValueAfterException();
+        }
     }
     else
-        if (token->getValue() != nullptr)
+        if (token->getValue() != nullptr) {
             throw Parser::UnexpectedTokenException();
+        }
 }
 
 void Parser::formatWhitespaces(std::string &str) {

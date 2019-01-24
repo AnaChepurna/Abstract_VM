@@ -20,26 +20,6 @@ Token.h
 OperandFactory.h
 /Users/achepurn/Abstract_VM/OperandFactory.h
 
-/Users/achepurn/Abstract_VM/Operand.h
-OperandFactory.h
-/Users/achepurn/Abstract_VM/OperandFactory.h
-string
--
-sstream
--
-cmath
--
-vector
--
-iomanip
--
-
-/Users/achepurn/Abstract_VM/OperandFactory.cpp
-OperandFactory.h
-/Users/achepurn/Abstract_VM/OperandFactory.h
-Operand.h
-/Users/achepurn/Abstract_VM/Operand.h
-
 /Users/achepurn/Abstract_VM/OperandFactory.h
 IOperand.h
 /Users/achepurn/Abstract_VM/IOperand.h
@@ -49,6 +29,10 @@ limits
 -
 float.h
 /Users/achepurn/Abstract_VM/float.h
+
+/Users/achepurn/Abstract_VM/Parser.cpp
+Parser.h
+/Users/achepurn/Abstract_VM/Parser.h
 
 /Users/achepurn/Abstract_VM/Parser.h
 string
@@ -75,28 +59,4 @@ IOperand.h
 /Users/achepurn/Abstract_VM/IOperand.h
 vector
 -
-
-/Users/achepurn/Abstract_VM/VirtualMachine.cpp
-VirtualMachine.h
-/Users/achepurn/Abstract_VM/VirtualMachine.h
-
-/Users/achepurn/Abstract_VM/VirtualMachine.h
-iostream
--
-fstream
--
-list
--
-IOperand.h
-/Users/achepurn/Abstract_VM/IOperand.h
-Operand.h
-/Users/achepurn/Abstract_VM/Operand.h
-Token.h
-/Users/achepurn/Abstract_VM/Token.h
-Parser.h
-/Users/achepurn/Abstract_VM/Parser.h
-
-/Users/achepurn/Abstract_VM/main.cpp
-VirtualMachine.h
-/Users/achepurn/Abstract_VM/VirtualMachine.h
 
