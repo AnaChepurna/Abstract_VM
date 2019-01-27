@@ -29,6 +29,7 @@ private:
     void formatWhitespaces(std::string &);
     IOperand const * createOperand(std::string string);
     bool hasExit();
+    bool hasCode();
 
 public:
     Parser();
@@ -55,6 +56,10 @@ public:
     const char *what() const throw();
 };
 class BrokenFileException : public std::exception {
+public:
+    const char *what() const throw();
+};
+class NoRecognizedCodeException : public std::exception {
 public:
     const char *what() const throw();
 };

@@ -10,6 +10,8 @@ Parser::Parser() {
 
 
 Parser::~Parser() {
+    _code.clear();
+    _errors.clear();
     delete(_lexer);
 }
 
@@ -35,11 +37,9 @@ std::vector<std::pair<int, Token const *>> Parser::getCode() {
     }
     else {
         std::fstream i;
-        std::cout << _filename << std::endl;
         i.open(_filename);
         if (!i.good())
             throw Parser::BrokenFileException();
-        std::cout << _filename << std::endl;
         while (std::getline(i, str)) {
             num++;
             if (parseCode(str, num))
@@ -47,12 +47,12 @@ std::vector<std::pair<int, Token const *>> Parser::getCode() {
         }
         i.close();
     }
+    if (_code.empty() || !hasCode())
+        throw NoRecognizedCodeException();
     if (!_errors.empty()) {
         std::for_each(_errors.begin(), _errors.end(), [](std::pair<int, std::string> pair) {
             std::cout << "Error : line " << pair.first << " : " << pair.second << std::endl;
         });
-        _code.clear();
-        _errors.clear();
         exit(0);
     }
     return (_code);
@@ -163,6 +163,17 @@ void Parser::setFilename(std::string const &str) {
     _filename = str;
 }
 
+bool Parser::hasCode() {
+    bool *ret = new bool(false);
+    std::for_each(_code.begin(), _code.end(), [ret] (std::pair<int, Token const *> p){
+        if (p.second != nullptr)
+            *ret = true;
+    });
+    bool r = *ret;
+    delete(ret);
+    return r;
+}
+
 const char *Parser::NoExitException::what() const noexcept {
     return "No exit instruction in the end of program";
 }
@@ -182,3 +193,8 @@ const char *Parser::UnexpectedTokenException::what() const noexcept {
 const char *Parser::BrokenFileException::what() const noexcept {
     return "Cannot open input file : Check the filename or access rights";
 }
+
+const char *Parser::NoRecognizedCodeException::what() const noexcept {
+    return "Cannot recognize any token : Check input data format";
+}
+
