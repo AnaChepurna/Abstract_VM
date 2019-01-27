@@ -8,8 +8,9 @@ int main(int argc, char **argv)
 			virtualMachine.setFlag(argv[i]);
 		}
 		catch (std::exception &e) {
-			std::cout << argv[0] << std::endl << argv[0] << " [filename]" << std::endl;
-			std::cout << "-errorIgnore - trying to execute code just ignore error lines" << std::endl;
+			std::cout << "usage: " << std::endl;
+			std::cout << "\t" << argv[0] << std::endl << "\t"<< argv[0] << " [filename]" << std::endl;
+			std::cout << "\t" << "-errorIgnore - trying to execute code just ignore error lines" << std::endl;
 			exit(0);
 		}
 	}
