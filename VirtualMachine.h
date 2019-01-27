@@ -18,7 +18,7 @@ class VirtualMachine {
 private:
     std::list<IOperand const *>values;
     std::vector<std::pair<int, Token const*>>code;
-    Parser parser;
+    Parser *parser;
 
 public :
     VirtualMachine();
@@ -26,6 +26,7 @@ public :
     VirtualMachine &operator=(VirtualMachine const &src);
     ~VirtualMachine();
     void run();
+    void setFile(std::string const&filename);
 
 class NotAssertTypeException: public std::exception {
 public:

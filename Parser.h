@@ -18,8 +18,8 @@
 
 class Parser {
 private:
-    Lexer _lexer;
-    std::string  _filename;
+    Lexer *_lexer;
+    std::string _filename;
     std::vector<std::pair<int, Token const *>>_code = {};
     std::vector<std::pair<int, std::string>>_errors = {};
 
@@ -36,6 +36,7 @@ public:
     Parser(Parser const& src);
     Parser &operator=(Parser const &src);
     std::vector<std::pair<int, Token const *>> getCode();
+    void setFilename(std::string const &str);
 
 class NoExitException : public std::exception {
 public:
@@ -50,6 +51,10 @@ public:
     const char *what() const throw();
 };
 class UnexpectedTokenException : public std::exception {
+public:
+    const char *what() const throw();
+};
+class BrokenFileException : public std::exception {
 public:
     const char *what() const throw();
 };

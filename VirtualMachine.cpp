@@ -5,7 +5,7 @@
 #include "VirtualMachine.h"
 
 VirtualMachine::VirtualMachine() {
-    parser = Parser();
+    parser = new Parser();
 }
 
 VirtualMachine::VirtualMachine(VirtualMachine const &src) {
@@ -13,6 +13,19 @@ VirtualMachine::VirtualMachine(VirtualMachine const &src) {
 }
 
 VirtualMachine &VirtualMachine::operator=(VirtualMachine const &src) {
+    this->values.clear();
+    std::for_each(src.values.begin(), src.values.end(), [this] (IOperand const *o) {
+        this->values.push_back(OperandFactory::getFactory()->createOperand(o->getType(), o->toString()));
+    });
+    this->code.clear();
+    std::for_each(src.code.begin(), src.code.end(), [this] (std::pair<int, Token const*> p) {
+        int i = p.first;
+        Token *token = new Token(p.second->getType());
+        if (p.second->getValue() != nullptr)
+            token->setOperand(OperandFactory::getFactory()->createOperand(
+                    p.second->getValue()->getType(), p.second->getValue()->toString()));
+        this->code.emplace_back(i, token);
+    });
     return *this;
 }
 
@@ -121,11 +134,19 @@ void VirtualMachine::print(Token const *) {
 void VirtualMachine::exit(Token const *) {
 }
 
-
-VirtualMachine::~VirtualMachine() {}
+VirtualMachine::~VirtualMachine() {
+    values.clear();
+    code.clear();
+    delete(parser);
+}
 
 void VirtualMachine::run() {
-        code = parser.getCode();
+        try {
+            code = parser->getCode();
+        }
+        catch (std::exception &e) {
+            std::cout << "Error : " << e.what() << std::endl;
+        }
         bool *error = new bool(false);
         std::for_each(code.begin(), code.end(), [this, error](std::pair<int , Token const *> pair) {
             try {
@@ -161,6 +182,10 @@ void VirtualMachine::dump_type(Token const *) {
         std::cout << o->toString() << std::endl;
     });
     std::cout << "<<<<<<<<<<" << std::endl;
+}
+
+void VirtualMachine::setFile(std::string const &filename) {
+    this->parser->setFilename(filename);
 }
 
 

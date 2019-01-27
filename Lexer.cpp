@@ -12,14 +12,6 @@ Lexer::~Lexer() {
 
 }
 
-Lexer::Lexer(Lexer const &src) {
-    *this = src;
-}
-
-Lexer &Lexer::operator=(Lexer const &src){
-    return *this;
-}
-
 bool Lexer::isEnd(std::string str) const {
     return  (str == ";;");
 }
@@ -27,7 +19,7 @@ bool Lexer::isEnd(std::string str) const {
 Token *Lexer::getToken(std::string str) const {
     if (str.empty() || isComment(str))
         return nullptr;
-    for (int i = 0; i < Token::pattern.size(); i++)
+    for (int i = 0; i < static_cast<int>(Token::pattern.size()); i++)
     {
         if (str == Token::pattern[i])
         {
@@ -60,7 +52,7 @@ Token *Lexer::getToken(std::string str) const {
             break;
         }
     }
-    for (int i = 0; i < Token::pattern.size(); i++)
+    for (int i = 0; i < static_cast<int>(Token::pattern.size()); i++)
         if (str.compare(0, Token::pattern[i].size(), Token::pattern[i]) == 0) {
             str = str.substr(Token::pattern[i].size());
             if (!str.empty())
@@ -74,7 +66,7 @@ bool Lexer::isComment(std::string str) const {
 }
 
 eOperandType Lexer::getOperandType(std::string &str) const {
-    for(int i = 0; i < OperandFactory::pattern.size(); i++) {
+    for(int i = 0; i < static_cast<int>(OperandFactory::pattern.size()); i++) {
         if (str.compare(0, OperandFactory::pattern[i].size(), OperandFactory::pattern[i]) == 0)
         {
             str = str.substr(OperandFactory::pattern[i].size());

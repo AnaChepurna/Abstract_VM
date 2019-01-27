@@ -15,8 +15,6 @@ class Lexer {
 public:
     Lexer();
     ~Lexer();
-    Lexer(Lexer const& src);
-    Lexer &operator=(Lexer const &src);
 
     bool isEnd(std::string str) const;
     Token * getToken(std::string str) const;

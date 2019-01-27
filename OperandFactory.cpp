@@ -65,13 +65,6 @@ IOperand const *OperandFactory::createDouble(std::string const &value) const {
 OperandFactory::~OperandFactory() {
 }
 
-OperandFactory::OperandFactory(OperandFactory const &rhs) {
-}
-
-OperandFactory &OperandFactory::operator=(OperandFactory const &rhs) {
-    return *this;
-}
-
 OperandFactory *OperandFactory::getFactory() {
     if (_factory == nullptr)
         _factory = new OperandFactory();

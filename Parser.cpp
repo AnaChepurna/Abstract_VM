@@ -5,11 +5,12 @@
 #include "Parser.h"
 
 Parser::Parser() {
-    _lexer = Lexer();
+    _lexer = new Lexer();
 }
 
 
 Parser::~Parser() {
+    delete(_lexer);
 }
 
 Parser::Parser(Parser const &src) {
@@ -17,7 +18,6 @@ Parser::Parser(Parser const &src) {
 }
 
 Parser &Parser::operator=(Parser const &src) {
-    this->_lexer = src._lexer;
     this->_filename = src._filename;
     return *this;
 }
@@ -35,7 +35,11 @@ std::vector<std::pair<int, Token const *>> Parser::getCode() {
     }
     else {
         std::fstream i;
+        std::cout << _filename << std::endl;
         i.open(_filename);
+        if (!i.good())
+            throw Parser::BrokenFileException();
+        std::cout << _filename << std::endl;
         while (std::getline(i, str)) {
             num++;
             if (parseCode(str, num))
@@ -47,6 +51,8 @@ std::vector<std::pair<int, Token const *>> Parser::getCode() {
         std::for_each(_errors.begin(), _errors.end(), [](std::pair<int, std::string> pair) {
             std::cout << "Error : line " << pair.first << " : " << pair.second << std::endl;
         });
+        _code.clear();
+        _errors.clear();
         exit(0);
     }
     return (_code);
@@ -56,7 +62,7 @@ bool Parser::parseCode(std::string str, int i) {
     formatWhitespaces(str);
     Token *token = nullptr;
     try {
-        if (_lexer.isEnd(str)) {
+        if (_lexer->isEnd(str)) {
             if (!hasExit())
                 throw Parser::NoExitException();
             return true;
@@ -95,7 +101,7 @@ bool Parser::createToken(std::string substr, Token **const token) {
     if (com < UINT64_MAX)
         substr = substr.substr(0, com);
     if (*token == nullptr) {
-        *token = _lexer.getToken(substr);
+        *token = _lexer->getToken(substr);
         if (*token == nullptr)
             return true;
     }
@@ -104,7 +110,7 @@ bool Parser::createToken(std::string substr, Token **const token) {
         if ((*token)->getValue() == nullptr)
             return true;
     }
-    else if (!_lexer.isComment(substr))
+    else if (!_lexer->isComment(substr))
         throw Parser::UnexpectedTokenException();
     return com < UINT64_MAX;
 }
@@ -134,23 +140,27 @@ void Parser::formatWhitespaces(std::string &str) {
 }
 
 IOperand const* Parser::createOperand(std::string str) {
-    if (_lexer.isComment(str))
+    if (_lexer->isComment(str))
         return nullptr;
-    eOperandType type = _lexer.getOperandType(str);
-    _lexer.hasBrackets(str);
-    if ((type >= Float && _lexer.isFloat(str)) ||
-            (type < Float && _lexer.isInt(str)))
+    eOperandType type = _lexer->getOperandType(str);
+    _lexer->hasBrackets(str);
+    if ((type >= Float && _lexer->isFloat(str)) ||
+            (type < Float && _lexer->isInt(str)))
         return OperandFactory::getFactory()->createOperand(type, str);
     else
         throw Lexer::UnexpectedNumericalValueSybolException();
 }
 
 bool Parser::hasExit() {
-    for (int i = 0; i < _code.size(); i++) {
+    for (int i = 0; i < static_cast<int>(_code.size()); i++) {
         if (_code.at(i).second != nullptr && _code.at(i).second->getType() == Token::EXIT)
             return true;
     }
     return false;
+}
+
+void Parser::setFilename(std::string const &str) {
+    _filename = str;
 }
 
 const char *Parser::NoExitException::what() const noexcept {
@@ -167,4 +177,8 @@ const char *Parser::ExpectedValueAfterException::what() const noexcept {
 
 const char *Parser::UnexpectedTokenException::what() const noexcept {
     return "Unexpected token after instruction";
+}
+
+const char *Parser::BrokenFileException::what() const noexcept {
+    return "Cannot open input file : Check the filename or access rights";
 }

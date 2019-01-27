@@ -14,10 +14,8 @@ class OperandFactory {
 public:
     static OperandFactory *getFactory();
     ~OperandFactory();
-    OperandFactory &operator=(OperandFactory const&rhs);
     IOperand const *createOperand(eOperandType type, std::string const &value) const;
 private:
-    OperandFactory(OperandFactory const&rhs);
     OperandFactory();
     IOperand const *createInt8(std::string const &value) const;
     IOperand const *createInt16(std::string const &value) const;
