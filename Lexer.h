@@ -45,6 +45,10 @@ class MissedBracketsException: public std::exception {
 public:
     const char *what() const noexcept;
 };
+class MissedOperandValueException: public std::exception {
+public:
+    const char *what() const noexcept;
+};
 };
 
 

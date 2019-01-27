@@ -12,13 +12,15 @@
 #include "Operand.h"
 #include "Token.h"
 #include "Parser.h"
+#include <map>
 
 
 class VirtualMachine {
 private:
     std::list<IOperand const *>values;
-    std::vector<std::pair<int, Token const*>>code;
+    std::vector<std::pair<int, Token *>>code;
     Parser *parser;
+    bool errorIgnore = false;
 
 public :
     VirtualMachine();
@@ -26,7 +28,7 @@ public :
     VirtualMachine &operator=(VirtualMachine const &src);
     ~VirtualMachine();
     void run();
-    void setFile(std::string const&filename);
+    void setFlag(std::string const& flag);
 
 class NotAssertTypeException: public std::exception {
 public:
@@ -50,20 +52,20 @@ public:
 };
 
 private:
-    void push(Token const *);
-    void pop(Token const *);
-    void dump(Token const *);
-    void assert(Token const *);
-    void add(Token const *);
-    void sub(Token const *);
-    void mul(Token const *);
-    void div(Token const *);
-    void mod(Token const *);
-    void print(Token const *);
-    void exit(Token const *);
-    void dump_type(Token const *);
+    void push(Token *);
+    void pop(Token *);
+    void dump(Token *);
+    void assert(Token *);
+    void add(Token  *);
+    void sub(Token *);
+    void mul(Token *);
+    void div(Token *);
+    void mod(Token *);
+    void print(Token *);
+    void exit(Token *);
+    void dump_type(Token *);
 
-    std::vector<void (VirtualMachine::*)(Token const *)> _functions = {
+    std::vector<void (VirtualMachine::*)(Token *)> _functions = {
             &VirtualMachine::push,
             &VirtualMachine::pop,
             &VirtualMachine::dump,
@@ -77,6 +79,7 @@ private:
             &VirtualMachine::exit,
             &VirtualMachine::dump_type
     };
+
 };
 
 

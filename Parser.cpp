@@ -24,14 +24,14 @@ Parser &Parser::operator=(Parser const &src) {
     return *this;
 }
 
-std::vector<std::pair<int, Token const *>> Parser::getCode() {
+std::vector<std::pair<int, Token *>> Parser::getCode(bool errorIgnore) {
     std::string str;
     int num = 0;
     if (_filename.empty()) {
         while (std::cin.good()) {
             num++;
             std::getline(std::cin, str);
-            if (parseCode(str, num))
+            if (parseCode(str, num, errorIgnore))
                 break;
         }
     }
@@ -42,7 +42,7 @@ std::vector<std::pair<int, Token const *>> Parser::getCode() {
             throw Parser::BrokenFileException();
         while (std::getline(i, str)) {
             num++;
-            if (parseCode(str, num))
+            if (parseCode(str, num, errorIgnore))
                 break;
         }
         i.close();
@@ -58,7 +58,7 @@ std::vector<std::pair<int, Token const *>> Parser::getCode() {
     return (_code);
 }
 
-bool Parser::parseCode(std::string str, int i) {
+bool Parser::parseCode(std::string str, int i, bool errorIgnore) {
     formatWhitespaces(str);
     Token *token = nullptr;
     try {
@@ -79,13 +79,19 @@ bool Parser::parseCode(std::string str, int i) {
         _code.insert(_code.end(), std::make_pair(i, token));
     }
     catch (Parser::NoExitException& e) {
-        _errors.insert(_errors.end(), std::make_pair(i, e.what()));
+        if (!errorIgnore)
+            _errors.insert(_errors.end(), std::make_pair(i, e.what()));
+        else
+            std::cout << "Error : line " << i << " : " << e.what() << std::endl;
         if (token != nullptr)
             delete(token);
         return true;
     }
     catch (std::exception& e) {
-        _errors.insert(_errors.end(), std::make_pair(i, "\"" + str + "\" : " + e.what()));
+        if (!errorIgnore)
+            _errors.insert(_errors.end(), std::make_pair(i, "\"" + str + "\" : " + e.what()));
+        else
+            std::cout << "Error : line " << i << " : \"" << str << "\" : " << e.what() << std::endl;
         if (token != nullptr)
             delete(token);
     }
@@ -172,6 +178,10 @@ bool Parser::hasCode() {
     bool r = *ret;
     delete(ret);
     return r;
+}
+
+std::string const &Parser::getFilename() const {
+    return _filename;
 }
 
 const char *Parser::NoExitException::what() const noexcept {

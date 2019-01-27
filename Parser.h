@@ -20,10 +20,10 @@ class Parser {
 private:
     Lexer *_lexer;
     std::string _filename;
-    std::vector<std::pair<int, Token const *>>_code = {};
+    std::vector<std::pair<int, Token *>>_code = {};
     std::vector<std::pair<int, std::string>>_errors = {};
 
-    bool parseCode(std::string code, int i);
+    bool parseCode(std::string code, int i, bool errorIgnore);
     bool createToken(std::string, Token **);
     void checkToken(Token const *);
     void formatWhitespaces(std::string &);
@@ -36,8 +36,9 @@ public:
     ~Parser();
     Parser(Parser const& src);
     Parser &operator=(Parser const &src);
-    std::vector<std::pair<int, Token const *>> getCode();
+    std::vector<std::pair<int, Token *>> getCode(bool errorIgnore);
     void setFilename(std::string const &str);
+    std::string const& getFilename() const;
 
 class NoExitException : public std::exception {
 public:

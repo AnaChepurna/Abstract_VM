@@ -87,6 +87,8 @@ bool Lexer::isFloat(std::string &str) const {
 }
 
 bool Lexer::hasBrackets(std::string &str) const {
+    if (str.empty())
+        throw MissedOperandValueException();
     if (std::regex_match(str, std::regex(R"(^\(.+\)$)"))) {
         str = str.substr(1, str.size() - 2);
         return true;
@@ -112,4 +114,8 @@ const char *Lexer::UnexpectedNumericalValueSybolException::what() const throw() 
 
 const char *Lexer::MissedBracketsException::what() const noexcept {
     return "Missed brackets in operand declaration";
+}
+
+const char *Lexer::MissedOperandValueException::what() const noexcept {
+    return "Missed value in operand declaration";
 }
