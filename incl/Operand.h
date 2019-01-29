@@ -12,6 +12,8 @@
 #include <vector>
 #include <iomanip>
 
+#define ABS(x) (x < 0 ? x : -x)
+
 template <typename T>
 class Operand: public IOperand {
 private:
@@ -88,6 +90,12 @@ public:
     IOperand const * operator*( IOperand const &rhs ) const override {
         auto rhsValue = static_cast<long double>(stod(rhs.toString()));
         auto value = static_cast<long double>(stod(toString()));
+        if (ABS(DBL_MAX / rhsValue) < ABS(value)) {
+            if ((rhsValue > 0 && value > 0)||(rhsValue < 0 && value < 0))
+                throw Error::LimitOverflowException();
+            else
+                throw Error::LimitUnderflowException();
+        }
         value *= rhsValue;
 
         std::stringstream stringStream;

@@ -5,7 +5,8 @@
 #include "Token.h"
 
 std::vector<std::string> const Token::pattern = {"push", "pop", "dump", "assert", "add",
-                                                 "sub", "mul", "div", "mod", "print", "exit", "dump_type"};
+                                                 "sub", "mul", "div", "mod", "print", "exit", "dump_type",
+                                                 "color"};
 
 Token::Token(Token::eTokenType type): _tokenType(type) {}
 

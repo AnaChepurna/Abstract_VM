@@ -11,7 +11,7 @@
 class Token {
 public:
     enum eTokenType {
-        PUSH, POP, DUMP, ASSERT, ADD, SUB, MUL, DIV, MOD, PRINT, EXIT, DUMP_TYPE
+        PUSH, POP, DUMP, ASSERT, ADD, SUB, MUL, DIV, MOD, PRINT, EXIT, DUMP_TYPE, COLOR
     };
 
 private:

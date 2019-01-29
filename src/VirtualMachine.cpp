@@ -35,7 +35,7 @@ void VirtualMachine::push(Token *token) {
 
 void VirtualMachine::pop(Token *) {
     if (values.empty())
-        throw OperationOnEmptyStackException();
+        throw Error::OperationOnEmptyStackException();
     values.pop_front();
 }
 
@@ -47,19 +47,19 @@ void VirtualMachine::dump(Token *) {
 
 void VirtualMachine::assert(Token *token)  {
     if (values.empty())
-        throw OperationOnEmptyStackException();
+        throw Error::OperationOnEmptyStackException();
     IOperand const*own = values.front();
     if (token->getValue()->getType() != own->getType())
-        throw NotAssertTypeException();
+        throw Error::NotAssertTypeException();
     else if (stod(token->getValue()->toString()) != stod(own->toString()))
-        throw NotAssertValueException();
+        throw Error::NotAssertValueException();
 }
 
 void VirtualMachine::add(Token *token){
     if (values.empty())
-        throw OperationOnEmptyStackException();
+        throw Error::OperationOnEmptyStackException();
     else if (values.size() < 2)
-        throw LessThanTwoValuesInStackException();
+        throw Error::LessThanTwoValuesInStackException();
     IOperand const *first = values.front();
     values.pop_front();
     IOperand const *second = values.front();
@@ -71,9 +71,9 @@ void VirtualMachine::add(Token *token){
 
 void VirtualMachine::sub(Token *token) {
     if (values.empty())
-        throw OperationOnEmptyStackException();
+        throw Error::OperationOnEmptyStackException();
     else if (values.size() < 2)
-        throw LessThanTwoValuesInStackException();
+        throw Error::LessThanTwoValuesInStackException();
     IOperand const *first = values.front();
     values.pop_front();
     IOperand const *second = values.front();
@@ -85,9 +85,9 @@ void VirtualMachine::sub(Token *token) {
 
 void VirtualMachine::mul(Token *token) {
     if (values.empty())
-        throw OperationOnEmptyStackException();
+        throw Error::OperationOnEmptyStackException();
     else if (values.size() < 2)
-        throw LessThanTwoValuesInStackException();
+        throw Error::LessThanTwoValuesInStackException();
     IOperand const *first = values.front();
     values.pop_front();
     IOperand const *second = values.front();
@@ -99,12 +99,12 @@ void VirtualMachine::mul(Token *token) {
 
 void VirtualMachine::div(Token *token) {
     if (values.empty())
-        throw OperationOnEmptyStackException();
+        throw Error::OperationOnEmptyStackException();
     else if (values.size() < 2)
-        throw LessThanTwoValuesInStackException();
+        throw Error::LessThanTwoValuesInStackException();
     IOperand const *first = values.front();
     if (stod(first->toString()) == 0)
-        throw DevisionByZeroException();
+        throw Error::DevisionByZeroException();
     values.pop_front();
     IOperand const *second = values.front();
     values.pop_front();
@@ -115,12 +115,12 @@ void VirtualMachine::div(Token *token) {
 
 void VirtualMachine::mod(Token *token) {
     if (values.empty())
-        throw OperationOnEmptyStackException();
+        throw Error::OperationOnEmptyStackException();
     else if (values.size() < 2)
-        throw LessThanTwoValuesInStackException();
+        throw Error::LessThanTwoValuesInStackException();
     IOperand const *first = values.front();
     if (stod(first->toString()) == 0)
-        throw DevisionByZeroException();
+        throw Error::DevisionByZeroException();
     values.pop_front();
     IOperand const *second = values.front();
     values.pop_front();
@@ -131,10 +131,10 @@ void VirtualMachine::mod(Token *token) {
 
 void VirtualMachine::print(Token *) {
     if (values.empty())
-        throw OperationOnEmptyStackException();
+        throw Error::OperationOnEmptyStackException();
     IOperand const *operand = values.front();
     if (operand->getType() != Int8)
-        throw NotAssertTypeException();
+        throw Error::NotAssertTypeException();
     auto c = static_cast<char>(std::stoi(operand->toString()));
     std::cout << c << std::endl;
 }
@@ -166,7 +166,7 @@ void VirtualMachine::run() {
                 if (!*error && pair.second != nullptr)
                     (this->*_functions.at(pair.second->getType()))(pair.second);
             } catch (std::exception &e) {
-                std::cout << "Error : line " << pair.first << " : \"" << pair.second->getTypeString() << "\" : " << e.what() << std::endl;
+                std::cout << "\x1B[0mError : line " << pair.first << " : \"" << pair.second->getTypeString() << "\" : " << e.what() << std::endl;
                 if (!errorIgnore)
                     *error = true;
             }
@@ -206,23 +206,14 @@ void VirtualMachine::setFlag(std::string const &flag) {
         throw std::exception();
 }
 
-
-const char *VirtualMachine::NotAssertTypeException::what() const noexcept {
-    return "Operand in stack has wrong type";
+void VirtualMachine::color(Token *) {
+    if (values.empty())
+        throw Error::OperationOnEmptyStackException();
+    IOperand const *operand = values.front();
+    if (operand->getType() != Int8)
+        throw Error::NotAssertTypeException();
+    int c = std::stoi(operand->toString());
+    if (c == 0 || (c > 30 && c < 38))
+        std::cout << "\x1B[" <<  c << "m";
 }
 
-const char *VirtualMachine::NotAssertValueException::what() const noexcept {
-    return "Operand in stack has different value";
-}
-
-const char *VirtualMachine::DevisionByZeroException::what() const noexcept {
-    return "Division/modulo by zero";
-}
-
-const char *VirtualMachine::OperationOnEmptyStackException::what() const noexcept {
-    return "Operation on empty stack";
-}
-
-const char *VirtualMachine::LessThanTwoValuesInStackException::what() const noexcept {
-    return "Arithmetic instruction needs at least two operands in stack";
-}

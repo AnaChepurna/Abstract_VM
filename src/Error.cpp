@@ -2,8 +2,6 @@
 // Created by Anastasia CHEPURNA on 2019-01-29.
 //
 
-#include <incl/Error.h>
-
 #include "Error.h"
 
 const char *Error::UnexpectedLexemException::what() const throw() {
@@ -60,5 +58,25 @@ const char *Error::BrokenFileException::what() const noexcept {
 
 const char *Error::NoRecognizedCodeException::what() const noexcept {
     return "Cannot recognize any token : Check input data format";
+}
+
+const char *Error::NotAssertTypeException::what() const noexcept {
+    return "Operand in stack has wrong type";
+}
+
+const char *Error::NotAssertValueException::what() const noexcept {
+    return "Operand in stack has different value";
+}
+
+const char *Error::DevisionByZeroException::what() const noexcept {
+    return "Division/modulo by zero";
+}
+
+const char *Error::OperationOnEmptyStackException::what() const noexcept {
+    return "Operation on empty stack";
+}
+
+const char *Error::LessThanTwoValuesInStackException::what() const noexcept {
+    return "Arithmetic instruction needs at least two operands in stack";
 }
 

@@ -6,14 +6,16 @@ FSRC =       Lexer.cpp \
             Parser.cpp \
             Token.cpp \
             VirtualMachine.cpp \
-            main.cpp
-FINCL =      IOperand.h \
+            main.cpp \
+            Error.cpp
+FINCL =     IOperand.h \
             Lexer.h \
             Operand.h \
             OperandFactory.h \
             Parser.h \
             Token.h \
-            VirtualMachine.h
+            VirtualMachine.h \
+            Error.h
 SRC_DIR = src/
 INCL_DIR = incl/
 OBJ_DIR = obj/

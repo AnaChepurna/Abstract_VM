@@ -48,6 +48,8 @@ Token *Lexer::getToken(std::string str) const {
                     return new Token(Token::EXIT);
                 case Token::DUMP_TYPE :
                     return new Token(Token::DUMP_TYPE);
+                case Token::COLOR:
+                    return new Token(Token::COLOR);
             }
             break;
         }
