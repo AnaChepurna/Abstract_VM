@@ -45,13 +45,13 @@ std::map<int, Token *> Parser::getCode(bool errorIgnore) {
             if (parseCode(str, num, errorIgnore))
                 break;
         }
-        try {
-            if (!hasExit())
-                throw NoExitException();
-        } catch (std::exception &e) {
-            _errors.insert(_errors.end(), std::make_pair(static_cast<int>(_code.size()) + 1, e.what()));
-        }
         i.close();
+    }
+    try {
+        if (!hasExit())
+            throw NoExitException();
+    } catch (std::exception &e) {
+        _errors.insert(_errors.end(), std::make_pair(static_cast<int>(_code.size()) + 1, e.what()));
     }
     if (_code.empty() || !hasCode())
         throw NoRecognizedCodeException();
