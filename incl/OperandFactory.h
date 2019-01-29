@@ -5,7 +5,7 @@
 #ifndef ABSTRACT_VM_OPERANDFACTORY_H
 #define ABSTRACT_VM_OPERANDFACTORY_H
 
-#include "IOperand.h"
+#include "incl/IOperand.h"
 #include <vector>
 #include <limits>
 #include "float.h"

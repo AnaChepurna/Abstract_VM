@@ -24,7 +24,7 @@ VirtualMachine &VirtualMachine::operator=(VirtualMachine const &src) {
         if (p.second->getValue() != nullptr)
             token->setOperand(OperandFactory::getFactory()->createOperand(
                     p.second->getValue()->getType(), p.second->getValue()->toString()));
-        this->code.emplace_back(i, token);
+        this->code.insert(code.end(), std::make_pair(i, token));
     });
     return *this;
 }
@@ -144,6 +144,10 @@ void VirtualMachine::exit(Token *) {
 
 VirtualMachine::~VirtualMachine() {
     values.clear();
+    std::for_each(code.begin(), code.end(), [] (std::pair<int, Token *> p) {
+        if (p.second != nullptr)
+            delete(p.second);
+    });
     code.clear();
     _functions.clear();
     delete(parser);

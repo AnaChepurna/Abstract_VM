@@ -24,7 +24,7 @@ Parser &Parser::operator=(Parser const &src) {
     return *this;
 }
 
-std::vector<std::pair<int, Token *>> Parser::getCode(bool errorIgnore) {
+std::map<int, Token *> Parser::getCode(bool errorIgnore) {
     std::string str;
     int num = 0;
     if (_filename.empty()) {
@@ -158,11 +158,14 @@ IOperand const* Parser::createOperand(std::string str) {
 }
 
 bool Parser::hasExit() {
-    for (int i = 0; i < static_cast<int>(_code.size()); i++) {
-        if (_code.at(i).second != nullptr && _code.at(i).second->getType() == Token::EXIT)
-            return true;
-    }
-    return false;
+    bool *ret = new bool(false);
+    std::for_each(_code.begin(), _code.end(), [ret] (std::pair<int, Token const *> p){
+        if (p.second != nullptr && p.second->getType() == Token::EXIT)
+            *ret = true;
+    });
+    bool r = *ret;
+    delete(ret);
+    return r;
 }
 
 void Parser::setFilename(std::string const &str) {

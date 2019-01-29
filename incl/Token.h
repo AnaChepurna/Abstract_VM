@@ -5,7 +5,7 @@
 #ifndef ABSTRACT_VM_TOKEN_H
 #define ABSTRACT_VM_TOKEN_H
 
-#include "IOperand.h"
+#include "incl/IOperand.h"
 #include <vector>
 
 class Token {

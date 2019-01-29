@@ -15,6 +15,5 @@ int main(int argc, char **argv)
 		}
 	}
 	virtualMachine.run();
-	while (42) {};
 	return (0);
 }

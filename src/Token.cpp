@@ -10,6 +10,8 @@ std::vector<std::string> const Token::pattern = {"push", "pop", "dump", "assert"
 Token::Token(Token::eTokenType type): _tokenType(type) {}
 
 Token::~Token() {
+    if (_value != nullptr)
+        delete(_value);
 }
 
 Token::Token(Token const &src) {

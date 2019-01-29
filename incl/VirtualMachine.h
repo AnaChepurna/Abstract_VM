@@ -8,17 +8,17 @@
 #include <iostream>
 #include <fstream>
 #include <list>
-#include "IOperand.h"
-#include "Operand.h"
-#include "Token.h"
-#include "Parser.h"
+#include "incl/IOperand.h"
+#include "incl/Operand.h"
+#include "incl/Token.h"
+#include "incl/Parser.h"
 #include <map>
 
 
 class VirtualMachine {
 private:
     std::list<IOperand const *>values;
-    std::vector<std::pair<int, Token *>>code;
+    std::map<int, Token *>code;
     Parser *parser;
     bool errorIgnore = false;
 
