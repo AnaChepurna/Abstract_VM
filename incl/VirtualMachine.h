@@ -44,6 +44,8 @@ private:
     void exit(Token *);
     void dump_type(Token *);
     void color(Token *);
+    void abs(Token *);
+    void up(Token *);
 
     std::vector<void (VirtualMachine::*)(Token *)> _functions = {
             &VirtualMachine::push,
@@ -58,7 +60,9 @@ private:
             &VirtualMachine::print,
             &VirtualMachine::exit,
             &VirtualMachine::dump_type,
-            &VirtualMachine::color
+            &VirtualMachine::color,
+            &VirtualMachine::abs,
+            &VirtualMachine::up
     };
 
 };

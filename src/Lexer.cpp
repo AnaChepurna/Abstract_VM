@@ -50,6 +50,10 @@ Token *Lexer::getToken(std::string str) const {
                     return new Token(Token::DUMP_TYPE);
                 case Token::COLOR:
                     return new Token(Token::COLOR);
+                case Token::ABS:
+                    return new Token(Token::ABS);
+                case Token::UP:
+                    return new Token(Token::UP);
             }
             break;
         }

@@ -217,3 +217,32 @@ void VirtualMachine::color(Token *) {
         std::cout << "\x1B[" <<  c << "m";
 }
 
+void VirtualMachine::abs(Token *token) {
+    if (values.empty())
+        throw Error::OperationOnEmptyStackException();
+    IOperand const *operand = values.front();
+    auto value = static_cast<long double>(stod(operand->toString()));
+    if (value < 0)
+    {
+        values.pop_front();
+        value = -value;
+        std::stringstream str;
+        str << value;
+        IOperand const *res = OperandFactory::getFactory()->createOperand(operand->getType(), str.str());
+        token->setOperand(res);
+        values.push_front(res);
+    }
+}
+
+void VirtualMachine::up(Token *token) {
+    if (values.empty())
+        throw Error::OperationOnEmptyStackException();
+    IOperand const *operand = values.front();
+    if (operand->getType() == Double)
+        throw Error::LimitOverflowException();
+    values.pop_front();
+    IOperand const *res = OperandFactory::getFactory()->createOperand(static_cast<eOperandType>(operand->getType() + 1), operand->toString());
+    token->setOperand(res);
+    values.push_front(res);
+}
+
