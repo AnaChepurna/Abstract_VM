@@ -56,9 +56,9 @@ Token *Lexer::getToken(std::string str) const {
         if (str.compare(0, Token::pattern[i].size(), Token::pattern[i]) == 0) {
             str = str.substr(Token::pattern[i].size());
             if (!str.empty())
-                throw MissedWhitespaceException();
+                throw Error::MissedWhitespaceException();
         }
-    throw UnexpectedLexemException();
+    throw Error::UnexpectedLexemException();
 }
 
 bool Lexer::isComment(std::string str) const {
@@ -73,7 +73,7 @@ eOperandType Lexer::getOperandType(std::string &str) const {
             return static_cast<eOperandType>(i);
         }
     }
-    throw Lexer::UnknownOperandTypeException();
+    throw Error::UnknownOperandTypeException();
 }
 
 bool Lexer::isInt(std::string &str) const {
@@ -88,34 +88,11 @@ bool Lexer::isFloat(std::string &str) const {
 
 bool Lexer::hasBrackets(std::string &str) const {
     if (str.empty())
-        throw MissedOperandValueException();
+        throw Error::MissedOperandValueException();
     if (std::regex_match(str, std::regex(R"(^\(.+\)$)"))) {
         str = str.substr(1, str.size() - 2);
         return true;
     }
-    throw Lexer::MissedBracketsException();
+    throw Error::MissedBracketsException();
 }
 
-const char *Lexer::UnexpectedLexemException::what() const throw() {
-    return "Unknown instruction";
-}
-
-const char *Lexer::MissedWhitespaceException::what() const throw() {
-    return "Missed whitespace after instruction";
-}
-
-const char *Lexer::UnknownOperandTypeException::what() const throw() {
-    return "Unknown operand type";
-}
-
-const char *Lexer::UnexpectedNumericalValueSybolException::what() const throw() {
-    return "Unexpected symbol in numerical value";
-}
-
-const char *Lexer::MissedBracketsException::what() const noexcept {
-    return "Missed brackets in operand declaration";
-}
-
-const char *Lexer::MissedOperandValueException::what() const noexcept {
-    return "Missed value in operand declaration";
-}

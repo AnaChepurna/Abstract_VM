@@ -19,4 +19,6 @@ add_executable(Abstract_VM
         incl/Token.h
         src/Token.cpp
         src/OperandFactory.cpp
-        incl/OperandFactory.h)
+        incl/OperandFactory.h
+        src/Error.cpp
+        incl/Error.h)

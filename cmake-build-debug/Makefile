@@ -123,6 +123,33 @@ Abstract_VM/fast:
 	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/build
 .PHONY : Abstract_VM/fast
 
+src/Error.o: src/Error.cpp.o
+
+.PHONY : src/Error.o
+
+# target to build an object file
+src/Error.cpp.o:
+	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/src/Error.cpp.o
+.PHONY : src/Error.cpp.o
+
+src/Error.i: src/Error.cpp.i
+
+.PHONY : src/Error.i
+
+# target to preprocess a source file
+src/Error.cpp.i:
+	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/src/Error.cpp.i
+.PHONY : src/Error.cpp.i
+
+src/Error.s: src/Error.cpp.s
+
+.PHONY : src/Error.s
+
+# target to generate assembly for a file
+src/Error.cpp.s:
+	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/src/Error.cpp.s
+.PHONY : src/Error.cpp.s
+
 src/Lexer.o: src/Lexer.cpp.o
 
 .PHONY : src/Lexer.o
@@ -294,6 +321,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Abstract_VM"
+	@echo "... src/Error.o"
+	@echo "... src/Error.i"
+	@echo "... src/Error.s"
 	@echo "... src/Lexer.o"
 	@echo "... src/Lexer.i"
 	@echo "... src/Lexer.s"

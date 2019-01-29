@@ -18,47 +18,87 @@ OperandFactory::OperandFactory() {
 }
 
 IOperand const *OperandFactory::createInt8(std::string const &value) const {
-    int64_t val = std::stoll(value);
+    int64_t val;
+    try {
+        val = std::stoll(value);
+    } catch (std::exception &e) {
+        if (value[0] == '-')
+            throw Error::LimitUnderflowException();
+        else
+            throw Error::LimitOverflowException();
+    }
     if (val > INT8_MAX)
-        throw OperandFactory::LimitOverflowException();
+        throw Error::LimitOverflowException();
     else if (val < INT8_MIN)
-        throw  OperandFactory::LimitUnderflowException();
+        throw  Error::LimitUnderflowException();
     return new Operand<int8_t>(Int8, static_cast<int8_t >(val));
 }
 
 IOperand const *OperandFactory::createInt16(std::string const &value) const {
-    int64_t val = std::stoll(value);;
+    int64_t val;
+    try {
+        val = std::stoll(value);
+    } catch (std::exception &e) {
+        if (value[0] == '-')
+            throw Error::LimitUnderflowException();
+        else
+            throw Error::LimitOverflowException();
+    }
     if (val > INT16_MAX)
-        throw OperandFactory::LimitOverflowException();
+        throw Error::LimitOverflowException();
     else if (val < INT16_MIN)
-        throw  OperandFactory::LimitUnderflowException();
+        throw  Error::LimitUnderflowException();
     return new Operand<int16_t>(Int16, static_cast<int16_t >(val));
 }
 
 IOperand const *OperandFactory::createInt32(std::string const &value) const {
-    int64_t val = std::stoll(value);
+    int64_t val;
+    try {
+        val = std::stoll(value);
+    } catch (std::exception &e) {
+        if (value[0] == '-')
+            throw Error::LimitUnderflowException();
+        else
+            throw Error::LimitOverflowException();
+    }
     if (val > INT32_MAX)
-        throw OperandFactory::LimitOverflowException();
+        throw Error::LimitOverflowException();
     else if (val < INT32_MIN)
-        throw  OperandFactory::LimitUnderflowException();
+        throw  Error::LimitUnderflowException();
     return new Operand<int32_t>(Int32, static_cast<int32_t >(val));
 }
 
 IOperand const *OperandFactory::createFloat(std::string const &value) const {
-    long double val = std::stod(value);
+    long double val;
+    try {
+        val = std::stod(value);
+    } catch (std::exception &e) {
+        if (value[0] == '-')
+            throw Error::LimitUnderflowException();
+        else
+            throw Error::LimitOverflowException();
+    }
     if (val > FLT_MAX)
-        throw OperandFactory::LimitOverflowException();
+        throw Error::LimitOverflowException();
     else if (val < -FLT_MAX)
-        throw  OperandFactory::LimitUnderflowException();
+        throw  Error::LimitUnderflowException();
     return new Operand<float>(Float, static_cast<float >(val));
 }
 
 IOperand const *OperandFactory::createDouble(std::string const &value) const {
-    long double val = std::stod(value);
+    long double val;
+    try {
+        val = std::stod(value);
+    } catch (std::exception &e) {
+        if (value[0] == '-')
+            throw Error::LimitUnderflowException();
+        else
+            throw Error::LimitOverflowException();
+    }
     if (val > DBL_MAX)
-        throw OperandFactory::LimitOverflowException();
+        throw Error::LimitOverflowException();
     else if (val < -DBL_MAX)
-        throw  OperandFactory::LimitUnderflowException();
+        throw  Error::LimitUnderflowException();
     return new Operand<double>(Double, static_cast<double >(val));
 }
 
@@ -69,12 +109,4 @@ OperandFactory *OperandFactory::getFactory() {
     if (_factory == nullptr)
         _factory = new OperandFactory();
     return _factory;
-}
-
-const char *OperandFactory::LimitOverflowException::what() const noexcept {
-    return "Limit overflow";
-}
-
-const char *OperandFactory::LimitUnderflowException::what() const noexcept {
-    return "Limit underflow";
 }

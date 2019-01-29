@@ -41,30 +41,6 @@ public:
     void setFilename(std::string const &str);
     std::string const& getFilename() const;
 
-class NoExitException : public std::exception {
-public:
-    const char *what() const throw();
-};
-class TokenAfterExitException : public std::exception {
-public:
-    const char *what() const throw();
-};
-class ExpectedValueAfterException : public std::exception {
-public:
-    const char *what() const throw();
-};
-class UnexpectedTokenException : public std::exception {
-public:
-    const char *what() const throw();
-};
-class BrokenFileException : public std::exception {
-public:
-    const char *what() const throw();
-};
-class NoRecognizedCodeException : public std::exception {
-public:
-    const char *what() const throw();
-};
 };
 
 

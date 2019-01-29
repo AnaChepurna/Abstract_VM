@@ -9,6 +9,7 @@
 #include <regex>
 #include "Token.h"
 #include "OperandFactory.h"
+#include "Error.h"
 
 
 class Lexer {
@@ -23,32 +24,6 @@ public:
     bool hasBrackets(std::string &str) const;
     bool isInt(std::string& str) const;
     bool isFloat(std::string& str) const;
-
-class UnexpectedLexemException: public std::exception {
-public:
-    const char *what() const noexcept;
-};
-class MissedWhitespaceException : public std::exception {
-public:
-    const char *what() const noexcept;
-};
-class UnknownOperandTypeException : public std::exception {
-public:
-    const char *what() const noexcept;
-};
-class UnexpectedNumericalValueSybolException : public  std::exception {
-public:
-    const char *what() const noexcept;
-};
-
-class MissedBracketsException: public std::exception {
-public:
-    const char *what() const noexcept;
-};
-class MissedOperandValueException: public std::exception {
-public:
-    const char *what() const noexcept;
-};
 };
 
 

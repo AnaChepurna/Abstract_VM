@@ -39,7 +39,7 @@ std::map<int, Token *> Parser::getCode(bool errorIgnore) {
         std::fstream i;
         i.open(_filename);
         if (!i.good())
-            throw Parser::BrokenFileException();
+            throw Error::BrokenFileException();
         while (std::getline(i, str)) {
             num++;
             if (parseCode(str, num, errorIgnore))
@@ -49,12 +49,12 @@ std::map<int, Token *> Parser::getCode(bool errorIgnore) {
     }
     try {
         if (!hasExit())
-            throw NoExitException();
+            throw Error::NoExitException();
     } catch (std::exception &e) {
         _errors.insert(_errors.end(), std::make_pair(static_cast<int>(_code.size()) + 1, e.what()));
     }
     if (_code.empty() || !hasCode())
-        throw NoRecognizedCodeException();
+        throw Error::NoRecognizedCodeException();
     if (!_errors.empty()) {
         std::for_each(_errors.begin(), _errors.end(), [](std::pair<int, std::string> pair) {
             std::cout << "Error : line " << pair.first << " : " << pair.second << std::endl;
@@ -70,7 +70,7 @@ bool Parser::parseCode(std::string str, int i, bool errorIgnore) {
     try {
         if (_lexer->isEnd(str)) {
             if (!hasExit())
-                throw Parser::NoExitException();
+                throw Error::NoExitException();
             return true;
         }
         std::stringstream stream(str);
@@ -84,7 +84,7 @@ bool Parser::parseCode(std::string str, int i, bool errorIgnore) {
             checkToken(token);
         _code.insert(_code.end(), std::make_pair(i, token));
     }
-    catch (Parser::NoExitException& e) {
+    catch (Error::NoExitException& e) {
             _errors.insert(_errors.end(), std::make_pair(i, e.what()));
         if (token != nullptr)
             delete(token);
@@ -102,13 +102,13 @@ bool Parser::parseCode(std::string str, int i, bool errorIgnore) {
 }
 
 bool Parser::createToken(std::string substr, Token **const token) {
-    if (substr.empty())
-        return false;
-    if (hasExit())
-        throw Parser::TokenAfterExitException();
     unsigned long com = substr.find(';');
     if (com < UINT64_MAX)
         substr = substr.substr(0, com);
+    if (substr.empty())
+        return false;
+    if (hasExit())
+        throw Error::TokenAfterExitException();
     if (*token == nullptr) {
         *token = _lexer->getToken(substr);
         if (*token == nullptr)
@@ -120,19 +120,19 @@ bool Parser::createToken(std::string substr, Token **const token) {
             return true;
     }
     else if (!_lexer->isComment(substr))
-        throw Parser::UnexpectedTokenException();
+        throw Error::UnexpectedTokenException();
     return com < UINT64_MAX;
 }
 
 void Parser::checkToken(Token const *token) {
     if (token->getType() == Token::PUSH || token->getType() == Token::ASSERT) {
         if (token->getValue() == nullptr) {
-            throw Parser::ExpectedValueAfterException();
+            throw Error::ExpectedValueAfterException();
         }
     }
     else
         if (token->getValue() != nullptr) {
-            throw Parser::UnexpectedTokenException();
+            throw Error::UnexpectedTokenException();
         }
 }
 
@@ -157,7 +157,7 @@ IOperand const* Parser::createOperand(std::string str) {
             (type < Float && _lexer->isInt(str)))
         return OperandFactory::getFactory()->createOperand(type, str);
     else
-        throw Lexer::UnexpectedNumericalValueSybolException();
+        throw Error::UnexpectedNumericalValueSybolException();
 }
 
 bool Parser::hasExit() {
@@ -188,29 +188,5 @@ bool Parser::hasCode() {
 
 std::string const &Parser::getFilename() const {
     return _filename;
-}
-
-const char *Parser::NoExitException::what() const noexcept {
-    return "No exit instruction in the end of program";
-}
-
-const char *Parser::TokenAfterExitException::what() const noexcept {
-    return "Token after exit instruction";
-}
-
-const char *Parser::ExpectedValueAfterException::what() const noexcept {
-    return "Expecting operand after instruction";
-}
-
-const char *Parser::UnexpectedTokenException::what() const noexcept {
-    return "Unexpected token after instruction";
-}
-
-const char *Parser::BrokenFileException::what() const noexcept {
-    return "Cannot open input file : Check the filename or access rights";
-}
-
-const char *Parser::NoRecognizedCodeException::what() const noexcept {
-    return "Cannot recognize any token : Check input data format";
 }
 
