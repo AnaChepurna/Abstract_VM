@@ -3,19 +3,20 @@ project(Abstract_VM)
 
 set(CMAKE_CXX_STANDARD 14)
 
-include_directories(.)
+include_directories(.
+        incl)
 
 add_executable(Abstract_VM
-        IOperand.h
-        Lexer.cpp
-        Lexer.h
-        main.cpp
-        Parser.cpp
-        Parser.h
-        VirtualMachine.cpp
-        VirtualMachine.h
-        Operand.h
-        Token.h
-        Token.cpp
-        OperandFactory.cpp
-        OperandFactory.h)
+        incl/IOperand.h
+        src/Lexer.cpp
+        incl/Lexer.h
+        src/main.cpp
+        src/Parser.cpp
+        incl/Parser.h
+        src/VirtualMachine.cpp
+        incl/VirtualMachine.h
+        incl/Operand.h
+        incl/Token.h
+        src/Token.cpp
+        src/OperandFactory.cpp
+        incl/OperandFactory.h)

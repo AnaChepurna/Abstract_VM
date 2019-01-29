@@ -123,167 +123,167 @@ Abstract_VM/fast:
 	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/build
 .PHONY : Abstract_VM/fast
 
-Lexer.o: Lexer.cpp.o
+src/Lexer.o: src/Lexer.cpp.o
 
-.PHONY : Lexer.o
-
-# target to build an object file
-Lexer.cpp.o:
-	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/Lexer.cpp.o
-.PHONY : Lexer.cpp.o
-
-Lexer.i: Lexer.cpp.i
-
-.PHONY : Lexer.i
-
-# target to preprocess a source file
-Lexer.cpp.i:
-	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/Lexer.cpp.i
-.PHONY : Lexer.cpp.i
-
-Lexer.s: Lexer.cpp.s
-
-.PHONY : Lexer.s
-
-# target to generate assembly for a file
-Lexer.cpp.s:
-	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/Lexer.cpp.s
-.PHONY : Lexer.cpp.s
-
-OperandFactory.o: OperandFactory.cpp.o
-
-.PHONY : OperandFactory.o
+.PHONY : src/Lexer.o
 
 # target to build an object file
-OperandFactory.cpp.o:
-	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/OperandFactory.cpp.o
-.PHONY : OperandFactory.cpp.o
+src/Lexer.cpp.o:
+	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/src/Lexer.cpp.o
+.PHONY : src/Lexer.cpp.o
 
-OperandFactory.i: OperandFactory.cpp.i
+src/Lexer.i: src/Lexer.cpp.i
 
-.PHONY : OperandFactory.i
+.PHONY : src/Lexer.i
 
 # target to preprocess a source file
-OperandFactory.cpp.i:
-	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/OperandFactory.cpp.i
-.PHONY : OperandFactory.cpp.i
+src/Lexer.cpp.i:
+	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/src/Lexer.cpp.i
+.PHONY : src/Lexer.cpp.i
 
-OperandFactory.s: OperandFactory.cpp.s
+src/Lexer.s: src/Lexer.cpp.s
 
-.PHONY : OperandFactory.s
+.PHONY : src/Lexer.s
 
 # target to generate assembly for a file
-OperandFactory.cpp.s:
-	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/OperandFactory.cpp.s
-.PHONY : OperandFactory.cpp.s
+src/Lexer.cpp.s:
+	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/src/Lexer.cpp.s
+.PHONY : src/Lexer.cpp.s
 
-Parser.o: Parser.cpp.o
+src/OperandFactory.o: src/OperandFactory.cpp.o
 
-.PHONY : Parser.o
+.PHONY : src/OperandFactory.o
 
 # target to build an object file
-Parser.cpp.o:
-	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/Parser.cpp.o
-.PHONY : Parser.cpp.o
+src/OperandFactory.cpp.o:
+	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/src/OperandFactory.cpp.o
+.PHONY : src/OperandFactory.cpp.o
 
-Parser.i: Parser.cpp.i
+src/OperandFactory.i: src/OperandFactory.cpp.i
 
-.PHONY : Parser.i
+.PHONY : src/OperandFactory.i
 
 # target to preprocess a source file
-Parser.cpp.i:
-	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/Parser.cpp.i
-.PHONY : Parser.cpp.i
+src/OperandFactory.cpp.i:
+	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/src/OperandFactory.cpp.i
+.PHONY : src/OperandFactory.cpp.i
 
-Parser.s: Parser.cpp.s
+src/OperandFactory.s: src/OperandFactory.cpp.s
 
-.PHONY : Parser.s
+.PHONY : src/OperandFactory.s
 
 # target to generate assembly for a file
-Parser.cpp.s:
-	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/Parser.cpp.s
-.PHONY : Parser.cpp.s
+src/OperandFactory.cpp.s:
+	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/src/OperandFactory.cpp.s
+.PHONY : src/OperandFactory.cpp.s
 
-Token.o: Token.cpp.o
+src/Parser.o: src/Parser.cpp.o
 
-.PHONY : Token.o
+.PHONY : src/Parser.o
 
 # target to build an object file
-Token.cpp.o:
-	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/Token.cpp.o
-.PHONY : Token.cpp.o
+src/Parser.cpp.o:
+	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/src/Parser.cpp.o
+.PHONY : src/Parser.cpp.o
 
-Token.i: Token.cpp.i
+src/Parser.i: src/Parser.cpp.i
 
-.PHONY : Token.i
+.PHONY : src/Parser.i
 
 # target to preprocess a source file
-Token.cpp.i:
-	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/Token.cpp.i
-.PHONY : Token.cpp.i
+src/Parser.cpp.i:
+	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/src/Parser.cpp.i
+.PHONY : src/Parser.cpp.i
 
-Token.s: Token.cpp.s
+src/Parser.s: src/Parser.cpp.s
 
-.PHONY : Token.s
+.PHONY : src/Parser.s
 
 # target to generate assembly for a file
-Token.cpp.s:
-	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/Token.cpp.s
-.PHONY : Token.cpp.s
+src/Parser.cpp.s:
+	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/src/Parser.cpp.s
+.PHONY : src/Parser.cpp.s
 
-VirtualMachine.o: VirtualMachine.cpp.o
+src/Token.o: src/Token.cpp.o
 
-.PHONY : VirtualMachine.o
+.PHONY : src/Token.o
 
 # target to build an object file
-VirtualMachine.cpp.o:
-	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/VirtualMachine.cpp.o
-.PHONY : VirtualMachine.cpp.o
+src/Token.cpp.o:
+	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/src/Token.cpp.o
+.PHONY : src/Token.cpp.o
 
-VirtualMachine.i: VirtualMachine.cpp.i
+src/Token.i: src/Token.cpp.i
 
-.PHONY : VirtualMachine.i
+.PHONY : src/Token.i
 
 # target to preprocess a source file
-VirtualMachine.cpp.i:
-	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/VirtualMachine.cpp.i
-.PHONY : VirtualMachine.cpp.i
+src/Token.cpp.i:
+	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/src/Token.cpp.i
+.PHONY : src/Token.cpp.i
 
-VirtualMachine.s: VirtualMachine.cpp.s
+src/Token.s: src/Token.cpp.s
 
-.PHONY : VirtualMachine.s
+.PHONY : src/Token.s
 
 # target to generate assembly for a file
-VirtualMachine.cpp.s:
-	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/VirtualMachine.cpp.s
-.PHONY : VirtualMachine.cpp.s
+src/Token.cpp.s:
+	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/src/Token.cpp.s
+.PHONY : src/Token.cpp.s
 
-main.o: main.cpp.o
+src/VirtualMachine.o: src/VirtualMachine.cpp.o
 
-.PHONY : main.o
+.PHONY : src/VirtualMachine.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/main.cpp.o
-.PHONY : main.cpp.o
+src/VirtualMachine.cpp.o:
+	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/src/VirtualMachine.cpp.o
+.PHONY : src/VirtualMachine.cpp.o
 
-main.i: main.cpp.i
+src/VirtualMachine.i: src/VirtualMachine.cpp.i
 
-.PHONY : main.i
+.PHONY : src/VirtualMachine.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/main.cpp.i
-.PHONY : main.cpp.i
+src/VirtualMachine.cpp.i:
+	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/src/VirtualMachine.cpp.i
+.PHONY : src/VirtualMachine.cpp.i
 
-main.s: main.cpp.s
+src/VirtualMachine.s: src/VirtualMachine.cpp.s
 
-.PHONY : main.s
+.PHONY : src/VirtualMachine.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/main.cpp.s
-.PHONY : main.cpp.s
+src/VirtualMachine.cpp.s:
+	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/src/VirtualMachine.cpp.s
+.PHONY : src/VirtualMachine.cpp.s
+
+src/main.o: src/main.cpp.o
+
+.PHONY : src/main.o
+
+# target to build an object file
+src/main.cpp.o:
+	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
+
+src/main.i: src/main.cpp.i
+
+.PHONY : src/main.i
+
+# target to preprocess a source file
+src/main.cpp.i:
+	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
+
+src/main.s: src/main.cpp.s
+
+.PHONY : src/main.s
+
+# target to generate assembly for a file
+src/main.cpp.s:
+	$(MAKE) -f CMakeFiles/Abstract_VM.dir/build.make CMakeFiles/Abstract_VM.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
 
 # Help Target
 help:
@@ -294,24 +294,24 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Abstract_VM"
-	@echo "... Lexer.o"
-	@echo "... Lexer.i"
-	@echo "... Lexer.s"
-	@echo "... OperandFactory.o"
-	@echo "... OperandFactory.i"
-	@echo "... OperandFactory.s"
-	@echo "... Parser.o"
-	@echo "... Parser.i"
-	@echo "... Parser.s"
-	@echo "... Token.o"
-	@echo "... Token.i"
-	@echo "... Token.s"
-	@echo "... VirtualMachine.o"
-	@echo "... VirtualMachine.i"
-	@echo "... VirtualMachine.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... src/Lexer.o"
+	@echo "... src/Lexer.i"
+	@echo "... src/Lexer.s"
+	@echo "... src/OperandFactory.o"
+	@echo "... src/OperandFactory.i"
+	@echo "... src/OperandFactory.s"
+	@echo "... src/Parser.o"
+	@echo "... src/Parser.i"
+	@echo "... src/Parser.s"
+	@echo "... src/Token.o"
+	@echo "... src/Token.i"
+	@echo "... src/Token.s"
+	@echo "... src/VirtualMachine.o"
+	@echo "... src/VirtualMachine.i"
+	@echo "... src/VirtualMachine.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
 .PHONY : help
 
 

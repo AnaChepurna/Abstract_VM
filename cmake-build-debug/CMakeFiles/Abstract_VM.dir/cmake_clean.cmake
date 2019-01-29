@@ -1,10 +1,10 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Abstract_VM.dir/Lexer.cpp.o"
-  "CMakeFiles/Abstract_VM.dir/main.cpp.o"
-  "CMakeFiles/Abstract_VM.dir/Parser.cpp.o"
-  "CMakeFiles/Abstract_VM.dir/VirtualMachine.cpp.o"
-  "CMakeFiles/Abstract_VM.dir/Token.cpp.o"
-  "CMakeFiles/Abstract_VM.dir/OperandFactory.cpp.o"
+  "CMakeFiles/Abstract_VM.dir/src/Lexer.cpp.o"
+  "CMakeFiles/Abstract_VM.dir/src/main.cpp.o"
+  "CMakeFiles/Abstract_VM.dir/src/Parser.cpp.o"
+  "CMakeFiles/Abstract_VM.dir/src/VirtualMachine.cpp.o"
+  "CMakeFiles/Abstract_VM.dir/src/Token.cpp.o"
+  "CMakeFiles/Abstract_VM.dir/src/OperandFactory.cpp.o"
   "Abstract_VM.pdb"
   "Abstract_VM"
 )

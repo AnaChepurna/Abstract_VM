@@ -12,8 +12,8 @@
 #include <sstream>
 #include <algorithm>
 #include <utility>
-#include "incl/Lexer.h"
-#include "incl/OperandFactory.h"
+#include "Lexer.h"
+#include "OperandFactory.h"
 #include <map>
 
 

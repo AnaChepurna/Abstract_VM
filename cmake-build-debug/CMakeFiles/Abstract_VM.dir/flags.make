@@ -6,5 +6,5 @@ CXX_FLAGS = -g   -std=gnu++14
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/achepurn/Abstract_VM/. 
+CXX_INCLUDES = -I/Users/achepurn/Abstract_VM/. -I/Users/achepurn/Abstract_VM/incl 
 

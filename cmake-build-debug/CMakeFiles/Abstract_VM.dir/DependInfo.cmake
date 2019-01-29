@@ -4,18 +4,19 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/achepurn/Abstract_VM/Lexer.cpp" "/Users/achepurn/Abstract_VM/cmake-build-debug/CMakeFiles/Abstract_VM.dir/Lexer.cpp.o"
-  "/Users/achepurn/Abstract_VM/OperandFactory.cpp" "/Users/achepurn/Abstract_VM/cmake-build-debug/CMakeFiles/Abstract_VM.dir/OperandFactory.cpp.o"
-  "/Users/achepurn/Abstract_VM/Parser.cpp" "/Users/achepurn/Abstract_VM/cmake-build-debug/CMakeFiles/Abstract_VM.dir/Parser.cpp.o"
-  "/Users/achepurn/Abstract_VM/Token.cpp" "/Users/achepurn/Abstract_VM/cmake-build-debug/CMakeFiles/Abstract_VM.dir/Token.cpp.o"
-  "/Users/achepurn/Abstract_VM/VirtualMachine.cpp" "/Users/achepurn/Abstract_VM/cmake-build-debug/CMakeFiles/Abstract_VM.dir/VirtualMachine.cpp.o"
-  "/Users/achepurn/Abstract_VM/main.cpp" "/Users/achepurn/Abstract_VM/cmake-build-debug/CMakeFiles/Abstract_VM.dir/main.cpp.o"
+  "/Users/achepurn/Abstract_VM/src/Lexer.cpp" "/Users/achepurn/Abstract_VM/cmake-build-debug/CMakeFiles/Abstract_VM.dir/src/Lexer.cpp.o"
+  "/Users/achepurn/Abstract_VM/src/OperandFactory.cpp" "/Users/achepurn/Abstract_VM/cmake-build-debug/CMakeFiles/Abstract_VM.dir/src/OperandFactory.cpp.o"
+  "/Users/achepurn/Abstract_VM/src/Parser.cpp" "/Users/achepurn/Abstract_VM/cmake-build-debug/CMakeFiles/Abstract_VM.dir/src/Parser.cpp.o"
+  "/Users/achepurn/Abstract_VM/src/Token.cpp" "/Users/achepurn/Abstract_VM/cmake-build-debug/CMakeFiles/Abstract_VM.dir/src/Token.cpp.o"
+  "/Users/achepurn/Abstract_VM/src/VirtualMachine.cpp" "/Users/achepurn/Abstract_VM/cmake-build-debug/CMakeFiles/Abstract_VM.dir/src/VirtualMachine.cpp.o"
+  "/Users/achepurn/Abstract_VM/src/main.cpp" "/Users/achepurn/Abstract_VM/cmake-build-debug/CMakeFiles/Abstract_VM.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../."
+  "../incl"
   )
 
 # Targets to which this target links.

@@ -57,102 +57,102 @@ include CMakeFiles/Abstract_VM.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Abstract_VM.dir/flags.make
 
-CMakeFiles/Abstract_VM.dir/Lexer.cpp.o: CMakeFiles/Abstract_VM.dir/flags.make
-CMakeFiles/Abstract_VM.dir/Lexer.cpp.o: ../Lexer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/achepurn/Abstract_VM/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Abstract_VM.dir/Lexer.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Abstract_VM.dir/Lexer.cpp.o -c /Users/achepurn/Abstract_VM/Lexer.cpp
+CMakeFiles/Abstract_VM.dir/src/Lexer.cpp.o: CMakeFiles/Abstract_VM.dir/flags.make
+CMakeFiles/Abstract_VM.dir/src/Lexer.cpp.o: ../src/Lexer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/achepurn/Abstract_VM/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Abstract_VM.dir/src/Lexer.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Abstract_VM.dir/src/Lexer.cpp.o -c /Users/achepurn/Abstract_VM/src/Lexer.cpp
 
-CMakeFiles/Abstract_VM.dir/Lexer.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Abstract_VM.dir/Lexer.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/achepurn/Abstract_VM/Lexer.cpp > CMakeFiles/Abstract_VM.dir/Lexer.cpp.i
+CMakeFiles/Abstract_VM.dir/src/Lexer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Abstract_VM.dir/src/Lexer.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/achepurn/Abstract_VM/src/Lexer.cpp > CMakeFiles/Abstract_VM.dir/src/Lexer.cpp.i
 
-CMakeFiles/Abstract_VM.dir/Lexer.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Abstract_VM.dir/Lexer.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/achepurn/Abstract_VM/Lexer.cpp -o CMakeFiles/Abstract_VM.dir/Lexer.cpp.s
+CMakeFiles/Abstract_VM.dir/src/Lexer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Abstract_VM.dir/src/Lexer.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/achepurn/Abstract_VM/src/Lexer.cpp -o CMakeFiles/Abstract_VM.dir/src/Lexer.cpp.s
 
-CMakeFiles/Abstract_VM.dir/main.cpp.o: CMakeFiles/Abstract_VM.dir/flags.make
-CMakeFiles/Abstract_VM.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/achepurn/Abstract_VM/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Abstract_VM.dir/main.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Abstract_VM.dir/main.cpp.o -c /Users/achepurn/Abstract_VM/main.cpp
+CMakeFiles/Abstract_VM.dir/src/main.cpp.o: CMakeFiles/Abstract_VM.dir/flags.make
+CMakeFiles/Abstract_VM.dir/src/main.cpp.o: ../src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/achepurn/Abstract_VM/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Abstract_VM.dir/src/main.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Abstract_VM.dir/src/main.cpp.o -c /Users/achepurn/Abstract_VM/src/main.cpp
 
-CMakeFiles/Abstract_VM.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Abstract_VM.dir/main.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/achepurn/Abstract_VM/main.cpp > CMakeFiles/Abstract_VM.dir/main.cpp.i
+CMakeFiles/Abstract_VM.dir/src/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Abstract_VM.dir/src/main.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/achepurn/Abstract_VM/src/main.cpp > CMakeFiles/Abstract_VM.dir/src/main.cpp.i
 
-CMakeFiles/Abstract_VM.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Abstract_VM.dir/main.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/achepurn/Abstract_VM/main.cpp -o CMakeFiles/Abstract_VM.dir/main.cpp.s
+CMakeFiles/Abstract_VM.dir/src/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Abstract_VM.dir/src/main.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/achepurn/Abstract_VM/src/main.cpp -o CMakeFiles/Abstract_VM.dir/src/main.cpp.s
 
-CMakeFiles/Abstract_VM.dir/Parser.cpp.o: CMakeFiles/Abstract_VM.dir/flags.make
-CMakeFiles/Abstract_VM.dir/Parser.cpp.o: ../Parser.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/achepurn/Abstract_VM/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Abstract_VM.dir/Parser.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Abstract_VM.dir/Parser.cpp.o -c /Users/achepurn/Abstract_VM/Parser.cpp
+CMakeFiles/Abstract_VM.dir/src/Parser.cpp.o: CMakeFiles/Abstract_VM.dir/flags.make
+CMakeFiles/Abstract_VM.dir/src/Parser.cpp.o: ../src/Parser.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/achepurn/Abstract_VM/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Abstract_VM.dir/src/Parser.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Abstract_VM.dir/src/Parser.cpp.o -c /Users/achepurn/Abstract_VM/src/Parser.cpp
 
-CMakeFiles/Abstract_VM.dir/Parser.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Abstract_VM.dir/Parser.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/achepurn/Abstract_VM/Parser.cpp > CMakeFiles/Abstract_VM.dir/Parser.cpp.i
+CMakeFiles/Abstract_VM.dir/src/Parser.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Abstract_VM.dir/src/Parser.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/achepurn/Abstract_VM/src/Parser.cpp > CMakeFiles/Abstract_VM.dir/src/Parser.cpp.i
 
-CMakeFiles/Abstract_VM.dir/Parser.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Abstract_VM.dir/Parser.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/achepurn/Abstract_VM/Parser.cpp -o CMakeFiles/Abstract_VM.dir/Parser.cpp.s
+CMakeFiles/Abstract_VM.dir/src/Parser.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Abstract_VM.dir/src/Parser.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/achepurn/Abstract_VM/src/Parser.cpp -o CMakeFiles/Abstract_VM.dir/src/Parser.cpp.s
 
-CMakeFiles/Abstract_VM.dir/VirtualMachine.cpp.o: CMakeFiles/Abstract_VM.dir/flags.make
-CMakeFiles/Abstract_VM.dir/VirtualMachine.cpp.o: ../VirtualMachine.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/achepurn/Abstract_VM/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Abstract_VM.dir/VirtualMachine.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Abstract_VM.dir/VirtualMachine.cpp.o -c /Users/achepurn/Abstract_VM/VirtualMachine.cpp
+CMakeFiles/Abstract_VM.dir/src/VirtualMachine.cpp.o: CMakeFiles/Abstract_VM.dir/flags.make
+CMakeFiles/Abstract_VM.dir/src/VirtualMachine.cpp.o: ../src/VirtualMachine.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/achepurn/Abstract_VM/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Abstract_VM.dir/src/VirtualMachine.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Abstract_VM.dir/src/VirtualMachine.cpp.o -c /Users/achepurn/Abstract_VM/src/VirtualMachine.cpp
 
-CMakeFiles/Abstract_VM.dir/VirtualMachine.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Abstract_VM.dir/VirtualMachine.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/achepurn/Abstract_VM/VirtualMachine.cpp > CMakeFiles/Abstract_VM.dir/VirtualMachine.cpp.i
+CMakeFiles/Abstract_VM.dir/src/VirtualMachine.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Abstract_VM.dir/src/VirtualMachine.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/achepurn/Abstract_VM/src/VirtualMachine.cpp > CMakeFiles/Abstract_VM.dir/src/VirtualMachine.cpp.i
 
-CMakeFiles/Abstract_VM.dir/VirtualMachine.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Abstract_VM.dir/VirtualMachine.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/achepurn/Abstract_VM/VirtualMachine.cpp -o CMakeFiles/Abstract_VM.dir/VirtualMachine.cpp.s
+CMakeFiles/Abstract_VM.dir/src/VirtualMachine.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Abstract_VM.dir/src/VirtualMachine.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/achepurn/Abstract_VM/src/VirtualMachine.cpp -o CMakeFiles/Abstract_VM.dir/src/VirtualMachine.cpp.s
 
-CMakeFiles/Abstract_VM.dir/Token.cpp.o: CMakeFiles/Abstract_VM.dir/flags.make
-CMakeFiles/Abstract_VM.dir/Token.cpp.o: ../Token.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/achepurn/Abstract_VM/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Abstract_VM.dir/Token.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Abstract_VM.dir/Token.cpp.o -c /Users/achepurn/Abstract_VM/Token.cpp
+CMakeFiles/Abstract_VM.dir/src/Token.cpp.o: CMakeFiles/Abstract_VM.dir/flags.make
+CMakeFiles/Abstract_VM.dir/src/Token.cpp.o: ../src/Token.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/achepurn/Abstract_VM/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Abstract_VM.dir/src/Token.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Abstract_VM.dir/src/Token.cpp.o -c /Users/achepurn/Abstract_VM/src/Token.cpp
 
-CMakeFiles/Abstract_VM.dir/Token.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Abstract_VM.dir/Token.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/achepurn/Abstract_VM/Token.cpp > CMakeFiles/Abstract_VM.dir/Token.cpp.i
+CMakeFiles/Abstract_VM.dir/src/Token.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Abstract_VM.dir/src/Token.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/achepurn/Abstract_VM/src/Token.cpp > CMakeFiles/Abstract_VM.dir/src/Token.cpp.i
 
-CMakeFiles/Abstract_VM.dir/Token.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Abstract_VM.dir/Token.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/achepurn/Abstract_VM/Token.cpp -o CMakeFiles/Abstract_VM.dir/Token.cpp.s
+CMakeFiles/Abstract_VM.dir/src/Token.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Abstract_VM.dir/src/Token.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/achepurn/Abstract_VM/src/Token.cpp -o CMakeFiles/Abstract_VM.dir/src/Token.cpp.s
 
-CMakeFiles/Abstract_VM.dir/OperandFactory.cpp.o: CMakeFiles/Abstract_VM.dir/flags.make
-CMakeFiles/Abstract_VM.dir/OperandFactory.cpp.o: ../OperandFactory.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/achepurn/Abstract_VM/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Abstract_VM.dir/OperandFactory.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Abstract_VM.dir/OperandFactory.cpp.o -c /Users/achepurn/Abstract_VM/OperandFactory.cpp
+CMakeFiles/Abstract_VM.dir/src/OperandFactory.cpp.o: CMakeFiles/Abstract_VM.dir/flags.make
+CMakeFiles/Abstract_VM.dir/src/OperandFactory.cpp.o: ../src/OperandFactory.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/achepurn/Abstract_VM/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Abstract_VM.dir/src/OperandFactory.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Abstract_VM.dir/src/OperandFactory.cpp.o -c /Users/achepurn/Abstract_VM/src/OperandFactory.cpp
 
-CMakeFiles/Abstract_VM.dir/OperandFactory.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Abstract_VM.dir/OperandFactory.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/achepurn/Abstract_VM/OperandFactory.cpp > CMakeFiles/Abstract_VM.dir/OperandFactory.cpp.i
+CMakeFiles/Abstract_VM.dir/src/OperandFactory.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Abstract_VM.dir/src/OperandFactory.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/achepurn/Abstract_VM/src/OperandFactory.cpp > CMakeFiles/Abstract_VM.dir/src/OperandFactory.cpp.i
 
-CMakeFiles/Abstract_VM.dir/OperandFactory.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Abstract_VM.dir/OperandFactory.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/achepurn/Abstract_VM/OperandFactory.cpp -o CMakeFiles/Abstract_VM.dir/OperandFactory.cpp.s
+CMakeFiles/Abstract_VM.dir/src/OperandFactory.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Abstract_VM.dir/src/OperandFactory.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/achepurn/Abstract_VM/src/OperandFactory.cpp -o CMakeFiles/Abstract_VM.dir/src/OperandFactory.cpp.s
 
 # Object files for target Abstract_VM
 Abstract_VM_OBJECTS = \
-"CMakeFiles/Abstract_VM.dir/Lexer.cpp.o" \
-"CMakeFiles/Abstract_VM.dir/main.cpp.o" \
-"CMakeFiles/Abstract_VM.dir/Parser.cpp.o" \
-"CMakeFiles/Abstract_VM.dir/VirtualMachine.cpp.o" \
-"CMakeFiles/Abstract_VM.dir/Token.cpp.o" \
-"CMakeFiles/Abstract_VM.dir/OperandFactory.cpp.o"
+"CMakeFiles/Abstract_VM.dir/src/Lexer.cpp.o" \
+"CMakeFiles/Abstract_VM.dir/src/main.cpp.o" \
+"CMakeFiles/Abstract_VM.dir/src/Parser.cpp.o" \
+"CMakeFiles/Abstract_VM.dir/src/VirtualMachine.cpp.o" \
+"CMakeFiles/Abstract_VM.dir/src/Token.cpp.o" \
+"CMakeFiles/Abstract_VM.dir/src/OperandFactory.cpp.o"
 
 # External object files for target Abstract_VM
 Abstract_VM_EXTERNAL_OBJECTS =
 
-Abstract_VM: CMakeFiles/Abstract_VM.dir/Lexer.cpp.o
-Abstract_VM: CMakeFiles/Abstract_VM.dir/main.cpp.o
-Abstract_VM: CMakeFiles/Abstract_VM.dir/Parser.cpp.o
-Abstract_VM: CMakeFiles/Abstract_VM.dir/VirtualMachine.cpp.o
-Abstract_VM: CMakeFiles/Abstract_VM.dir/Token.cpp.o
-Abstract_VM: CMakeFiles/Abstract_VM.dir/OperandFactory.cpp.o
+Abstract_VM: CMakeFiles/Abstract_VM.dir/src/Lexer.cpp.o
+Abstract_VM: CMakeFiles/Abstract_VM.dir/src/main.cpp.o
+Abstract_VM: CMakeFiles/Abstract_VM.dir/src/Parser.cpp.o
+Abstract_VM: CMakeFiles/Abstract_VM.dir/src/VirtualMachine.cpp.o
+Abstract_VM: CMakeFiles/Abstract_VM.dir/src/Token.cpp.o
+Abstract_VM: CMakeFiles/Abstract_VM.dir/src/OperandFactory.cpp.o
 Abstract_VM: CMakeFiles/Abstract_VM.dir/build.make
 Abstract_VM: CMakeFiles/Abstract_VM.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/achepurn/Abstract_VM/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable Abstract_VM"
