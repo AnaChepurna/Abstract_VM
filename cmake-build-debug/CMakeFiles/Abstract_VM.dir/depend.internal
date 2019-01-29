@@ -12,4 +12,11 @@ CMakeFiles/Abstract_VM.dir/src/Token.cpp.o
 CMakeFiles/Abstract_VM.dir/src/VirtualMachine.cpp.o
  /Users/achepurn/Abstract_VM/src/VirtualMachine.cpp
 CMakeFiles/Abstract_VM.dir/src/main.cpp.o
+ ../incl/IOperand.h
+ ../incl/Lexer.h
+ ../incl/Operand.h
+ ../incl/OperandFactory.h
+ ../incl/Parser.h
+ ../incl/Token.h
+ ../incl/VirtualMachine.h
  /Users/achepurn/Abstract_VM/src/main.cpp

@@ -11,5 +11,12 @@ CMakeFiles/Abstract_VM.dir/src/Token.cpp.o: ../src/Token.cpp
 
 CMakeFiles/Abstract_VM.dir/src/VirtualMachine.cpp.o: ../src/VirtualMachine.cpp
 
+CMakeFiles/Abstract_VM.dir/src/main.cpp.o: ../incl/IOperand.h
+CMakeFiles/Abstract_VM.dir/src/main.cpp.o: ../incl/Lexer.h
+CMakeFiles/Abstract_VM.dir/src/main.cpp.o: ../incl/Operand.h
+CMakeFiles/Abstract_VM.dir/src/main.cpp.o: ../incl/OperandFactory.h
+CMakeFiles/Abstract_VM.dir/src/main.cpp.o: ../incl/Parser.h
+CMakeFiles/Abstract_VM.dir/src/main.cpp.o: ../incl/Token.h
+CMakeFiles/Abstract_VM.dir/src/main.cpp.o: ../incl/VirtualMachine.h
 CMakeFiles/Abstract_VM.dir/src/main.cpp.o: ../src/main.cpp
 

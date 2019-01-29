@@ -10,7 +10,7 @@ int main(int argc, char **argv)
 		catch (std::exception &e) {
 			std::cout << "usage: " << std::endl;
 			std::cout << "\t" << argv[0] << std::endl << "\t"<< argv[0] << " [filename]" << std::endl;
-			std::cout << "\t" << "-errorIgnore - trying to execute code just ignore error lines" << std::endl;
+			std::cout << "\t" << "-errorIgnore : trying to execute code just ignore error lines (do not pass to absent exit int the end of program)" << std::endl;
 			exit(0);
 		}
 	}

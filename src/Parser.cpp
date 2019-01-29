@@ -45,6 +45,12 @@ std::map<int, Token *> Parser::getCode(bool errorIgnore) {
             if (parseCode(str, num, errorIgnore))
                 break;
         }
+        try {
+            if (!hasExit())
+                throw NoExitException();
+        } catch (std::exception &e) {
+            _errors.insert(_errors.end(), std::make_pair(static_cast<int>(_code.size()) + 1, e.what()));
+        }
         i.close();
     }
     if (_code.empty() || !hasCode())
@@ -79,10 +85,7 @@ bool Parser::parseCode(std::string str, int i, bool errorIgnore) {
         _code.insert(_code.end(), std::make_pair(i, token));
     }
     catch (Parser::NoExitException& e) {
-        if (!errorIgnore)
             _errors.insert(_errors.end(), std::make_pair(i, e.what()));
-        else
-            std::cout << "Error : line " << i << " : " << e.what() << std::endl;
         if (token != nullptr)
             delete(token);
         return true;
