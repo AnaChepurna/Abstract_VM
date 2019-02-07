@@ -106,7 +106,7 @@ bool Parser::createToken(std::string substr, Token **const token) {
     if (com < UINT64_MAX)
         substr = substr.substr(0, com);
     if (substr.empty())
-        return false;
+        return true;
     if (hasExit())
         throw Error::TokenAfterExitException();
     if (*token == nullptr) {

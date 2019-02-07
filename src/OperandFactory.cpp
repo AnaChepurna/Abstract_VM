@@ -20,7 +20,7 @@ OperandFactory::OperandFactory() {
 IOperand const *OperandFactory::createInt8(std::string const &value) const {
     int64_t val;
     try {
-        val = std::stoll(value);
+        val = static_cast<int64_t >(std::stod(value));
     } catch (std::exception &e) {
         if (value[0] == '-')
             throw Error::LimitUnderflowException();
@@ -37,7 +37,7 @@ IOperand const *OperandFactory::createInt8(std::string const &value) const {
 IOperand const *OperandFactory::createInt16(std::string const &value) const {
     int64_t val;
     try {
-        val = std::stoll(value);
+        val = static_cast<int64_t >(std::stod(value));
     } catch (std::exception &e) {
         if (value[0] == '-')
             throw Error::LimitUnderflowException();
@@ -54,7 +54,7 @@ IOperand const *OperandFactory::createInt16(std::string const &value) const {
 IOperand const *OperandFactory::createInt32(std::string const &value) const {
     int64_t val;
     try {
-        val = std::stoll(value);
+        val = static_cast<int64_t >(std::stod(value));
     } catch (std::exception &e) {
         if (value[0] == '-')
             throw Error::LimitUnderflowException();

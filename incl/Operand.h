@@ -12,7 +12,7 @@
 #include <vector>
 #include <iomanip>
 
-#define ABS(x) (x < 0 ? x : -x)
+#define ABS(x) (x > 0 ? x : -x)
 
 template <typename T>
 class Operand: public IOperand {
